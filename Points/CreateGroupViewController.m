@@ -26,9 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    group = [PFObject objectWithClassName:@"Group"];
-    currentUser = [PFUser user];
-    currentUser.username = @"Matt";
+    currentUser = [PFUser currentUser];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -52,14 +50,18 @@
 {
     if (![groupTextField.text isEqual: @""])
     {
+        group = [PFObject objectWithClassName:@"Group"];
         group[@"name"] = groupTextField.text;
-        //PFRelation *relation = [group relationForKey:@"members"];
-        //[relation addObject:currentUser];
+        PFRelation *relation = [group relationForKey:@"members"];
+        [relation addObject:currentUser];
         [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
         {
             if (!error)
             {
                 NSLog(@"Group Saved");
+                PFRelation *relation1 = [currentUser relationForKey:@"myGroups"];
+                [relation1 addObject:group];
+                [currentUser saveInBackground];
             }
             else
             {
