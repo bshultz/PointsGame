@@ -24,6 +24,7 @@
 		3AFE993A18A9432C00D3D9EE /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE993918A9432C00D3D9EE /* CreateGroupViewController.m */; };
 		3AFE993D18A97CB600D3D9EE /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */; };
 		A6D5181BE02142D4B5159C35 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A8F29B83624CD0B44B30BC /* libPods.a */; };
+		E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		3AFE993918A9432C00D3D9EE /* CreateGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGroupViewController.m; sourceTree = "<group>"; };
 		3AFE993B18A97CB600D3D9EE /* NewsfeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedViewController.h; sourceTree = "<group>"; };
 		3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedViewController.m; sourceTree = "<group>"; };
+		E0984CE118AA8D5E00AAE67A /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
+		E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */,
 				3AFE993818A9432C00D3D9EE /* CreateGroupViewController.h */,
 				3AFE993918A9432C00D3D9EE /* CreateGroupViewController.m */,
+				E0984CE118AA8D5E00AAE67A /* GroupsViewController.h */,
+				E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */,
 				3A9A380518A9267800F604F0 /* ViewController.h */,
 				3A9A380618A9267800F604F0 /* ViewController.m */,
 				3A9A380818A9267800F604F0 /* Images.xcassets */,
@@ -304,6 +309,7 @@
 				3A9A380118A9267800F604F0 /* AppDelegate.m in Sources */,
 				3AFE993A18A9432C00D3D9EE /* CreateGroupViewController.m in Sources */,
 				3A9A37FD18A9267800F604F0 /* main.m in Sources */,
+				E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */,
 				3AFE993D18A97CB600D3D9EE /* NewsfeedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
