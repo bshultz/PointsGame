@@ -35,11 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // this is good
-    // this is not good
-    // this is good 3
-    
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -47,6 +42,8 @@
     query = [PFQuery queryWithClassName:@"Transaction"];
     [query includeKey:@"fromUser"];
     [query includeKey:@"toUser"];
+//    [query whereKey:@"fromUser" equalTo:[PFUser currentUser]];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {
         transactions = [NSMutableArray new];
