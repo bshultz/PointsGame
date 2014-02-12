@@ -25,6 +25,7 @@
 		3AFE993D18A97CB600D3D9EE /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */; };
 		A6D5181BE02142D4B5159C35 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A8F29B83624CD0B44B30BC /* libPods.a */; };
 		E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */; };
+		E0984CE618AAD79100AAE67A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE518AAD79100AAE67A /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedViewController.m; sourceTree = "<group>"; };
 		E0984CE118AA8D5E00AAE67A /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
 		E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
+		E0984CE418AAD79100AAE67A /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		E0984CE518AAD79100AAE67A /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				3A9A37FF18A9267800F604F0 /* AppDelegate.h */,
 				3A9A380018A9267800F604F0 /* AppDelegate.m */,
 				3A9A380218A9267800F604F0 /* Main.storyboard */,
+				E0984CE418AAD79100AAE67A /* ProfileViewController.h */,
+				E0984CE518AAD79100AAE67A /* ProfileViewController.m */,
 				3AFE993B18A97CB600D3D9EE /* NewsfeedViewController.h */,
 				3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */,
 				3AFE993818A9432C00D3D9EE /* CreateGroupViewController.h */,
@@ -309,6 +314,7 @@
 				3A9A380118A9267800F604F0 /* AppDelegate.m in Sources */,
 				3AFE993A18A9432C00D3D9EE /* CreateGroupViewController.m in Sources */,
 				3A9A37FD18A9267800F604F0 /* main.m in Sources */,
+				E0984CE618AAD79100AAE67A /* ProfileViewController.m in Sources */,
 				E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */,
 				3AFE993D18A97CB600D3D9EE /* NewsfeedViewController.m in Sources */,
 			);
