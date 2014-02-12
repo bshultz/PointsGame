@@ -32,11 +32,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    groupTextField = [[UITextField alloc] initWithFrame:CGRectMake(30.0f, 40.0f, 260.0f, 30.0f)];
+    groupTextField = [[UITextField alloc] initWithFrame:CGRectMake(30.0f, 68.0f, 260.0f, 30.0f)];
     groupTextField.placeholder = @"Group Name";
     groupTextField.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:23.0f];
     [groupTextField setBorderStyle:UITextBorderStyleRoundedRect];
-    addButton = [[UIButton alloc] initWithFrame:CGRectMake(250.0f, 80.0f, 40.0f, 30.0f)];
+    addButton = [[UIButton alloc] initWithFrame:CGRectMake(250.0f, 105.0f, 40.0f, 30.0f)];
     [addButton setTitle:@"Add" forState:UIControlStateNormal];
     [addButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     

@@ -135,7 +135,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GXv-X9-uw2">
                             <connections>
-                                <segue destination="iEL-Uw-frs" kind="modal" id="lWe-e9-XZd"/>
+                                <segue destination="iEL-Uw-frs" kind="push" identifier="CreateGroupIdentifier" id="f1F-20-hTc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -156,8 +156,15 @@
                         <viewControllerLayoutGuide type="bottom" id="a6v-6T-efl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ooz-Nj-UOF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uRv-qr-9ga">
+                                <rect key="frame" x="0.0" y="140" width="320" height="136"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="0EB-sa-IGh"/>
