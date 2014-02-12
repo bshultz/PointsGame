@@ -115,7 +115,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="8yP-cs-7rk" kind="push" id="0tE-X9-NLX"/>
+                                            <segue destination="8yP-cs-7rk" kind="push" identifier="FriendsDetail" id="0tE-X9-NLX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -259,11 +259,11 @@
             </objects>
             <point key="canvasLocation" x="-480" y="-670"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Profile-->
         <scene sceneID="ULs-3B-frk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E30-bS-lR0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5zr-f6-jJ4"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="5zr-f6-jJ4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qsj-13-X8d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
