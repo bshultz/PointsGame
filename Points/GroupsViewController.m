@@ -16,14 +16,14 @@
 @property (nonatomic, strong) NSMutableArray *filteredArray;
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (nonatomic, strong) UISearchBar *searchBar;
-@property (nonatomic, strong) UISearchDisplayController *sdc;
+@property (nonatomic, strong) UISearchDisplayController *searchDisplayController;
 
 @end
 
 
 
 @implementation GroupsViewController
-@synthesize arrayOfAllTheUsersGroups, sdc;
+@synthesize arrayOfAllTheUsersGroups, searchDisplayController;
 
 
 - (void)viewDidLoad
@@ -40,18 +40,14 @@
             [subview setClearButtonMode:UITextFieldViewModeWhileEditing];
 
     
-    self.sdc = [[UISearchDisplayController alloc]initWithSearchBar:self.searchBar contentsController:self];
-    self.sdc.delegate = self;
-    self.sdc.searchResultsDataSource = self;
-    self.sdc.searchResultsDelegate = self;
-    
-   
+    self.searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:self.searchBar contentsController:self];
+    self.searchDisplayController.delegate = self;
+    self.searchDisplayController.searchResultsDataSource = self;
+    self.searchDisplayController.searchResultsDelegate = self;
     
     //hides the search bar initially
     self.myTableView.contentOffset = CGPointMake(0, self.searchBar.bounds.size.height);
-    
-    // Initialize the filtered array with a capacity equal to the capacity of our main array
-//    self.filteredArray = [NSMutableArray arrayWithCapacity:[self.arrayOfAllTheUsersGroups count]];
+
     
 
 }
@@ -101,7 +97,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    if (tableView == sdc.searchResultsTableView) {
+    if (tableView == searchDisplayController.searchResultsTableView) {
 
          object = self.filteredArray[indexPath.row];
     
@@ -145,8 +141,8 @@
 
 - (IBAction)onSearchButtonClicked:(id)sender {
     self.myTableView.contentOffset = CGPointMake(0, -64);
-    [sdc setActive:YES animated:YES];
-    [sdc.searchBar becomeFirstResponder];
+    [searchDisplayController setActive:YES animated:YES];
+    [searchDisplayController.searchBar becomeFirstResponder];
     
 }
 #pragma mark - Segue
