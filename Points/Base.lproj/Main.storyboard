@@ -128,6 +128,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Groups" id="Vg5-LN-zhe">
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="search" id="has-Lb-hEW">
+                            <connections>
+                                <action selector="onSearchButtonClicked:" destination="juO-tY-f82" id="Fwp-HN-kCh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GXv-X9-uw2">
                             <connections>
                                 <segue destination="iEL-Uw-frs" kind="modal" id="lWe-e9-XZd"/>

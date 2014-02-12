@@ -156,6 +156,9 @@
     [self performSegueWithIdentifier:@"FriendsDetail" sender:tableView];
     
 }
+- (IBAction)onSearchButtonClicked:(id)sender {
+    
+}
 
 #pragma mark - Segue
 
