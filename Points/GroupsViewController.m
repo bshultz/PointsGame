@@ -16,14 +16,14 @@
 @property (nonatomic, strong) NSMutableArray *filteredArray;
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (nonatomic, strong) UISearchBar *searchBar;
-@property (nonatomic, strong) UISearchDisplayController *searchDisplayController;
+@property (nonatomic, strong) UISearchDisplayController *sdc;
 
 @end
 
 
 
 @implementation GroupsViewController
-@synthesize arrayOfAllTheUsersGroups, searchDisplayController;
+@synthesize arrayOfAllTheUsersGroups, sdc;
 
 
 - (void)viewDidLoad
@@ -31,37 +31,24 @@
     [super viewDidLoad];
     
     self.searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
-    [self.view addSubview:self.searchBar];
     self.myTableView.tableHeaderView = self.searchBar;
 
     
- // adding a clear button to the searchBar
-    for (UIView *subview in self.searchBar.subviews)
-    {
+ // adding a clear button to the searchBar. Searchbar has a textfield, i find the textfield and then display the clear button
+    for (UITextField *subview in self.searchBar.subviews)
         if ([subview isKindOfClass:[UITextField class]])
-        {
-            [(UITextField *)subview setClearButtonMode:UITextFieldViewModeWhileEditing];
-        }
-    }
+            [subview setClearButtonMode:UITextFieldViewModeWhileEditing];
 
     
-    self.searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:self.searchBar contentsController:self];
-    self.searchDisplayController.delegate = self;
-    self.searchDisplayController.searchResultsDataSource = self;
-    self.searchDisplayController.searchResultsDelegate = self;
+    self.sdc = [[UISearchDisplayController alloc]initWithSearchBar:self.searchBar contentsController:self];
+    self.sdc.delegate = self;
+    self.sdc.searchResultsDataSource = self;
+    self.sdc.searchResultsDelegate = self;
     
    
     
-//    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc]
-//                                   initWithTitle:@"Search"
-//                                   style:UIBarButtonItemStyleBordered
-//                                   target:self
-//                                   action:@selector(goToSearch:)];
-//    self.navigationItem.leftBarButtonItem = searchButton;
-//
-    
     //hides the search bar initially
-//    self.myTableView.contentOffset = CGPointMake(0, self.searchBar.bounds.size.height);
+    self.myTableView.contentOffset = CGPointMake(0, self.searchBar.bounds.size.height);
     
     // Initialize the filtered array with a capacity equal to the capacity of our main array
 //    self.filteredArray = [NSMutableArray arrayWithCapacity:[self.arrayOfAllTheUsersGroups count]];
@@ -69,8 +56,8 @@
 
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:YES];
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
     [self getGroups];
 }
 
@@ -114,7 +101,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if (tableView == sdc.searchResultsTableView) {
 
          object = self.filteredArray[indexPath.row];
     
@@ -128,11 +115,8 @@
 }
 
 
--(IBAction)goToSearch:(id)sender {
-    
-    self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
-}
 
+    
 #pragma mark - Content Filtering
 
 // Update the filtered array based on the scope and searchText
@@ -156,10 +140,15 @@
     [self performSegueWithIdentifier:@"FriendsDetail" sender:tableView];
     
 }
+
+#pragma mark - Search Button 
+
 - (IBAction)onSearchButtonClicked:(id)sender {
+    self.myTableView.contentOffset = CGPointMake(0, -64);
+    [sdc setActive:YES animated:YES];
+    [sdc.searchBar becomeFirstResponder];
     
 }
-
 #pragma mark - Segue
 
 // need to check if the user selects an item from the regular tableView or the tableView that the SearchDisplayController adds
