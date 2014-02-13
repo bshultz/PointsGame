@@ -71,6 +71,9 @@
         [groupTextField resignFirstResponder];
     }
 }
+- (IBAction)onAddFriendButtonPressed:(id)sender {
+    
+}
 
 
 @end
