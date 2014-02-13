@@ -11,7 +11,10 @@
 
 @interface ProfileViewController ()
 {
-    PFQuery *query;
+    NSMutableArray *userInfoArray;
+    __weak IBOutlet UIImageView *profileImage;
+    __weak IBOutlet UITextField *profileUsername;
+    __weak IBOutlet UITextField *profileEmail;
 }
 
 @end
@@ -22,7 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self currentUser];
 }
 
 -(void)currentUser
@@ -31,10 +34,33 @@
         if (currentUser) {
             //there is a current user object
             NSLog(@"currentUser object: %@", currentUser);
+            NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
+            
+            //Set the user's image
+            PFFile *theImage = [currentUser objectForKey:@"userImage"];
+            NSData *imageData = [theImage getData];
+            profileImage.image = [UIImage imageWithData:imageData];
+            
+            //Set the user's username
+            profileUsername.text = [currentUser objectForKey:@"username"];
+            
+            //Set the user's email address
+            profileEmail.text = [currentUser objectForKey:@"email"];
+            
+            
         } else {
             // show the signup or login screen
         }
 }
+
+-(void)setProfileValues
+{
+    
+}
+
+
+
+
 
 
 @end
