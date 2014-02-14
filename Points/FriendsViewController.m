@@ -25,15 +25,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    friendsTableView = [UITableView new];
-    friendsTableView.delegate = self;
-    friendsTableView.dataSource = self;
+
+
 
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    friends = [NSMutableArray new];
     PFQuery *query = [PFQuery queryWithClassName:@"Group"];
     group = [PFObject objectWithClassName:@"Group"];
     [query whereKey:@"objectId" equalTo:self.groupID];
@@ -46,18 +46,18 @@
         {
             if (!error)
             {
-                friends = [NSMutableArray new];
                 for (PFObject *object in objects)
                 {
                     [friends addObject:[object objectForKey:@"username"]];
-                    NSLog(@"Friends are %@", friends);
                     [friendsTableView reloadData];
+                    NSLog(@"Friends are %@", friends);
                 }
             }
             else
             {
                 NSLog(@"Error: %@", error);
             }
+
         }];
     }];
     
