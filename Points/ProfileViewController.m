@@ -26,27 +26,26 @@
 {
     [super viewDidLoad];
     [self currentUser];
+
 }
 
 -(void)currentUser
 {
+    
     PFUser *currentUser = [PFUser currentUser];
         if (currentUser) {
             //there is a current user object
             NSLog(@"currentUser object: %@", currentUser);
             NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
-            
             //Set the user's image
             PFFile *theImage = [currentUser objectForKey:@"userImage"];
             NSData *imageData = [theImage getData];
             profileImage.image = [UIImage imageWithData:imageData];
-            
             //Set the user's username
             profileUsername.text = [currentUser objectForKey:@"username"];
-            
             //Set the user's email address
             profileEmail.text = [currentUser objectForKey:@"email"];
-            
+            //enter facebook login stuff here
             
         } else {
             // show the signup or login screen
