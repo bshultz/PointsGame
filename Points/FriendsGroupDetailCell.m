@@ -10,16 +10,32 @@
 
 @implementation FriendsGroupDetailCell
 
+@synthesize profileImage;
+@synthesize name;
+@synthesize points;
+@synthesize addButton;
+
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
-        UIButton *addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        addButton.frame = CGRectMake(260.0f, 0.0f, 30.0f, 30.0f);
-        addButton.imageView.image = [UIImage imageNamed:@"addbutton.jpeg"];
+        CGSize size = self.contentView.frame.size;
         
-        [self addSubview:addButton];
+        profileImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 30.0f, 30.0f)];
+        [self.contentView addSubview:profileImage];
+        
+        name = [[UILabel alloc] initWithFrame:CGRectMake(40.0f, 0.0f, size.width - 60.0f, size.height - 4.0f)];
+        [self.contentView addSubview:name];
+        
+        points = [[UILabel alloc] initWithFrame:CGRectMake(260.0f, 0.0f, size.width - 20.0f, size.height - 4.0f)];
+        [self.contentView addSubview:points];
+    
+        addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        addButton.frame = CGRectMake(280.0f, 10.0f, 30.0f, 25.0f);
+        addButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [self.contentView addSubview:addButton];
+        
         
     }
     return self;

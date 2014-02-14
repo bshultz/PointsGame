@@ -69,24 +69,28 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FriendsGroupDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendDetailCell"];
-    cell.textLabel.text = [friends objectAtIndex:indexPath.row];
-    UIImageView *accessoryImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 25.0f, 25.0f)];
-    accessoryImage.contentMode = UIViewContentModeScaleAspectFill;
-    accessoryImage.image = [UIImage imageNamed:@"addbutton.jpeg"];
-    
+    FriendsGroupDetailCell *cell = [FriendsGroupDetailCell new];
+    cell.name.text = [friends objectAtIndex:indexPath.row];
     PFFile *theImage = [friendImages objectAtIndex:indexPath.row];
     NSData *imageData = [theImage getData];
-    cell.imageView.frame = CGRectMake(0.0f, 0.0f, 35.0f, 35.0f);
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    cell.imageView.image = [UIImage imageWithData:imageData];
-    [cell setAccessoryView:accessoryImage];
+    cell.profileImage.image = [UIImage imageWithData:imageData];
+    
+    cell.points.text = @"3";
+    [cell.addButton setBackgroundImage:[UIImage imageNamed:@"addbutton.jpeg"] forState:UIControlStateNormal];
+    
+    [cell.addButton addTarget:self action:@selector(addPoint) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return friends.count;
+}
+
+-(void)addPoint
+{
+    NSLog(@"Button was touched");
 }
 
 @end

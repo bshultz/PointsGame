@@ -10,4 +10,10 @@
 
 @interface FriendsGroupDetailCell : UITableViewCell
 
+@property UIImageView *profileImage;
+@property UILabel *name;
+@property UILabel *points;
+@property UIButton *addButton;
+
+
 @end
