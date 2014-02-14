@@ -11,12 +11,17 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
-@interface CreateGroupViewController () <ABPeoplePickerNavigationControllerDelegate>
+@interface CreateGroupViewController () <ABPeoplePickerNavigationControllerDelegate, UIAlertViewDelegate>
 {
     PFObject *group;
     UITextField *groupTextField;
     PFUser *currentUser;
     UIButton *addButton;
+    UIAlertView *personDoesNotHaveAnAccount;
+    UIAlertView *personDoesHaveAnAccount;
+    PFUser *userFoundInDatabase;
+    
+    
 }
 
 @property (nonatomic, strong) ABPeoplePickerNavigationController *addressBookController;
@@ -25,7 +30,7 @@
 
 @implementation CreateGroupViewController
 
-@synthesize addressBookController;
+@synthesize addressBookController;;
 
 
 
@@ -49,6 +54,8 @@
     [self.view addSubview:groupTextField];
     [self.view addSubview:addButton];
     
+//    group = [PFObject objectWithClassName:@"Group"];
+    
     [addButton addTarget:self action:@selector(onAddButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -57,6 +64,7 @@
     if (![groupTextField.text isEqual: @""])
     {
         group = [PFObject objectWithClassName:@"Group"];
+
         group[@"name"] = groupTextField.text;
         PFRelation *relation = [group relationForKey:@"members"];
         [relation addObject:currentUser];
@@ -91,8 +99,6 @@
 }
 
 -(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
-    UIAlertView *startGamePlayMode = [[UIAlertView alloc] initWithTitle:nil message:@"This person does not have an account"  delegate:self cancelButtonTitle:nil otherButtonTitles:@"Invite", @"Cancel",  nil];
-    [startGamePlayMode show];
     
     //getting the persons phone numbers from the address book
     
@@ -125,27 +131,82 @@
         } else if (j == 1) workEmail = email;
     }
    NSLog (@"persons homeEmail = %@", homeEmail);
+    __block BOOL theEmailIsPresent;
     
     // need to query the Parse database to check if the current person is already has the app or not. I do this by checking the emails
-    PFQuery *query = [PFQuery queryWithClassName:@"User"];
-    [query whereKey:@"email" equalTo:homeEmail];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (!object){
-            // no object present
+    PFQuery *query = [PFUser query];
+//    [query whereKey:@"email" containsString:homeEmail];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error){
+            NSLog (@"%@ %@", error, [error userInfo]);
         } else {
-            //object is present
+            for (PFUser *object in objects){
+                if ([object.email isEqualToString:homeEmail ]) {
+                    theEmailIsPresent = true;
+                    userFoundInDatabase = object;
+                }
+            }
+            if (theEmailIsPresent){
+                NSLog(@"the email is Present");
+                personDoesHaveAnAccount = [[UIAlertView alloc] initWithTitle:nil message:nil  delegate:self cancelButtonTitle:nil otherButtonTitles:@"Add", @"Cancel",  nil];
+                            personDoesHaveAnAccount.tag = 1;
+                            [personDoesHaveAnAccount show];
+            } else {
+                // user is not present in the app
+                personDoesNotHaveAnAccount = [[UIAlertView alloc] initWithTitle:nil message:@"This person does not have an account"  delegate:self cancelButtonTitle:nil otherButtonTitles:@"Invite", @"Cancel",  nil];
+                            personDoesNotHaveAnAccount.tag = 0;
+                            [personDoesNotHaveAnAccount show];
+            }
+            
         }
+    
     }];
     
-    
-    
-    
+//    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+//        if (!object){
+//             NSLog (@"the email does not exist");
+//            personDoesNotHaveAnAccount = [[UIAlertView alloc] initWithTitle:nil message:@"This person does not have an account"  delegate:self cancelButtonTitle:nil otherButtonTitles:@"Invite", @"Cancel",  nil];
+//            personDoesNotHaveAnAccount.tag = 0;
+//            [personDoesNotHaveAnAccount show];
+//        } else {
+//            personDoesHaveAnAccount = [[UIAlertView alloc] initWithTitle:nil message:nil  delegate:self cancelButtonTitle:nil otherButtonTitles:@"Add", @"Cancel",  nil];
+//            personDoesNotHaveAnAccount.tag = 1;
+//            [personDoesHaveAnAccount show];
+//            
+//        }
+//    }];
 
     return NO;
 }
 
 -(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier {
     return NO;
+}
+
+#pragma mark - AlertView Delegate
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if(alertView.tag == 0){
+        if (buttonIndex == 0){
+            // send the friend an invite to the app
+            NSLog (@"you have sent the friend an invite");
+        }
+        
+    }
+    
+    //person does have an account
+    
+    if (alertView.tag == 1){
+        if (buttonIndex == 0){
+            
+            PFRelation *relation = [group relationForKey:@"members"];
+            [relation addObject:userFoundInDatabase];
+            [group saveInBackground];
+             NSLog (@"you have added the friend");
+        }
+    }
 }
 
 
