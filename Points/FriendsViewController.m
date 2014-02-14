@@ -12,7 +12,7 @@
 {
     PFObject *group;
     NSMutableArray *friends;
-    UITableView *friendsTableView;
+    __weak IBOutlet UITableView *friendsTableView;
     
 }
 

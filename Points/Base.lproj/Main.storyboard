@@ -270,11 +270,18 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="8yP-cs-7rk" id="f2o-nk-fch"/>
+                                    <outlet property="delegate" destination="8yP-cs-7rk" id="TtR-BC-825"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="peZ-k9-N4K"/>
+                    <connections>
+                        <outlet property="friendsTableView" destination="Cue-r1-y8K" id="GMB-YW-eHH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrc-Bd-Ort" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
