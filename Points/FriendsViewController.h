@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parse/Parse.h"
 
 @interface FriendsViewController : UIViewController
+
+@property NSString *groupID;
 
 @end
