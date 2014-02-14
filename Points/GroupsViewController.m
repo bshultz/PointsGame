@@ -7,6 +7,7 @@
 //
 #import "GroupsViewController.h"
 #import "Parse/Parse.h"
+#import "FriendsViewController.h"
 
 //line 190, 199, add bar button for search bar
 
@@ -127,15 +128,6 @@
     return YES;
 }
 
-#pragma mark - TableView Delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //Perform segue to individual friends detail view
-    
-    [self performSegueWithIdentifier:@"FriendsDetail" sender:tableView];
-    
-}
 
 #pragma mark - Search Button 
 
@@ -148,29 +140,23 @@
 #pragma mark - Segue
 
 // need to check if the user selects an item from the regular tableView or the tableView that the SearchDisplayController adds
+// Grab the groupID from the selected object and pass it forward to the FriendsViewController
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     
     if ([[segue identifier] isEqualToString:@"FriendsDetail"]) {
-        UIViewController *friendsListDetailViewController = [segue destinationViewController];
+        FriendsViewController *friendsListDetailViewController = [segue destinationViewController];
         if (sender == self.searchDisplayController.searchResultsTableView) {
             
             NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-            NSString *destinationTitle = [[self.filteredArray objectAtIndex:[indexPath row]] name];
-            [friendsListDetailViewController setTitle:destinationTitle];
+            friendsListDetailViewController.groupID = [[self.filteredArray objectAtIndex:indexPath.row] objectId];
             
         } else {
             NSIndexPath *indexPath = [self.myTableView indexPathForSelectedRow];
-            NSString *destinationTitle = [[self.arrayOfAllTheUsersGroups objectAtIndex:[indexPath row]] name];
-            [friendsListDetailViewController setTitle:destinationTitle];
-            
+            friendsListDetailViewController.groupID = [[self.arrayOfAllTheUsersGroups objectAtIndex:indexPath.row] objectId];
         }
     }
-    
-    
-    
-    
 }
 
 
