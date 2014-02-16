@@ -52,6 +52,14 @@
         else
         {
             NSLog(@"Save Succeeded");
+            
+            PFObject *transaction = [PFObject objectWithClassName:@"Transaction"];
+            PFRelation *fromRelation = [transaction relationForKey:@"fromUser"];
+            //PFRelation *toRelation = [transaction relationForKey:@"toUser"];
+            [fromRelation addObject:[PFUser currentUser]];
+            //transaction[@"toUser"] = self.toUserObjectID;
+            transaction[@"action"] = @"Point Awarded";
+            [transaction saveInBackground];
             UIAlertView *saveAlert = [[UIAlertView alloc] initWithTitle:@"Point Saved!" message:@"You're Awesome!" delegate:self cancelButtonTitle:@"Sweet" otherButtonTitles:nil];
             [saveAlert show];
         }
