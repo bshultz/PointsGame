@@ -8,12 +8,14 @@
 
 #import "FriendsViewController.h"
 #import "FriendsGroupDetailCell.h"
+#import "AddPointViewController.h"
 
 @interface FriendsViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     PFObject *group;
     NSMutableArray *friends;
     NSMutableArray *friendImages;
+    NSMutableArray *toUserObjectID;
     __weak IBOutlet UITableView *friendsTableView;
     
 }
@@ -37,6 +39,7 @@
     [super viewWillAppear:YES];
     friends = [NSMutableArray new];
     friendImages = [NSMutableArray new];
+    toUserObjectID = [NSMutableArray new];
     PFQuery *query = [PFQuery queryWithClassName:@"Group"];
     group = [PFObject objectWithClassName:@"Group"];
     [query whereKey:@"objectId" equalTo:self.groupID];
@@ -53,6 +56,7 @@
                 {
                     [friends addObject:[object objectForKey:@"username"]];
                     [friendImages addObject:[object objectForKey:@"userImage"]];
+                    [toUserObjectID addObject:object.objectId];
                     [friendsTableView reloadData];
                     NSLog(@"Friends are %@", friends);
                 }
@@ -78,7 +82,7 @@
     cell.points.text = @"3";
     [cell.addButton setBackgroundImage:[UIImage imageNamed:@"addbutton.jpeg"] forState:UIControlStateNormal];
     
-    [cell.addButton addTarget:self action:@selector(addPoint) forControlEvents:UIControlEventTouchUpInside];
+    [cell.addButton addTarget:self action:@selector(addPoint:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
@@ -88,9 +92,19 @@
     return friends.count;
 }
 
--(void)addPoint
+-(void)addPoint:(UIButton *)button
 {
-    NSLog(@"Button was touched");
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AddPointViewController *pointVC = (AddPointViewController *)[storyboard instantiateViewControllerWithIdentifier:@"AddPointViewController"];
+    
+    FriendsGroupDetailCell *cell = (FriendsGroupDetailCell *)button.superview.superview.superview;
+    NSIndexPath *indexPath = [friendsTableView indexPathForCell:cell];
+    pointVC.toUserObjectID = [toUserObjectID objectAtIndex:indexPath.row];
+    pointVC.fromUserObjectID = [PFUser currentUser].objectId;
+    pointVC.friendName = [friends objectAtIndex:indexPath.row];
+    pointVC.groupID = self.groupID;
+    
+    [self.navigationController presentViewController:pointVC animated:YES completion:nil];
 }
 
 @end

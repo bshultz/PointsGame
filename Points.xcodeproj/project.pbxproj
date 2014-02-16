@@ -10,6 +10,7 @@
 		3A5A592E18AE8D1A0046F00B /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A592D18AE8D1A0046F00B /* FriendsViewController.m */; };
 		3A5A593118AEB2E00046F00B /* FriendsGroupDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A593018AEB2E00046F00B /* FriendsGroupDetailCell.m */; };
 		3A5A593318AEB6230046F00B /* addbutton.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3A5A593218AEB6230046F00B /* addbutton.jpeg */; };
+		3A5A593618B04E0A0046F00B /* AddPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A593518B04E0A0046F00B /* AddPointViewController.m */; };
 		3A9A37F118A9267800F604F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9A37F018A9267800F604F0 /* Foundation.framework */; };
 		3A9A37F318A9267800F604F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9A37F218A9267800F604F0 /* CoreGraphics.framework */; };
 		3A9A37F518A9267800F604F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9A37F418A9267800F604F0 /* UIKit.framework */; };
@@ -51,6 +52,8 @@
 		3A5A592F18AEB2E00046F00B /* FriendsGroupDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsGroupDetailCell.h; sourceTree = "<group>"; };
 		3A5A593018AEB2E00046F00B /* FriendsGroupDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsGroupDetailCell.m; sourceTree = "<group>"; };
 		3A5A593218AEB6230046F00B /* addbutton.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addbutton.jpeg; sourceTree = "<group>"; };
+		3A5A593418B04E0A0046F00B /* AddPointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPointViewController.h; sourceTree = "<group>"; };
+		3A5A593518B04E0A0046F00B /* AddPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPointViewController.m; sourceTree = "<group>"; };
 		3A9A37ED18A9267800F604F0 /* Points.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Points.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9A37F018A9267800F604F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A9A37F218A9267800F604F0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -153,6 +156,8 @@
 				3A5A593018AEB2E00046F00B /* FriendsGroupDetailCell.m */,
 				3A5A592C18AE8D1A0046F00B /* FriendsViewController.h */,
 				3A5A592D18AE8D1A0046F00B /* FriendsViewController.m */,
+				3A5A593418B04E0A0046F00B /* AddPointViewController.h */,
+				3A5A593518B04E0A0046F00B /* AddPointViewController.m */,
 				E0984CE418AAD79100AAE67A /* ProfileViewController.h */,
 				E0984CE518AAD79100AAE67A /* ProfileViewController.m */,
 				3AFE993B18A97CB600D3D9EE /* NewsfeedViewController.h */,
@@ -341,6 +346,7 @@
 				E0984CE618AAD79100AAE67A /* ProfileViewController.m in Sources */,
 				E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */,
 				3AFE993D18A97CB600D3D9EE /* NewsfeedViewController.m in Sources */,
+				3A5A593618B04E0A0046F00B /* AddPointViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -244,7 +244,7 @@
         <!--Friends View Controller-->
         <scene sceneID="Io9-c7-kyg">
             <objects>
-                <viewController id="8yP-cs-7rk" userLabel="Friends View Controller" customClass="FriendsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FriendsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8yP-cs-7rk" userLabel="Friends View Controller" customClass="FriendsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aJq-nv-jVB"/>
                         <viewControllerLayoutGuide type="bottom" id="CtH-58-7Oo"/>
@@ -286,6 +286,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrc-Bd-Ort" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="966" y="-56"/>
+        </scene>
+        <!--Add Point View Controller-->
+        <scene sceneID="H8V-jx-q0b">
+            <objects>
+                <viewController storyboardIdentifier="AddPointViewController" id="fBf-6n-6WJ" customClass="AddPointViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="srS-fn-EMl"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nac-8p-E0r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lc7-rF-vNi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add comment..." translatesAutoresizingMaskIntoConstraints="NO" id="t2g-Lc-jor">
+                                <rect key="frame" x="23" y="150" width="275" height="164"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zld-N7-gvd">
+                                <rect key="frame" x="249" y="100" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSubmitButtonPressed:" destination="fBf-6n-6WJ" eventType="touchUpInside" id="BdB-T8-w7d"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Give a point to:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ym-qA-jdd">
+                                <rect key="frame" x="23" y="63" width="117" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62K-cj-u2D">
+                                <rect key="frame" x="23" y="104" width="218" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="commentTextView" destination="t2g-Lc-jor" id="ed8-14-OAF"/>
+                        <outlet property="friendNameLabel" destination="62K-cj-u2D" id="HYh-se-TKc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="69D-dM-baJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="642"/>
         </scene>
         <!--Points Detail View Controller-->
         <scene sceneID="dQi-fJ-BTB">
