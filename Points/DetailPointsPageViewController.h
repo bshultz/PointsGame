@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailPointsPageViewController : UIViewController
-@property UIImage *photoImage;
+@property NSString *userName;
 
 
 @end
