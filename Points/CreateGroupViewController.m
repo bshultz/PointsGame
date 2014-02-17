@@ -11,7 +11,7 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
-@interface CreateGroupViewController () <ABPeoplePickerNavigationControllerDelegate, UIAlertViewDelegate>
+@interface CreateGroupViewController () <ABPeoplePickerNavigationControllerDelegate, UIAlertViewDelegate, FBFriendPickerDelegate>
 {
     PFObject *group;
     UITextField *groupTextField;
@@ -25,6 +25,7 @@
 }
 
 @property (nonatomic, strong) ABPeoplePickerNavigationController *addressBookController;
+@property (nonatomic, strong) FBFriendPickerViewController *friendPickerController;
 
 @end
 
@@ -86,11 +87,66 @@
     }
 }
 - (IBAction)onAddFriendButtonPressed:(id)sender {
-    self.addressBookController = [[ABPeoplePickerNavigationController alloc]init];
-    [self.addressBookController setPeoplePickerDelegate:self];
-    [self presentViewController:self.addressBookController animated:YES completion:nil];
+    
+    [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        NSDictionary *friends = result;
+        NSLog(@"friends = %@", friends);
+    }];
+
+    
+    // FBSample logic
+    // if the session is open, then load the data for our view controller
+    if (!FBSession.activeSession.isOpen) {
+        // if the session is closed, then we open it here, and establish a handler for state changes
+        [FBSession openActiveSessionWithReadPermissions:nil
+                                           allowLoginUI:YES
+                                      completionHandler:^(FBSession *session,
+                                                          FBSessionState state,
+                                                          NSError *error) {
+                                          if (error) {
+                                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                                  message:error.localizedDescription
+                                                                                                 delegate:nil
+                                                                                        cancelButtonTitle:@"OK"
+                                                                                        otherButtonTitles:nil];
+                                              [alertView show];
+                                          } else if (session.isOpen) {
+                                              [self onAddFriendButtonPressed:sender];
+                                          }
+                                      }];
+        return;
+    }
+    
+    if (self.friendPickerController == nil) {
+        // Create friend picker, and get data loaded into it.
+        self.friendPickerController = [[FBFriendPickerViewController alloc] init];
+        self.friendPickerController.title = @"Pick Friends";
+        self.friendPickerController.delegate = self;
+        NSSet *fields = [NSSet setWithObjects:@"installed", nil];
+        self.friendPickerController.fieldsForRequest = fields;
+    }
+    
+    [self.friendPickerController loadData];
+    [self.friendPickerController clearSelection];
+    
+    [self presentViewController:self.friendPickerController animated:YES completion:nil];
+    
+ //   FBRequest *request = [FBRequest requestForMyFriends];
+    
+    
+//    self.addressBookController = [[ABPeoplePickerNavigationController alloc]init];
+//    [self.addressBookController setPeoplePickerDelegate:self];
+//    [self presentViewController:self.addressBookController animated:YES completion:nil];
+    
+    
 
 }
+
+
+//- (BOOL)friendPickerViewController:(FBFriendPickerViewController *)friendPicker shouldIncludeUser:(id<FBGraphUser>)user {
+//    BOOL installed = [user objectForKey:@"installed"] != nil;
+//    return installed;
+//}
 
 #pragma mark - ABPeoplePickerNavigationController delegate methods
 
