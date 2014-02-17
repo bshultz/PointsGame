@@ -27,17 +27,19 @@
 {
     [super viewDidLoad];
     [self currentUser];
-    
+
 }
 
 
 -(void)currentUser
 {
+    
     PFUser *currentUser = [PFUser currentUser];
         if (currentUser) {
             //there is a current user object
             NSLog(@"currentUser object: %@", currentUser);
             NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
+
             
             profileUsername.text = currentUser[@"fullName"];
             
@@ -47,6 +49,8 @@
                 profileImage.image = [UIImage imageWithData:data];
                 }
             }];
+
+          
             
         } else {
             //show login screen 
