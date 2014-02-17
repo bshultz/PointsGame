@@ -9,12 +9,13 @@
 #import "ProfileViewController.h"
 #import "Parse/Parse.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <NSURLConnectionDataDelegate>
 {
     NSMutableArray *userInfoArray;
     __weak IBOutlet UIImageView *profileImage;
     __weak IBOutlet UITextField *profileUsername;
     __weak IBOutlet UITextField *profileEmail;
+    NSData *imageData;
 }
 
 @end
@@ -26,7 +27,9 @@
 {
     [super viewDidLoad];
     [self currentUser];
+    
 }
+
 
 -(void)currentUser
 {
@@ -36,31 +39,19 @@
             NSLog(@"currentUser object: %@", currentUser);
             NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
             
-            //Set the user's image
-            PFFile *theImage = [currentUser objectForKey:@"userImage"];
-            NSData *imageData = [theImage getData];
-            profileImage.image = [UIImage imageWithData:imageData];
+            profileUsername.text = currentUser[@"fullName"];
             
-            //Set the user's username
-            profileUsername.text = [currentUser objectForKey:@"username"];
-            
-            //Set the user's email address
-            profileEmail.text = [currentUser objectForKey:@"email"];
-            
+            PFFile *userImageFile = currentUser[@"userImage"];
+            [userImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                if(!error){
+                profileImage.image = [UIImage imageWithData:data];
+                }
+            }];
             
         } else {
-            // show the signup or login screen
+            //show login screen 
         }
 }
-
--(void)setProfileValues
-{
-    
-}
-
-
-
-
 
 
 @end
