@@ -115,10 +115,14 @@
                 //result is a dictionary with the users Data
                 
                 NSDictionary *userData = (NSDictionary *)result;
+                NSLog(@"data = %@", userData);
                 
-                NSString *facebookID = userData[@"id"];
-                NSString *name = userData[@"name"];
+                
+ //               NSString *name = userData[@"name"];
+ //               NSString *uniqueIdentifier = userData[@"username"];
  //               NSString *email = userData[@"email"];
+                
+                  NSString *facebookID = userData[@"id"];
                 NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
                 
                 NSLog(@"details = %@", result);
@@ -128,7 +132,8 @@
                 
                 PFFile *file = [PFFile fileWithData:[NSData dataWithContentsOfURL:pictureURL]];
                 [currentUser setObject:file forKey:@"userImage"];
-                [currentUser setObject:name forKey:@"fullName"];
+                [currentUser setObject:userData[@"name"] forKey:@"fullName"];
+                [currentUser setObject:userData[@"username"] forKey:@"uniqueFacebookIdentifier"];
   //              currentUser.email = email;
                 [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (error){

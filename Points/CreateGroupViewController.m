@@ -20,8 +20,11 @@
     UIAlertView *personDoesNotHaveAnAccount;
     UIAlertView *personDoesHaveAnAccount;
     PFUser *userFoundInDatabase;
+    NSMutableArray *arrayContainingFacebookFriends;
+    BOOL returningFromFacebookFriendPicker;
     
-    
+    IBOutlet UITableView *tableViewWithPeopleWhoDontHaveAnAcoount;
+    IBOutlet UITableView *tabkeViewWithPeopleWhoHaveAnAccount;
 }
 
 @property (nonatomic, strong) ABPeoplePickerNavigationController *addressBookController;
@@ -39,11 +42,18 @@
 {
     [super viewDidLoad];
     currentUser = [PFUser currentUser];
+    arrayContainingFacebookFriends = [[NSMutableArray alloc]init];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    if (returningFromFacebookFriendPicker){
+        // do something and then set the aboove boolean to false
+        returningFromFacebookFriendPicker = NO;
+        
+        
+    } else {
     groupTextField = [[UITextField alloc] initWithFrame:CGRectMake(30.0f, 68.0f, 260.0f, 30.0f)];
     groupTextField.placeholder = @"Group Name";
     groupTextField.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:23.0f];
@@ -57,10 +67,11 @@
     
 //    group = [PFObject objectWithClassName:@"Group"];
     
-    [addButton addTarget:self action:@selector(onAddButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+        [addButton addTarget:self action:@selector(onAddButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
--(void)onAddButtonPressed
+-(void)onAddButtonPressed:(id) sender
 {
     if (![groupTextField.text isEqual: @""])
     {
@@ -85,9 +96,14 @@
         }];
         [groupTextField resignFirstResponder];
     }
+    
+    [self gettingFacebookFriends:sender];
 }
 - (IBAction)onAddFriendButtonPressed:(id)sender {
-    
+}
+
+- (void) gettingFacebookFriends : (id) sender {
+
     [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         NSDictionary *friends = result;
         NSLog(@"friends = %@", friends);
@@ -141,6 +157,27 @@
     
 
 }
+
+#pragma mark - FBFriendPickerController delegate methods
+
+- (void)facebookViewControllerDoneWasPressed:(id)sender {
+    NSMutableString *text = [[NSMutableString alloc] init];
+    
+    // we pick up the users from the selection, and create a string that we use to update the text view
+    // at the bottom of the display; note that self.selection is a property inherited from our base class
+    for (id<FBGraphUser> user in self.friendPickerController.selection) {
+        [arrayContainingFacebookFriends addObject:user];
+        
+        
+        }
+    returningFromFacebookFriendPicker = YES;
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    
+    }
+    
+//    [self fillTextBoxAndDismiss:text.length > 0 ? text : @"<None>"];
+
+
 
 
 //- (BOOL)friendPickerViewController:(FBFriendPickerViewController *)friendPicker shouldIncludeUser:(id<FBGraphUser>)user {

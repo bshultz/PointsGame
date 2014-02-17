@@ -222,24 +222,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lrQ-ux-4F0">
-                                <rect key="frame" x="28" y="329" width="72" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add friend">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DeB-rf-HUS">
+                                <rect key="frame" x="71" y="118" width="178" height="180"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="onAddFriendButtonPressed:" destination="iEL-Uw-frs" eventType="touchUpInside" id="mLC-ga-9CR"/>
+                                    <outlet property="dataSource" destination="iEL-Uw-frs" id="Dfh-qE-tZ7"/>
+                                    <outlet property="delegate" destination="iEL-Uw-frs" id="auL-bj-J09"/>
                                 </connections>
-                            </button>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RcF-M6-1OC">
+                                <rect key="frame" x="71" y="306" width="178" height="180"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="iEL-Uw-frs" id="7oB-6P-7Yk"/>
+                                    <outlet property="delegate" destination="iEL-Uw-frs" id="N1h-d6-Tpt"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="0EB-sa-IGh"/>
+                    <connections>
+                        <outlet property="tabkeViewWithPeopleWhoHaveAnAccount" destination="DeB-rf-HUS" id="wUT-xH-vzx"/>
+                        <outlet property="tableViewWithPeopleWhoDontHaveAnAcoount" destination="RcF-M6-1OC" id="Vxz-ID-3mh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvi-GI-KCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="966" y="-712"/>
+            <point key="canvasLocation" x="869" y="-689"/>
         </scene>
         <!--Friends View Controller-->
         <scene sceneID="Io9-c7-kyg">
