@@ -79,6 +79,9 @@
     NSData *imageData = [theImage getData];
     cell.profileImage.image = [UIImage imageWithData:imageData];
     
+    PFQuery *pointQuery = [PFQuery queryWithClassName:@"Point"];
+    [pointQuery whereKey:group.objectId equalTo:self.groupID];
+    
     cell.points.text = @"3";
     [cell.addButton setBackgroundImage:[UIImage imageNamed:@"addbutton.jpeg"] forState:UIControlStateNormal];
     

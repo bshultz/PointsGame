@@ -31,35 +31,43 @@
 {
     [super viewDidLoad];
     friendNameLabel.text = self.friendName;
-    NSLog(@"From user, to user, and friend name are %@, %@, %@", self.fromUserObjectID, self.toUserObjectID, self.friendName);
 }
 
 - (IBAction)onSubmitButtonPressed:(id)sender
 {
+    // Update the Point class with the from user, to user, point value (1), and the user's comments
     point = [PFObject objectWithClassName:@"Point"];
-    point[@"fromUser"] = self.fromUserObjectID;
-    point[@"toUser"] = self.toUserObjectID;
+    point[@"fromUser"] = [PFUser currentUser];
+    
+    PFQuery *toQuery = [PFUser query];
+    point[@"toUser"] = [toQuery getObjectWithId:self.toUserObjectID error:nil];
     point[@"pointValue"] = @1;
     point[@"comment"] = commentTextView.text;
-    point[@"groupId"] = self.groupID;
+    
+    PFQuery *groupQuery = [PFQuery queryWithClassName:@"Group"];
+    point[@"group"] = [groupQuery getObjectWithId:self.groupID error:nil];
 
     [point saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
     {
         if (error)
         {
+            // If there is an error saving point, log the error
             NSLog(@"Save Error: %@", error);
         }
         else
         {
+            // If the save is successful, then update the Transaction class with from user, to user, and action
             NSLog(@"Save Succeeded");
             
             PFObject *transaction = [PFObject objectWithClassName:@"Transaction"];
-            PFRelation *fromRelation = [transaction relationForKey:@"fromUser"];
-            //PFRelation *toRelation = [transaction relationForKey:@"toUser"];
-            [fromRelation addObject:[PFUser currentUser]];
-            //transaction[@"toUser"] = self.toUserObjectID;
+            transaction[@"fromUser"] = [PFUser currentUser];
+            transaction[@"toUser"] = [toQuery getObjectWithId:self.toUserObjectID error:nil];
             transaction[@"action"] = @"Point Awarded";
+            
             [transaction saveInBackground];
+            
+            // Tell the user the save was successful
+            
             UIAlertView *saveAlert = [[UIAlertView alloc] initWithTitle:@"Point Saved!" message:@"You're Awesome!" delegate:self cancelButtonTitle:@"Sweet" otherButtonTitles:nil];
             [saveAlert show];
         }
@@ -71,12 +79,9 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"Button index is %i", buttonIndex);
     if (buttonIndex == 0)
     {
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        FriendsViewController *friendsVC = (FriendsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"FriendsViewController"];
-//        [self.navigationController presentViewController:friendsVC animated:YES completion:nil];
+        // When the user dismisses the alert, dismiss the AddPointViewController
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
