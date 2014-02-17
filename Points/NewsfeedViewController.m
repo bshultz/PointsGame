@@ -71,6 +71,8 @@
     [super viewDidAppear:YES];
 
     query = [PFQuery queryWithClassName:@"Transaction"];
+    [query orderByDescending:@"createdAt"];
+    query.limit = 25;
     [query includeKey:@"fromUser"];
     [query includeKey:@"toUser"];
 //    [query whereKey:@"fromUser" equalTo:[PFUser currentUser]];

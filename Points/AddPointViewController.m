@@ -15,6 +15,7 @@
     __weak IBOutlet UILabel *friendNameLabel;
     __weak IBOutlet UITextView *commentTextView;
     PFObject *point;
+    NSNumber *pointsAvailable;
 }
 
 @end
@@ -31,10 +32,18 @@
 {
     [super viewDidLoad];
     friendNameLabel.text = self.friendName;
+    
+    // Get the number of points the user has available
+    
+    PFUser *currentUser = [PFUser currentUser];
+    pointsAvailable = (NSNumber *)[currentUser objectForKey:@"pointsAvailable"];
 }
 
 - (IBAction)onSubmitButtonPressed:(id)sender
 {
+    if (pointsAvailable.intValue > 0)
+    {
+    
     // Update the Point class with the from user, to user, point value (1), and the user's comments
     point = [PFObject objectWithClassName:@"Point"];
     point[@"fromUser"] = [PFUser currentUser];
@@ -64,6 +73,9 @@
             
             [transaction saveInBackground];
             
+            PFUser *currentUser = [PFUser currentUser];
+            [currentUser incrementKey:@"pointsAvailable" byAmount:[NSNumber numberWithInt:-1]];
+            [currentUser saveInBackground];
             // Tell the user the save was successful
             
             UIAlertView *saveAlert = [[UIAlertView alloc] initWithTitle:@"Point Saved!" message:@"You're Awesome!" delegate:self cancelButtonTitle:@"Sweet" otherButtonTitles:nil];
@@ -71,7 +83,12 @@
         }
     }];
     [commentTextView resignFirstResponder];
-
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Out of Points!" message:@"You don't have any points to give!" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:@"Get More Points", nil];
+        [alert show];
+    }
     
 }
 
