@@ -52,7 +52,7 @@
     if (returningFromFacebookFriendPicker){
         // do something and then set the aboove boolean to false
         returningFromFacebookFriendPicker = NO;
-        tabkeViewWithPeopleWhoHaveAnAccount.alpha = 1;
+        tableViewWithPeopleWhoHaveAnAccount.alpha = 1;
         
         
         

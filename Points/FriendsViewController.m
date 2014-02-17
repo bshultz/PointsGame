@@ -9,6 +9,7 @@
 #import "FriendsViewController.h"
 #import "FriendsGroupDetailCell.h"
 #import "AddPointViewController.h"
+#import "DetailPointsPageViewController.h"
 
 @interface FriendsViewController () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -140,6 +141,17 @@
     pointVC.groupID = self.groupID;
     
     [self.navigationController presentViewController:pointVC animated:YES completion:nil];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Friend Selected - transition to friend detail page");
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    DetailPointsPageViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DetailPointsPageViewController"];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    dvc.userName = cell.textLabel.text;
+    
+    [self.navigationController pushViewController:dvc animated:YES];
 }
 
 @end
