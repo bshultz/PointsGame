@@ -10,6 +10,7 @@
 
 #import "NewsfeedViewController.h"
 #import "Parse/Parse.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface NewsfeedViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -31,8 +32,44 @@
     [super viewDidLoad];
 }
 
--(void)viewWillAppear:(BOOL)animated
+#pragma mark: Login New User
+
+- (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
+    if (![PFUser currentUser]) { // No user logged in
+        // Create the log in view controller
+        
+        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+        [logInViewController setFacebookPermissions:@[@"user_about_me", @"user_birthday", @"user_relationships"]];
+        
+        logInViewController.fields = PFLogInFieldsUsernameAndPassword
+        | PFLogInFieldsLogInButton
+        | PFLogInFieldsSignUpButton
+        | PFLogInFieldsPasswordForgotten
+        | PFLogInFieldsDismissButton
+        | PFLogInFieldsFacebook;
+        
+        
+        // Create the sign up view controller
+        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+        // Assign our sign up controller to be displayed from the login controller
+        [logInViewController setSignUpController:signUpViewController];
+        
+        // Present the log in view controller
+        [self presentViewController:logInViewController animated:YES completion:NULL];
+    }
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+
+{
+    [super viewDidAppear:YES];
+
     query = [PFQuery queryWithClassName:@"Transaction"];
     [query includeKey:@"fromUser"];
     [query includeKey:@"toUser"];
@@ -56,7 +93,55 @@
         }
         [newsfeedTableView reloadData];
     }];
+    
+    [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
 }
+
+- (void) savePropertiesOfTheCurrentFacebookUserToTheDatabase {
+    PFUser *currentUser = [PFUser currentUser];
+    
+    if (currentUser) {
+        //there is a current user object
+        NSLog(@"currentUser object: %@", currentUser);
+        NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
+        
+        
+//        FBRequest *request = [FBRequest requestForMe];
+        
+        [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            if(!error){
+                //result is a dictionary with the users Data
+                
+                NSDictionary *userData = (NSDictionary *)result;
+                
+                NSString *facebookID = userData[@"id"];
+                NSString *name = userData[@"name"];
+ //               NSString *email = userData[@"email"];
+                NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+                
+                NSLog(@"details = %@", result);
+                
+                // save relevant details to the database
+                
+                
+                PFFile *file = [PFFile fileWithData:[NSData dataWithContentsOfURL:pictureURL]];
+                [currentUser setObject:file forKey:@"userImage"];
+                [currentUser setObject:name forKey:@"fullName"];
+  //              currentUser.email = email;
+                [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (error){
+                        NSLog (@"%@ %@", error, [error userInfo]);
+                        
+                    }
+                    
+                }];
+            }
+        }];
+    }
+}
+
+
+
 
 #pragma mark: News Items Table View
 
@@ -78,27 +163,6 @@
 
 
 
-#pragma mark: Login New User
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
- 
-    if (![PFUser currentUser]) { // No user logged in
-                // Create the log in view controller
-        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
-        [logInViewController setDelegate:self]; // Set ourselves as the delegate
-  
-        // Create the sign up view controller
-        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
-        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
-        // Assign our sign up controller to be displayed from the login controller
-        [logInViewController setSignUpController:signUpViewController];
-
-        // Present the log in view controller
-        [self presentViewController:logInViewController animated:YES completion:NULL];
-    }
-}
 
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password
@@ -164,5 +228,22 @@
 - (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
     NSLog(@"User dismissed the signUpViewController");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
