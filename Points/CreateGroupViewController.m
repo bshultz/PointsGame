@@ -24,7 +24,8 @@
     BOOL returningFromFacebookFriendPicker;
     
     IBOutlet UITableView *tableViewWithPeopleWhoDontHaveAnAcoount;
-    IBOutlet UITableView *tabkeViewWithPeopleWhoHaveAnAccount;
+   
+    IBOutlet UITableView *tableViewWithPeopleWhoHaveAnAccount;
 }
 
 @property (nonatomic, strong) ABPeoplePickerNavigationController *addressBookController;
@@ -51,6 +52,8 @@
     if (returningFromFacebookFriendPicker){
         // do something and then set the aboove boolean to false
         returningFromFacebookFriendPicker = NO;
+        tabkeViewWithPeopleWhoHaveAnAccount.alpha = 1;
+        
         
         
     } else {
@@ -104,10 +107,10 @@
 
 - (void) gettingFacebookFriends : (id) sender {
 
-    [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-        NSDictionary *friends = result;
-        NSLog(@"friends = %@", friends);
-    }];
+//    [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+//        NSDictionary *friends = result;
+//        NSLog(@"friends = %@", friends);
+//    }];
 
     
     // FBSample logic
@@ -144,6 +147,8 @@
     
     [self.friendPickerController loadData];
     [self.friendPickerController clearSelection];
+    
+    returningFromFacebookFriendPicker = YES;
     
     [self presentViewController:self.friendPickerController animated:YES completion:nil];
     

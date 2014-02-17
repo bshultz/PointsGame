@@ -245,8 +245,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="0EB-sa-IGh"/>
                     <connections>
-                        <outlet property="tabkeViewWithPeopleWhoHaveAnAccount" destination="DeB-rf-HUS" id="wUT-xH-vzx"/>
                         <outlet property="tableViewWithPeopleWhoDontHaveAnAcoount" destination="RcF-M6-1OC" id="Vxz-ID-3mh"/>
+                        <outlet property="tableViewWithPeopleWhoHaveAnAccount" destination="DeB-rf-HUS" id="5fy-85-veb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvi-GI-KCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
