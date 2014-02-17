@@ -17,6 +17,8 @@
     NSMutableArray *friendImages;
     NSMutableArray *toUserObjectID;
     __weak IBOutlet UITableView *friendsTableView;
+    PFQuery *pointQuery;
+    NSMutableArray *points;
     
 }
 
@@ -42,6 +44,27 @@
     toUserObjectID = [NSMutableArray new];
     PFQuery *query = [PFQuery queryWithClassName:@"Group"];
     group = [PFObject objectWithClassName:@"Group"];
+    
+    points = [NSMutableArray new];
+    pointQuery = [PFQuery queryWithClassName:@"Point"];
+    [pointQuery includeKey:@"toUser"];
+    [pointQuery whereKey:@"group" equalTo:self.groupID];
+    [pointQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+    {
+        if (!error)
+        {
+            for (PFObject *object in objects)
+            {
+                [points addObject:object];
+                [friendsTableView reloadData];
+            }
+        }
+        else
+        {
+            NSLog(@"pointsQuery error is %@", error);
+        }
+    }];
+    
     [query whereKey:@"objectId" equalTo:self.groupID];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {
@@ -79,10 +102,19 @@
     NSData *imageData = [theImage getData];
     cell.profileImage.image = [UIImage imageWithData:imageData];
     
-    PFQuery *pointQuery = [PFQuery queryWithClassName:@"Point"];
-    [pointQuery whereKey:group.objectId equalTo:self.groupID];
+    NSInteger pointValue;
+    pointValue = 0;
     
-    cell.points.text = @"3";
+    for (PFObject *object in points)
+    {
+        if ([[[object objectForKey:@"toUser"] objectForKey:@"username"] isEqualToString:[friends objectAtIndex:indexPath.row]])
+        {
+            pointValue++;
+        }
+        
+    }
+    
+    cell.points.text = [NSString stringWithFormat:@"%ld",(long)pointValue];
     [cell.addButton setBackgroundImage:[UIImage imageNamed:@"addbutton.jpeg"] forState:UIControlStateNormal];
     
     [cell.addButton addTarget:self action:@selector(addPoint:) forControlEvents:UIControlEventTouchUpInside];

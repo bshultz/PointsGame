@@ -43,9 +43,7 @@
     point[@"toUser"] = [toQuery getObjectWithId:self.toUserObjectID error:nil];
     point[@"pointValue"] = @1;
     point[@"comment"] = commentTextView.text;
-    
-    PFQuery *groupQuery = [PFQuery queryWithClassName:@"Group"];
-    point[@"group"] = [groupQuery getObjectWithId:self.groupID error:nil];
+    point[@"group"] = self.groupID;
 
     [point saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
     {
