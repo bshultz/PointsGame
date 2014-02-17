@@ -41,6 +41,7 @@
 
 - (IBAction)onSubmitButtonPressed:(id)sender
 {
+    // Check to see if the user has any points to give
     if (pointsAvailable.intValue > 0)
     {
     
