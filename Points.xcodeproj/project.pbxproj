@@ -30,6 +30,7 @@
 		A6D5181BE02142D4B5159C35 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A8F29B83624CD0B44B30BC /* libPods.a */; };
 		D12D5EBD18AD444B00940381 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBC18AD444B00940381 /* AddressBook.framework */; };
 		D12D5EBF18AD445200940381 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBE18AD445200940381 /* AddressBookUI.framework */; };
+		D1378F3B18B2CBEA00CD5109 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */; };
 		E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */; };
 		E0984CE618AAD79100AAE67A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE518AAD79100AAE67A /* ProfileViewController.m */; };
 		E0984CE918B279A700AAE67A /* DetailPointsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE818B279A700AAE67A /* DetailPointsPageViewController.m */; };
@@ -80,6 +81,8 @@
 		3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedViewController.m; sourceTree = "<group>"; };
 		D12D5EBC18AD444B00940381 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D12D5EBE18AD445200940381 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		D1378F3918B2CBEA00CD5109 /* NewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTableViewCell.h; sourceTree = "<group>"; };
+		D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTableViewCell.m; sourceTree = "<group>"; };
 		D1B235AE18AEFCA7009D5BDD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		D1B235B018AF202A009D5BDD /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		D1B235B118AF202A009D5BDD /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -168,6 +171,8 @@
 				3A9A37FF18A9267800F604F0 /* AppDelegate.h */,
 				3A9A380018A9267800F604F0 /* AppDelegate.m */,
 				3A9A380218A9267800F604F0 /* Main.storyboard */,
+				D1378F3918B2CBEA00CD5109 /* NewTableViewCell.h */,
+				D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */,
 				3A5A592F18AEB2E00046F00B /* FriendsGroupDetailCell.h */,
 				3A5A593018AEB2E00046F00B /* FriendsGroupDetailCell.m */,
 				3A5A593418B04E0A0046F00B /* AddPointViewController.h */,
@@ -368,6 +373,7 @@
 				3AFE993A18A9432C00D3D9EE /* CreateGroupViewController.m in Sources */,
 				3A9A37FD18A9267800F604F0 /* main.m in Sources */,
 				3A5A592E18AE8D1A0046F00B /* FriendsViewController.m in Sources */,
+				D1378F3B18B2CBEA00CD5109 /* NewTableViewCell.m in Sources */,
 				E0984CE618AAD79100AAE67A /* ProfileViewController.m in Sources */,
 				E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */,
 				E0984CE918B279A700AAE67A /* DetailPointsPageViewController.m in Sources */,
