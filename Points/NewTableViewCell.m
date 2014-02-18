@@ -10,11 +10,21 @@
 
 @implementation NewTableViewCell
 
+@synthesize buttonWithTextToAddOrInvite;
+
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        CGSize size = self.contentView.frame.size;
+        
+        buttonWithTextToAddOrInvite = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        buttonWithTextToAddOrInvite.frame = CGRectMake(260, 10.0f, 30.0f, 25.0f);
+        [self.contentView addSubview:buttonWithTextToAddOrInvite];
+        
+        
+
     }
     return self;
 }
