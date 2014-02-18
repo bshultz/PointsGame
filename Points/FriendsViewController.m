@@ -149,33 +149,42 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DetailPointsPageViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DetailPointsPageViewController"];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    dvc.userName = cell.textLabel.text;
+    dvc.groupName = self.groupID;
+    dvc.userName = toUserObjectID[0];
+ //   dvc.userName = cell.textLabel.text;
     
     [self.navigationController pushViewController:dvc animated:YES];
 }
 
-- (IBAction)onLeaveButtonPressed:(id)sender
+- (IBAction)onInviteButtonPressed:(id)sender
 {
-    PFUser *currentUser = [PFUser currentUser];
-    group = [PFObject objectWithClassName:@"Group"];
-        
-    PFRelation *relation = [group relationForKey:@"members"];
-    [relation removeObject:currentUser];
-    [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-        {
-            if (!error)
-             {
-                 NSLog(@"Removal Saved");
-                 PFRelation *relation1 = [currentUser relationForKey:@"myGroups"];
-                 [relation1 removeObject:group];
-                 [currentUser saveInBackground];
-             }
-             else
-             {
-                 NSLog(@"Error: %@", error);
-             }
-         }];
+    
 }
+
+
+// Try to have the user leave the group
+//- (IBAction)onLeaveButtonPressed:(id)sender
+//{
+//    PFUser *currentUser = [PFUser currentUser];
+//    group = [PFObject objectWithClassName:@"Group"];
+//        
+//    PFRelation *relation = [group relationForKey:@"members"];
+//    [relation removeObject:currentUser];
+//    [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+//        {
+//            if (!error)
+//             {
+//                 NSLog(@"Removal Saved");
+//                 PFRelation *relation1 = [currentUser relationForKey:@"myGroups"];
+//                 [relation1 removeObject:group];
+//                 [currentUser saveInBackground];
+//             }
+//             else
+//             {
+//                 NSLog(@"Error: %@", error);
+//             }
+//         }];
+//}
 
 
 @end

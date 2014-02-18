@@ -10,6 +10,6 @@
 
 @interface DetailPointsPageViewController : UIViewController
 @property NSString *userName;
-
+@property NSString *groupName;
 
 @end
