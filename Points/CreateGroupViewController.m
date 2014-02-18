@@ -93,14 +93,24 @@
                 [dict addObject:@"1" forKey:@"number"];
                 
                 [arrayWithFriendsWhoHaveAnAccount addObject:dict];
-                 [self addFriendsToTheFinalArray: arrayWithFriendsWhoHaveAnAccount];
+                [self addFriendsToTheFinalArray: arrayWithFriendsWhoHaveAnAccount];
                  [tableViewContaingFriends reloadData];
                 
-            }
+             }
+            
+//            [finalArrayToDisplayInTheCells addObject:object];
+//            [self sortTheFinalArray];
+//            [tableViewContaingFriends reloadData];
+
+            
         }];
         
         }
         
+        
+        
+        
+         //        [tableViewContaingFriends reloadData];
         
 
         
@@ -122,12 +132,33 @@
     }
 }
 
+
+
 - (void) addFriendsToTheFinalArray: (NSMutableArray *)array {
+    
     [finalArrayToDisplayInTheCells addObjectsFromArray:arrayWithFriendsWhoHaveAnAccount];
     [finalArrayToDisplayInTheCells addObjectsFromArray:arrayWithFriendsWhoDontHaveAnAccount];
+    
+//    NSSet *setForFriendsWhHaveAnAccount
+    
+    [arrayWithFriendsWhoHaveAnAccount removeLastObject];
+     [arrayWithFriendsWhoDontHaveAnAccount removeLastObject];
+    
 }
 
-- (IBAction)onAddOrInviteButtonPressed:(id)sender {
+- (IBAction)onAddOrInviteButtonPressed:(UIButton *)sender {
+    
+    if([sender.titleLabel.text isEqualToString:@"Add"]){
+        PFRelation *relation = [group relationForKey:@"members"];
+        [relation addObject:userFoundInDatabase];
+        [group saveInBackground];
+
+        
+    }  else {
+        
+    }
+    
+    
 }
 
 
