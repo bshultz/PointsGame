@@ -35,10 +35,13 @@
         [query whereKey:@"uniqueFacebookID" equalTo:stringContainingUserID];
         
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-            if(!error){
+            if(error){
+                NSLog(@"Save Error: %@", error);
+
+            } else {
                 [relation addObject:object];
                 [group saveInBackground];
-
+                
             }
         }];
         
@@ -46,7 +49,7 @@
         
         
     }  else {
-        
+        NSLog(@"else");
     }
     
     

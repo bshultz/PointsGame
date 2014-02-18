@@ -233,7 +233,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="OnAddButtonPressed:" destination="1K7-bS-GWT" eventType="touchUpInside" id="wtL-O1-y4v"/>
-                                                        <action selector="onAddOrInviteButtonPressed:" destination="iEL-Uw-frs" eventType="touchUpInside" id="v5Y-Nj-7VT"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEy-tT-dNq">
