@@ -262,6 +262,7 @@
     id object = finalArrayToDisplayInTheCells[indexPath.row];
     cell.group = group;
     cell.stringContainingUserID = object[@"uniqueID"];
+    cell.currentUser = currentUser;
     
    cell.textfield.text = object[@"name"];
     if ([object[@"number"]isEqualToString:@"1"]){

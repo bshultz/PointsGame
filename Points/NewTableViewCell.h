@@ -15,4 +15,6 @@
 @property IBOutlet UILabel *textfield;
 @property NSString *stringContainingUserID;;
 @property PFObject *group;
+@property PFUser *currentUser;
 @end
+
