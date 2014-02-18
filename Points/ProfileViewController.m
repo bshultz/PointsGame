@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "Parse/Parse.h"
+#import "NewsfeedViewController.h"
 
 @interface ProfileViewController () <NSURLConnectionDataDelegate>
 {
@@ -68,7 +69,8 @@
 - (IBAction)onLogoutButtonPressed:(id)sender
 {
     [PFUser logOut];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    
     NSLog(@"Current user logged in is %@", [PFUser currentUser]);
 }
 
