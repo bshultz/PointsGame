@@ -156,7 +156,25 @@
 
 - (IBAction)onLeaveButtonPressed:(id)sender
 {
-    
+    PFUser *currentUser = [PFUser currentUser];
+    group = [PFObject objectWithClassName:@"Group"];
+        
+    PFRelation *relation = [group relationForKey:@"members"];
+    [relation removeObject:currentUser];
+    [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+        {
+            if (!error)
+             {
+                 NSLog(@"Removal Saved");
+                 PFRelation *relation1 = [currentUser relationForKey:@"myGroups"];
+                 [relation1 removeObject:group];
+                 [currentUser saveInBackground];
+             }
+             else
+             {
+                 NSLog(@"Error: %@", error);
+             }
+         }];
 }
 
 
