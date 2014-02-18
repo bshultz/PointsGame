@@ -381,7 +381,7 @@
         <!--Points Detail View Controller-->
         <scene sceneID="dQi-fJ-BTB">
             <objects>
-                <viewController id="dRb-qX-KyH" userLabel="Points Detail View Controller" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailPointsPageViewController" id="dRb-qX-KyH" userLabel="Points Detail View Controller" customClass="DetailPointsPageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cqG-63-IJt"/>
                         <viewControllerLayoutGuide type="bottom" id="dYO-m1-vWR"/>
