@@ -10,8 +10,10 @@
 #import "Parse/Parse.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
+#import "NewTableViewCell.h"
 
-@interface CreateGroupViewController () <ABPeoplePickerNavigationControllerDelegate, UIAlertViewDelegate, FBFriendPickerDelegate, UITableViewDelegate, UITableViewDataSource>
+
+@interface CreateGroupViewController () < UIAlertViewDelegate, FBFriendPickerDelegate, UITableViewDelegate, UITableViewDataSource>
 {
     PFObject *group;
     UITextField *groupTextField;
@@ -22,13 +24,12 @@
     PFUser *userFoundInDatabase;
     NSMutableArray *arrayContainingFacebookFriendsThatAreSelected;
     NSMutableArray *arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons;
-    BOOL returningFromFacebookFriendPicker;
     NSMutableArray *arrayWithFriendsWhoHaveAnAccount;
     NSMutableArray *arrayWithFriendsWhoDontHaveAnAccount;
+    NSMutableArray *finalArrayToDisplayInTheCells;
     
-    IBOutlet UITableView *tableViewWithPeopleWhoDontHaveAnAcoount;
-   
-    IBOutlet UITableView *tableViewWithPeopleWhoHaveAnAccount;
+    
+    IBOutlet UITableView *tableViewContaingFriends;
 }
 
 @property (nonatomic, strong) ABPeoplePickerNavigationController *addressBookController;
@@ -48,6 +49,7 @@
     currentUser = [PFUser currentUser];
     arrayContainingFacebookFriendsThatAreSelected = [[NSMutableArray alloc]init];
     arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons = [NSMutableArray new];
+    finalArrayToDisplayInTheCells = [NSMutableArray new];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -56,48 +58,55 @@
     arrayWithFriendsWhoDontHaveAnAccount = [NSMutableArray new];
     arrayWithFriendsWhoHaveAnAccount = [NSMutableArray new];
     
-    if (returningFromFacebookFriendPicker){
-        // do something and then set the aboove boolean to false
-        returningFromFacebookFriendPicker = NO;
-        tableViewWithPeopleWhoHaveAnAccount.alpha = 1;
-
-
-        tableViewWithPeopleWhoDontHaveAnAcoount.alpha = 1;
-        groupTextField.alpha = 0;
-        addButton.alpha = 0;
-
+    if (arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons.count != 0){
+        // tableViews do not show up because the number of cells will be zero
+        tableViewContaingFriends.alpha = 1;
+        [groupTextField removeFromSuperview];
+        [addButton removeFromSuperview];
+    
         // query the database to see which objects in the array returned from FBPickerController are in the database.
-        PFQuery *query = [PFUser query];
         
         for (id dict in arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons){
             // object is a dictionary
             NSString *name = dict[@"name"];
             NSString *uniqueID = dict[@"uniqueID"];
-        
+            
+        PFQuery *query = [PFUser query];
+
         [query whereKey:@"uniqueFacebookID" equalTo:uniqueID];
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             
-            if (error){
+            if (error || !object){
+                NSLog(@"this does not work");
+                // this person does not have an account
+                [dict addObject:@"2" forKey:@"number"];
+                
+                [arrayWithFriendsWhoDontHaveAnAccount addObject:dict];
+                [self addFriendsToTheFinalArray: arrayWithFriendsWhoDontHaveAnAccount];
+                [tableViewContaingFriends reloadData];
                 
             }
-            else if (object){
+             else {
+                
+                // this person has an account
+                
+                [dict addObject:@"1" forKey:@"number"];
                 
                 [arrayWithFriendsWhoHaveAnAccount addObject:dict];
-            } else {
-                [arrayWithFriendsWhoDontHaveAnAccount addObject:dict];
+                 [self addFriendsToTheFinalArray: arrayWithFriendsWhoHaveAnAccount];
+                 [tableViewContaingFriends reloadData];
                 
             }
         }];
         
         }
+        
+        
 
         
     } else {
-        tableViewWithPeopleWhoHaveAnAccount.alpha = 0;
-        tableViewWithPeopleWhoDontHaveAnAcoount.alpha = 0;
-        groupTextField.alpha = 1;
-        addButton.alpha = 1;
-        
+        //
+        tableViewContaingFriends.alpha = 0;
     groupTextField = [[UITextField alloc] initWithFrame:CGRectMake(30.0f, 68.0f, 260.0f, 30.0f)];
     groupTextField.placeholder = @"Group Name";
     groupTextField.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:23.0f];
@@ -109,11 +118,18 @@
     [self.view addSubview:groupTextField];
     [self.view addSubview:addButton];
     
-//    group = [PFObject objectWithClassName:@"Group"];
-    
         [addButton addTarget:self action:@selector(onAddButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
+
+- (void) addFriendsToTheFinalArray: (NSMutableArray *)array {
+    [finalArrayToDisplayInTheCells addObjectsFromArray:arrayWithFriendsWhoHaveAnAccount];
+    [finalArrayToDisplayInTheCells addObjectsFromArray:arrayWithFriendsWhoDontHaveAnAccount];
+}
+
+- (IBAction)onAddOrInviteButtonPressed:(id)sender {
+}
+
 
 -(void)onAddButtonPressed:(id) sender
 {
@@ -187,8 +203,6 @@
     [self.friendPickerController loadData];
     [self.friendPickerController clearSelection];
     
-    returningFromFacebookFriendPicker = YES;
-    
     [self presentViewController:self.friendPickerController animated:YES completion:nil];
 
 
@@ -198,40 +212,54 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (tableView == tableViewWithPeopleWhoDontHaveAnAcoount){
-        
-        return arrayWithFriendsWhoDontHaveAnAccount.count;
-        
-    } else if (tableView == tableViewWithPeopleWhoHaveAnAccount){
-        return arrayWithFriendsWhoHaveAnAccount.count;
-    }
-    
-    return 0;
+//    if (tableView == tableViewWithPeopleWhoDontHaveAnAcoount){
+//        
+//        return arrayWithFriendsWhoDontHaveAnAccount.count;
+//        
+//    } else if (tableView == tableViewWithPeopleWhoHaveAnAccount){
+//        return arrayWithFriendsWhoHaveAnAccount.count;
+//    }
+    return finalArrayToDisplayInTheCells.count;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+     NewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
+    id object = finalArrayToDisplayInTheCells[indexPath.row];
     
-    if (tableView == tableViewWithPeopleWhoDontHaveAnAcoount){
-        
-        id <FBGraphUser> user = arrayWithFriendsWhoDontHaveAnAccount[indexPath.row];
-        cell.textLabel.text = user.name;
-        return cell;
-        
-        
-        
-        
-    } else if (tableView == tableViewWithPeopleWhoHaveAnAccount){
-        
-        id <FBGraphUser> user = arrayWithFriendsWhoHaveAnAccount[indexPath.row];
-        cell.textLabel.text = user.name;
-        return cell;
-
-        
+    cell.textLabel.text = object[@"name"];
+    if ([object[@"number"]isEqualToString:@"1"]){
+        // this person already has an account
+        [cell.buttonWithTextToAddOrInvite setTitle:@"Add" forState:UIControlStateNormal];
+      
+    } else if ([object[@"number"]isEqualToString:@"2"]) {
+        // this person does not have an account
+        [cell.buttonWithTextToAddOrInvite setTitle:@"Invite" forState:UIControlStateNormal];
     }
+    
+    
+    
+    
+    
+//    if (tableView == tableViewWithPeopleWhoDontHaveAnAcoount){
+//        
+//        id <FBGraphUser> user = arrayWithFriendsWhoDontHaveAnAccount[indexPath.row];
+//        cell.textLabel.text = user.name;
+//        return cell;
+//        
+//        
+//        
+//        
+//    } else if (tableView == tableViewWithPeopleWhoHaveAnAccount){
+//        
+//        id <FBGraphUser> user = arrayWithFriendsWhoHaveAnAccount[indexPath.row];
+//        cell.textLabel.text = user.name;
+//        return cell;
+//
+//        
+//    }
 
     return cell;
     
@@ -259,7 +287,6 @@
         
         
         }
-    returningFromFacebookFriendPicker = YES;
     [self dismissViewControllerAnimated:YES completion:NULL];
     
     }
