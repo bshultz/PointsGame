@@ -32,6 +32,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.title = @"PointBank";
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
+    self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
+    
 }
 
 #pragma mark: Login New User
@@ -184,6 +189,7 @@
     PFUser *fromUser = [from objectAtIndex:indexPath.row];
     PFUser *toUser = [to objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ gave %@ a point!", fromUser.username, toUser.username ];
+    cell.textLabel.textColor = [UIColor colorWithRed:0.05f green:0.345 blue:0.65f alpha:1.0f];
     
     return cell;
 }
@@ -260,22 +266,6 @@
 - (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
     NSLog(@"User dismissed the signUpViewController");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @end
