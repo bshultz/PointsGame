@@ -146,21 +146,21 @@
     
 }
 
-- (IBAction)onAddOrInviteButtonPressed:(UIButton *)sender {
-    
-    if([sender.titleLabel.text isEqualToString:@"Add"]){
-        PFRelation *relation = [group relationForKey:@"members"];
-
-        [relation addObject:userFoundInDatabase];
-        [group saveInBackground];
-
-        
-    }  else {
-        
-    }
-    
-    
-}
+//- (IBAction)onAddOrInviteButtonPressed:(UIButton *)sender {
+//    
+//    if([sender.titleLabel.text isEqualToString:@"Add"]){
+//        PFRelation *relation = [group relationForKey:@"members"];
+//
+//        [relation addObject:userFoundInDatabase];
+//        [group saveInBackground];
+//
+//        
+//    }  else {
+//        
+//    }
+//    
+//    
+//}
 
 
 -(void)onAddButtonPressed:(id) sender
