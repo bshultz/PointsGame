@@ -229,7 +229,7 @@
     
     id object = finalArrayToDisplayInTheCells[indexPath.row];
     
-//    cell.textLabel.text = object[@"name"];
+   cell.textfield.text = object[@"name"];
     if ([object[@"number"]isEqualToString:@"1"]){
         // this person already has an account
         [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -238,7 +238,7 @@
         // this person does not have an account
         [cell.buttonWithTextToAddOrInvite setTitle:@"Invite" forState:UIControlStateNormal];
         [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        cell.buttonWithTextToAddOrInvite.backgroundColor = [UIColor redColor];
+       
         [cell sizeToFit];
         [cell bringSubviewToFront:cell.buttonWithTextToAddOrInvite];
     }

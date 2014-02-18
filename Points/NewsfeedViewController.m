@@ -71,7 +71,7 @@
         // Present the log in view controller
         [self presentViewController:logInViewController animated:YES completion:NULL];
         
-        [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
+ //       [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
     }
 }
 
@@ -220,6 +220,7 @@
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
 {
+     [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 // Sent to the delegate when the log in attempt fails.
