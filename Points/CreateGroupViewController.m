@@ -10,6 +10,8 @@
 #import "Parse/Parse.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
+#import "NewTableViewCell.h"
+
 
 @interface CreateGroupViewController () < UIAlertViewDelegate, FBFriendPickerDelegate, UITableViewDelegate, UITableViewDataSource>
 {
@@ -58,7 +60,7 @@
     
     if (arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons.count != 0){
         // tableViews do not show up because the number of cells will be zero
-        
+        tableViewContaingFriends.alpha = 1;
         [groupTextField removeFromSuperview];
         [addButton removeFromSuperview];
     
@@ -74,35 +76,37 @@
         [query whereKey:@"uniqueFacebookID" equalTo:uniqueID];
         [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             
-            if (error){
+            if (error || !object){
+                NSLog(@"this does not work");
+                // this person does not have an account
+                [dict addObject:@"2" forKey:@"number"];
+                
+                [arrayWithFriendsWhoDontHaveAnAccount addObject:dict];
+                [self addFriendsToTheFinalArray: arrayWithFriendsWhoDontHaveAnAccount];
+                [tableViewContaingFriends reloadData];
                 
             }
-            else if (object){
+             else {
                 
                 // this person has an account
                 
                 [dict addObject:@"1" forKey:@"number"];
                 
                 [arrayWithFriendsWhoHaveAnAccount addObject:dict];
-            } else {
-                
-                // this person does not have an account
-                [dict addObject:@"2" forKey:@"number"];
-                
-                [arrayWithFriendsWhoDontHaveAnAccount addObject:dict];
+                 [self addFriendsToTheFinalArray: arrayWithFriendsWhoHaveAnAccount];
+                 [tableViewContaingFriends reloadData];
                 
             }
         }];
         
         }
         
-        [finalArrayToDisplayInTheCells addObjectsFromArray:arrayWithFriendsWhoHaveAnAccount];
-        [finalArrayToDisplayInTheCells addObjectsFromArray:arrayWithFriendsWhoDontHaveAnAccount];
+        
 
         
     } else {
         //
-        
+        tableViewContaingFriends.alpha = 0;
     groupTextField = [[UITextField alloc] initWithFrame:CGRectMake(30.0f, 68.0f, 260.0f, 30.0f)];
     groupTextField.placeholder = @"Group Name";
     groupTextField.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:23.0f];
@@ -116,6 +120,11 @@
     
         [addButton addTarget:self action:@selector(onAddButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     }
+}
+
+- (void) addFriendsToTheFinalArray: (NSMutableArray *)array {
+    [finalArrayToDisplayInTheCells addObjectsFromArray:arrayWithFriendsWhoHaveAnAccount];
+    [finalArrayToDisplayInTheCells addObjectsFromArray:arrayWithFriendsWhoDontHaveAnAccount];
 }
 
 - (IBAction)onAddOrInviteButtonPressed:(id)sender {
@@ -216,17 +225,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+     NewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     id object = finalArrayToDisplayInTheCells[indexPath.row];
     
     cell.textLabel.text = object[@"name"];
     if ([object[@"number"]isEqualToString:@"1"]){
         // this person already has an account
-        //set the title of the button to be ADD
+        [cell.buttonWithTextToAddOrInvite setTitle:@"Add" forState:UIControlStateNormal];
+      
     } else if ([object[@"number"]isEqualToString:@"2"]) {
         // this person does not have an account
-        // set the title of the button to be invite
+        [cell.buttonWithTextToAddOrInvite setTitle:@"Invite" forState:UIControlStateNormal];
     }
     
     
