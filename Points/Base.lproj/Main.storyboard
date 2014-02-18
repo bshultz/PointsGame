@@ -227,7 +227,6 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-<<<<<<< HEAD
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="ohq-WI-Yw5" customClass="NewTableViewCell">
                                         <rect key="frame" x="0.0" y="86" width="243" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -256,13 +255,6 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="70M-Rf-Ln8" id="izq-Xz-LuT">
                                             <rect key="frame" x="0.0" y="0.0" width="243" height="46"/>
-=======
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="grM-kp-K0L" customClass="NewTableViewCell">
-                                        <rect key="frame" x="0.0" y="86" width="268" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="grM-kp-K0L" id="nKo-9d-VXP">
-                                            <rect key="frame" x="0.0" y="0.0" width="268" height="43"/>
->>>>>>> 6bb730215e2ec0b492678b41a8bccbf382d7f573
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbq-T3-Z3R">
