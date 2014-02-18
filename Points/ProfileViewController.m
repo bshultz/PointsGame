@@ -68,6 +68,7 @@
 - (IBAction)onLogoutButtonPressed:(id)sender
 {
     [PFUser logOut];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     NSLog(@"Current user logged in is %@", [PFUser currentUser]);
 }
 
