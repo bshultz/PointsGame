@@ -248,6 +248,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="iEL-Uw-frs" id="GIJ-f3-Bgb"/>
+                                    <outlet property="delegate" destination="iEL-Uw-frs" id="S9c-2E-T7G"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
