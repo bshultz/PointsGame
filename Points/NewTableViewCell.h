@@ -11,5 +11,6 @@
 @interface NewTableViewCell : UITableViewCell
 
 @property IBOutlet UIButton *buttonWithTextToAddOrInvite;
+@property IBOutlet UILabel *textfield;
 
 @end
