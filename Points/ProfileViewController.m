@@ -13,8 +13,10 @@
 {
     NSMutableArray *userInfoArray;
     __weak IBOutlet UIImageView *profileImage;
-    __weak IBOutlet UITextField *profileUsername;
-    __weak IBOutlet UITextField *profileEmail;
+    __weak IBOutlet UILabel *usernameLabel;
+    __weak IBOutlet UILabel *emailLabel;
+    __weak IBOutlet UILabel *pointsAvailableLabel;
+
     NSData *imageData;
 }
 
@@ -45,7 +47,9 @@
             NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
 
             
-            profileUsername.text = currentUser[@"fullName"];
+            usernameLabel.text = currentUser[@"fullname"];
+            emailLabel.text = currentUser[@"email"];
+            pointsAvailableLabel.text = [NSString stringWithFormat:@"%@", currentUser[@"pointsAvailable"]]  ;
             
             PFFile *userImageFile = currentUser[@"userImage"];
             [userImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -59,6 +63,12 @@
         } else {
             //show login screen 
         }
+}
+
+- (IBAction)onLogoutButtonPressed:(id)sender
+{
+    [PFUser logOut];
+    NSLog(@"Current user logged in is %@", [PFUser currentUser]);
 }
 
 
