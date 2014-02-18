@@ -11,7 +11,7 @@
 
 @implementation NewTableViewCell
 
-@synthesize buttonWithTextToAddOrInvite, textfield, stringContainingUserID, group;
+@synthesize buttonWithTextToAddOrInvite, textfield, stringContainingUserID, group, currentUser;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -40,7 +40,16 @@
 
             } else {
                 [relation addObject:object];
-                [group saveInBackground];
+
+ 
+                [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if(!error){
+                        PFRelation *relation1 = [object relationForKey:@"myGroups"];
+                        [relation1 addObject:group];
+                        [object saveInBackground];
+                        
+                    }
+                }];
                 
             }
         }];

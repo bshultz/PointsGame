@@ -19,7 +19,8 @@
     NSMutableArray *to;
     NSMutableArray *objectIDs;
     
-    UITableView *detailPointsTableView;
+
+    __weak IBOutlet UITableView *detailPointsTableView;
 
 }
 
@@ -66,7 +67,7 @@
     [query includeKey:@"toUser"];
     [query whereKey:@"toUser" equalTo:self.userName];
     
-    [query whereKey:@"groupId" containedIn:usersGroups];
+    [query whereKey:@"groupId" equalTo:self.groupName];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          transactions = [NSMutableArray new];
@@ -88,6 +89,33 @@
 }
 
 
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return transactions.count;
+    
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    PFObject *object;
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    }
+    
+  
+        
+
+        object = transactions[indexPath.row];
+        
+    
+    cell.textLabel.text = object[@"name"];
+    return cell;
+    
+}
 
 
 @end
