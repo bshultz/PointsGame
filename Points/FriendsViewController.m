@@ -149,7 +149,9 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DetailPointsPageViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DetailPointsPageViewController"];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    dvc.userName = cell.textLabel.text;
+    dvc.groupName = self.groupID;
+    dvc.userName = toUserObjectID[0];
+ //   dvc.userName = cell.textLabel.text;
     
     [self.navigationController pushViewController:dvc animated:YES];
 }
