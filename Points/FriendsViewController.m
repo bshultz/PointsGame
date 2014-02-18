@@ -78,7 +78,7 @@
             {
                 for (PFObject *object in objects)
                 {
-                    [friends addObject:[object objectForKey:@"username"]];
+                    [friends addObject:[object objectForKey:@"fullName"]];
                     [friendImages addObject:[object objectForKey:@"userImage"]];
                     [toUserObjectID addObject:object.objectId];
                     [friendsTableView reloadData];

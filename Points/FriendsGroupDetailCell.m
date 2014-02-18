@@ -22,10 +22,10 @@
     if (self) {
         CGSize size = self.contentView.frame.size;
         
-        profileImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 30.0f, 30.0f)];
+        profileImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 45.0f, 45.0f)];
         [self.contentView addSubview:profileImage];
         
-        name = [[UILabel alloc] initWithFrame:CGRectMake(40.0f, 0.0f, size.width - 60.0f, size.height - 4.0f)];
+        name = [[UILabel alloc] initWithFrame:CGRectMake(55.0f, 0.0f, size.width - 60.0f, size.height - 4.0f)];
         [self.contentView addSubview:name];
         
         points = [[UILabel alloc] initWithFrame:CGRectMake(260.0f, 0.0f, size.width - 20.0f, size.height - 4.0f)];
