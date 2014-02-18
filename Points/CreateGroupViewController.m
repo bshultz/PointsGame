@@ -146,20 +146,21 @@
     
 }
 
-- (IBAction)onAddOrInviteButtonPressed:(UIButton *)sender {
-    
-    if([sender.titleLabel.text isEqualToString:@"Add"]){
-        PFRelation *relation = [group relationForKey:@"members"];
-        [relation addObject:userFoundInDatabase];
-        [group saveInBackground];
-
-        
-    }  else {
-        
-    }
-    
-    
-}
+//- (IBAction)onAddOrInviteButtonPressed:(UIButton *)sender {
+//    
+//    if([sender.titleLabel.text isEqualToString:@"Add"]){
+//        PFRelation *relation = [group relationForKey:@"members"];
+//
+//        [relation addObject:userFoundInDatabase];
+//        [group saveInBackground];
+//
+//        
+//    }  else {
+//        
+//    }
+//    
+//    
+//}
 
 
 -(void)onAddButtonPressed:(id) sender
@@ -259,6 +260,8 @@
      NewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
     
     id object = finalArrayToDisplayInTheCells[indexPath.row];
+    cell.group = group;
+    cell.stringContainingUserID = object[@"uniqueID"];
     
    cell.textfield.text = object[@"name"];
     if ([object[@"number"]isEqualToString:@"1"]){
