@@ -227,7 +227,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="grM-kp-K0L" customClass="NewTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="grM-kp-K0L" customClass="NewTableViewCell">
                                         <rect key="frame" x="0.0" y="86" width="268" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="grM-kp-K0L" id="nKo-9d-VXP">
@@ -246,6 +246,9 @@
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="buttonWithTextToAddOrInvite" destination="Wbq-T3-Z3R" id="EHJ-oe-EBM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
