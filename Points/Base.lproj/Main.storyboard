@@ -253,6 +253,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="0EB-sa-IGh"/>
+                    <connections>
+                        <outlet property="tableViewContaingFriends" destination="AkN-0a-UbI" id="3IY-cl-Rfm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvi-GI-KCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
