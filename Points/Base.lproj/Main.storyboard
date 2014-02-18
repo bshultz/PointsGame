@@ -232,6 +232,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="OnAddButtonPressed:" destination="1K7-bS-GWT" eventType="touchUpInside" id="wtL-O1-y4v"/>
                                                         <action selector="onAddOrInviteButtonPressed:" destination="iEL-Uw-frs" eventType="touchUpInside" id="v5Y-Nj-7VT"/>
                                                     </connections>
                                                 </button>
