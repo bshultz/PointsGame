@@ -18,7 +18,9 @@
     NSMutableArray *from;
     NSMutableArray *to;
     NSMutableArray *objectIDs;
+    NSMutableArray *usersGroups;
     PFQuery *query;
+    
     
     __weak IBOutlet UITableView *newsfeedTableView;
 }
@@ -73,47 +75,74 @@
 
 {
     [super viewDidAppear:YES];
+    [self getGroups];
 
-    query = [PFQuery queryWithClassName:@"Transaction"];
-    [query orderByDescending:@"createdAt"];
-    query.limit = 25;
-    [query includeKey:@"fromUser"];
-    [query includeKey:@"toUser"];
-//    [query whereKey:@"fromUser" equalTo:[PFUser currentUser]];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-    {
-        transactions = [NSMutableArray new];
-        from = [NSMutableArray new];
-        to = [NSMutableArray new];
-        objectIDs = [NSMutableArray new];
-        for (PFObject *object in objects)
-        {
-            if (object)
-            {
-                [transactions addObject:object];
-                [from addObject:[object objectForKey:@"fromUser"]];
-                [to addObject:[object objectForKey:@"toUser"]];
-                [objectIDs addObject:object.objectId];
-            }
-        }
-        [newsfeedTableView reloadData];
-    }];
-    
 
 }
+
+#pragma mark Get the User's Groups
+
+-(void)getGroups
+{
+    PFRelation *relation = [[PFUser currentUser] relationForKey:@"myGroups"];
+    PFQuery *userQuery = [relation query];
+    
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             usersGroups = [NSMutableArray new];
+             for (PFObject *object in objects)
+             {
+                 [usersGroups addObject:object.objectId];
+                 NSLog(@"My Groups are %@", usersGroups);
+                 [self getTransactions];
+             }
+         }
+     }];
+}
+
+#pragma mark Get the Filtered Transactions
+
+-(void)getTransactions
+{
+    query = [PFQuery queryWithClassName:@"Transaction"];
+    query.limit = 25;
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"fromUser"];
+    [query includeKey:@"toUser"];
+    [query whereKey:@"groupId" containedIn:usersGroups];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+     {
+         transactions = [NSMutableArray new];
+         from = [NSMutableArray new];
+         to = [NSMutableArray new];
+         objectIDs = [NSMutableArray new];
+         for (PFObject *object in objects)
+         {
+             if (object)
+             {
+                 [transactions addObject:object];
+                 [from addObject:[object objectForKey:@"fromUser"]];
+                 [to addObject:[object objectForKey:@"toUser"]];
+                 [objectIDs addObject:object.objectId];
+             }
+         }
+         [newsfeedTableView reloadData];
+     }];
+}
+
+
 
 // called from viewWilAppear and only called when no user is currently logged in
 
 - (void) savePropertiesOfTheCurrentFacebookUserToTheDatabase {
     PFUser *currentUser = [PFUser currentUser];
     
-    
         //there is a current user object
         NSLog(@"currentUser object: %@", currentUser);
         NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
-        
-        
+
 //        FBRequest *request = [FBRequest requestForMe];
         
         [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {

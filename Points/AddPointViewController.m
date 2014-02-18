@@ -16,6 +16,7 @@
     __weak IBOutlet UITextView *commentTextView;
     PFObject *point;
     NSNumber *pointsAvailable;
+    PFQuery *toQuery;
 }
 
 @end
@@ -36,6 +37,9 @@
     // Get the number of points the user has available
     
     PFUser *currentUser = [PFUser currentUser];
+//    Artifically set the number of points the user has avaiable. Uncomment if necessay for testing.
+//    currentUser[@"pointsAvailable"] = @250;
+//    [currentUser saveInBackground];
     pointsAvailable = (NSNumber *)[currentUser objectForKey:@"pointsAvailable"];
 }
 
@@ -49,7 +53,7 @@
     point = [PFObject objectWithClassName:@"Point"];
     point[@"fromUser"] = [PFUser currentUser];
     
-    PFQuery *toQuery = [PFUser query];
+    toQuery = [PFUser query];
     point[@"toUser"] = [toQuery getObjectWithId:self.toUserObjectID error:nil];
     point[@"pointValue"] = @1;
     point[@"comment"] = commentTextView.text;
@@ -66,19 +70,9 @@
         {
             // If the save is successful, then update the Transaction class with from user, to user, and action
             NSLog(@"Save Succeeded");
-            
-            PFObject *transaction = [PFObject objectWithClassName:@"Transaction"];
-            transaction[@"fromUser"] = [PFUser currentUser];
-            transaction[@"toUser"] = [toQuery getObjectWithId:self.toUserObjectID error:nil];
-            transaction[@"action"] = @"Point Awarded";
-            
-            [transaction saveInBackground];
-            
-            PFUser *currentUser = [PFUser currentUser];
-            [currentUser incrementKey:@"pointsAvailable" byAmount:[NSNumber numberWithInt:-1]];
-            [currentUser saveInBackground];
+            [self updateTransaction];
+
             // Tell the user the save was successful
-            
             UIAlertView *saveAlert = [[UIAlertView alloc] initWithTitle:@"Point Saved!" message:@"You're Awesome!" delegate:self cancelButtonTitle:@"Sweet" otherButtonTitles:nil];
             [saveAlert show];
         }
@@ -100,6 +94,23 @@
         // When the user dismisses the alert, dismiss the AddPointViewController
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+-(void)updateTransaction
+{
+    // Update the Transaction class with the relevant information
+    PFObject *transaction = [PFObject objectWithClassName:@"Transaction"];
+    transaction[@"fromUser"] = [PFUser currentUser];
+    transaction[@"toUser"] = [toQuery getObjectWithId:self.toUserObjectID error:nil];
+    transaction[@"action"] = @"Point Awarded";
+    transaction[@"groupId"] = self.groupID;
+    
+    [transaction saveInBackground];
+    
+    // Update the points available to the user
+    PFUser *currentUser = [PFUser currentUser];
+    [currentUser incrementKey:@"pointsAvailable" byAmount:[NSNumber numberWithInt:-1]];
+    [currentUser saveInBackground];
 }
 
 @end
