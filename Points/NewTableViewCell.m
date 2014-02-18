@@ -7,10 +7,11 @@
 //
 
 #import "NewTableViewCell.h"
+#import "Parse/Parse.h"
 
 @implementation NewTableViewCell
 
-@synthesize buttonWithTextToAddOrInvite;
+@synthesize buttonWithTextToAddOrInvite, textfield, stringContainingUserID, group;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -25,11 +26,34 @@
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
+- (IBAction)OnAddButtonPressed:(UIButton *)sender{
+    
+    if([sender.titleLabel.text isEqualToString:@"Add"]){
+        PFRelation *relation = [group relationForKey:@"members"];
+        
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"uniqueFacebookID" equalTo:stringContainingUserID];
+        
+        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if(!error){
+                [relation addObject:object];
+                [group saveInBackground];
 
-    // Configure the view for the selected state
+            }
+        }];
+        
+        
+        
+        
+    }  else {
+        
+    }
+    
+    
+}
+    
+    
+
 }
 
 @end
