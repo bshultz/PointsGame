@@ -40,6 +40,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Newsfeed" id="Aks-ng-PVr">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="C6L-XF-Jhb">
+                            <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="OGT-7D-TS4" kind="modal" id="HTi-gd-Kq2"/>
                             </connections>
@@ -180,11 +181,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="My Groups" id="Vg5-LN-zhe">
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="search" id="has-Lb-hEW">
+                            <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onSearchButtonClicked:" destination="juO-tY-f82" id="Fwp-HN-kCh"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GXv-X9-uw2">
+                            <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="iEL-Uw-frs" kind="push" identifier="CreateGroupIdentifier" id="f1F-20-hTc"/>
                             </connections>
@@ -196,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjc-Yg-sPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="46" y="-670"/>
+            <point key="canvasLocation" x="39" y="-652"/>
         </scene>
         <!--Create Group View Controller-->
         <scene sceneID="6mA-kU-Aev">
@@ -305,7 +308,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Friends" id="peZ-k9-N4K"/>
+                    <navigationItem key="navigationItem" title="Friends" id="peZ-k9-N4K">
+                        <barButtonItem key="rightBarButtonItem" title="Leave" id="gLA-6F-5jX">
+                            <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="onLeaveButtonPressed:" destination="8yP-cs-7rk" id="X24-xJ-kl0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="friendsTableView" destination="Cue-r1-y8K" id="GMB-YW-eHH"/>
                     </connections>
