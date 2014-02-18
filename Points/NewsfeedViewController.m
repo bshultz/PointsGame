@@ -38,7 +38,8 @@
 {
     [super viewWillAppear:animated];
     
-    if (![PFUser currentUser]) { // No user logged in
+    if (![PFUser currentUser]) {
+        // No user logged in
         // Create the log in view controller
         
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
@@ -56,11 +57,14 @@
         // Create the sign up view controller
         PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
         [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+        
         // Assign our sign up controller to be displayed from the login controller
         [logInViewController setSignUpController:signUpViewController];
         
         // Present the log in view controller
         [self presentViewController:logInViewController animated:YES completion:NULL];
+        
+        [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
     }
 }
 
@@ -96,13 +100,15 @@
         [newsfeedTableView reloadData];
     }];
     
-    [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
+
 }
+
+// called from viewWilAppear and only called when no user is currently logged in
 
 - (void) savePropertiesOfTheCurrentFacebookUserToTheDatabase {
     PFUser *currentUser = [PFUser currentUser];
     
-    if (currentUser) {
+    
         //there is a current user object
         NSLog(@"currentUser object: %@", currentUser);
         NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
@@ -115,26 +121,19 @@
                 //result is a dictionary with the users Data
                 
                 NSDictionary *userData = (NSDictionary *)result;
-                NSLog(@"data = %@", userData);
-                
-                
- //               NSString *name = userData[@"name"];
- //               NSString *uniqueIdentifier = userData[@"username"];
- //               NSString *email = userData[@"email"];
                 
                   NSString *facebookID = userData[@"id"];
                 NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
                 
-                NSLog(@"details = %@", result);
                 
                 // save relevant details to the database
-                
                 
                 PFFile *file = [PFFile fileWithData:[NSData dataWithContentsOfURL:pictureURL]];
                 [currentUser setObject:file forKey:@"userImage"];
                 [currentUser setObject:userData[@"name"] forKey:@"fullName"];
                 [currentUser setObject:userData[@"username"] forKey:@"uniqueFacebookIdentifier"];
-  //              currentUser.email = email;
+                [currentUser setObject:userData[@"id"] forKey:@"uniqueFacebookID"];
+                
                 [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (error){
                         NSLog (@"%@ %@", error, [error userInfo]);
@@ -144,11 +143,8 @@
                 }];
             }
         }];
-    }
+    
 }
-
-
-
 
 #pragma mark: News Items Table View
 
