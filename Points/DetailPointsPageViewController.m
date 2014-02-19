@@ -9,7 +9,7 @@
 #import "DetailPointsPageViewController.h"
 #import "Parse/Parse.h"
 
-@interface DetailPointsPageViewController ()
+@interface DetailPointsPageViewController ()  <UITableViewDataSource, UITableViewDelegate>
 {
     //instance variables
     PFQuery *query;
@@ -48,9 +48,9 @@
     query.limit = 25;
     [query orderByDescending:@"createdAt"];
 
-    [query whereKey:@"toUser" equalTo:self.userName];
+//    [query whereKey:@"toUser" equalTo:self.userName];
     
-    [query whereKey:@"groupId" equalTo:self.groupName];
+//    [query whereKey:@"groupId" equalTo:self.groupName];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          transactions = [NSMutableArray new];
@@ -65,6 +65,7 @@
                  [from addObject:[object objectForKey:@"fromUser"]];
                  [to addObject:[object objectForKey:@"toUser"]];
                  [objectIDs addObject:object.objectId];
+                 NSLog(@"%@", object);
              }
          }
          [detailPointsTableView reloadData];
@@ -81,21 +82,16 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     PFObject *object;
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }
-    
-  
-        
-
+    }    
         object = transactions[indexPath.row];
-        
-    
-    cell.textLabel.text = object[@"name"];
+    cell.textLabel.text = object[@"action"];
     return cell;
     
 }
