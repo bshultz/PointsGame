@@ -33,38 +33,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self getGroups];
-    NSLog(@"%@", self.userName);
+//    [self getGroups];
+    [self getTransactions];
+    NSLog(@"username: %@", self.userName);
+    NSLog(@"groupname: %@", self.groupName);
 }
 
 
--(void)getGroups
-{
-    PFRelation *relation = [[PFUser currentUser] relationForKey:@"myGroups"];
-    PFQuery *userQuery = [relation query];
-    
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
-         if (!error)
-         {
-             usersGroups = [NSMutableArray new];
-             for (PFObject *object in objects)
-             {
-                 [usersGroups addObject:object.objectId];
-                 NSLog(@"My Groups are %@", usersGroups);
-                 [self getTransactions];
-             }
-         }
-     }];
-}
+
 
 -(void)getTransactions
 {
     query = [PFQuery queryWithClassName:@"Transaction"];
     query.limit = 25;
     [query orderByDescending:@"createdAt"];
-    [query includeKey:@"fromUser"];
-    [query includeKey:@"toUser"];
+
     [query whereKey:@"toUser" equalTo:self.userName];
     
     [query whereKey:@"groupId" equalTo:self.groupName];
