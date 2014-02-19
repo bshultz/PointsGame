@@ -8,7 +8,6 @@
 
 #import "ProfileViewController.h"
 #import "Parse/Parse.h"
-#import "NewsfeedViewController.h"
 
 @interface ProfileViewController () <NSURLConnectionDataDelegate>
 {
@@ -48,7 +47,7 @@
             NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
 
             
-            usernameLabel.text = currentUser[@"fullname"];
+            usernameLabel.text = currentUser[@"fullName"];
             emailLabel.text = currentUser[@"email"];
             pointsAvailableLabel.text = [NSString stringWithFormat:@"%@", currentUser[@"pointsAvailable"]]  ;
             
@@ -70,8 +69,49 @@
 {
     [PFUser logOut];
     
-    
     NSLog(@"Current user logged in is %@", [PFUser currentUser]);
+    
+    if (![PFUser currentUser]) {
+        // No user logged in
+        // Create the log in view controller
+        
+        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+        [logInViewController setFacebookPermissions:@[@"user_about_me", @"user_birthday", @"user_relationships"]];
+        
+        logInViewController.fields = PFLogInFieldsFacebook;
+        UILabel *logo = [UILabel new];
+        logo.text = @"PointsBank";
+        logo.textColor = [UIColor whiteColor];
+        [logo sizeToFit];
+        logInViewController.logInView.logo = logo;
+        
+        // Create the sign up view controller
+        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Assign our sign up controller to be displayed from the login controller
+        [logInViewController setSignUpController:signUpViewController];
+        
+        // Present the log in view controller
+        [self presentViewController:logInViewController animated:YES completion:NULL];
+        
+        //       [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
+    }
+}
+
+// Sent to the delegate when a PFUser is logged in.
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+// Sent to the delegate when the log in attempt fails.
+- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
+    NSLog(@"Failed to log in...");
+}
+// Sent to the delegate when the log in screen is dismissed.
+- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

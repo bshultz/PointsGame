@@ -53,13 +53,13 @@
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
         [logInViewController setFacebookPermissions:@[@"user_about_me", @"user_birthday", @"user_relationships"]];
         
-        logInViewController.fields = PFLogInFieldsUsernameAndPassword
-        | PFLogInFieldsLogInButton
-        | PFLogInFieldsSignUpButton
-        | PFLogInFieldsPasswordForgotten
-        | PFLogInFieldsDismissButton
-        | PFLogInFieldsFacebook;
-        
+        logInViewController.fields = PFLogInFieldsFacebook;
+        UILabel *logo = [UILabel new];
+        logo.text = @"PointsBank";
+        logo.textColor = [UIColor whiteColor];
+        [logo sizeToFit];
+        logInViewController.logInView.logo = logo;
+
         
         // Create the sign up view controller
         PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
