@@ -14,6 +14,8 @@
 {
     __weak IBOutlet UILabel *friendNameLabel;
     __weak IBOutlet UITextView *commentTextView;
+    __weak IBOutlet UIImageView *userProfileImage;
+    
     PFObject *point;
     NSNumber *pointsAvailable;
     PFQuery *toQuery;
@@ -26,6 +28,7 @@
 @synthesize fromUserObjectID;
 @synthesize friendName;
 @synthesize groupID;
+@synthesize profileImage;
 
 
 
@@ -39,7 +42,8 @@
     self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
     
     friendNameLabel.text = self.friendName;
-    
+    userProfileImage.contentMode = UIViewContentModeScaleAspectFill;
+    userProfileImage.image = self.profileImage.image;
     // Get the number of points the user has available
     
     PFUser *currentUser = [PFUser currentUser];

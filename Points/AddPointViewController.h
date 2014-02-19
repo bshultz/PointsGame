@@ -13,5 +13,6 @@
 @property NSString *toUserObjectID;
 @property NSString *fromUserObjectID;
 @property NSString *groupID;
+@property UIImageView *profileImage;
 
 @end
