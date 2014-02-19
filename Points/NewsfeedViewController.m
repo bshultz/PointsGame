@@ -11,6 +11,7 @@
 #import "NewsfeedViewController.h"
 #import "Parse/Parse.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "NewsfeedCell.h"
 
 @interface NewsfeedViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -185,12 +186,17 @@
 // Set the cell properties
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsfeedCell"];
+    NewsfeedCell *cell = [NewsfeedCell new];
     PFUser *fromUser = [from objectAtIndex:indexPath.row];
     PFUser *toUser = [to objectAtIndex:indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:12.0];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ gave %@ a point!", [fromUser objectForKey:@"fullName"], [toUser objectForKey:@"fullName"]];
-    cell.textLabel.textColor = [UIColor colorWithRed:0.05f green:0.345 blue:0.65f alpha:1.0f];
+    
+    PFFile *theImage = [fromUser objectForKey:@"userImage"];
+    NSData *theData = [theImage getData];
+    cell.profileImage.image = [UIImage imageWithData:theData];
+    
+    cell.text.font = [UIFont systemFontOfSize:12.0];
+    cell.text.text = [NSString stringWithFormat:@"%@ gave %@ a point!", [fromUser objectForKey:@"fullName"], [toUser objectForKey:@"fullName"]];
+    cell.text.textColor = [UIColor colorWithRed:0.05f green:0.345 blue:0.65f alpha:1.0f];
     
     return cell;
 }
