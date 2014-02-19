@@ -133,6 +133,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A99E1B118B511C600C9BB55 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				D1AA2CF718B454300053E8CB /* NotificationTableViewCell.h */,
+				D1AA2CF818B454300053E8CB /* NotificationTableViewCell.m */,
+				D1AA2CF418B42C820053E8CB /* NotificationViewController.h */,
+				D1AA2CF518B42C820053E8CB /* NotificationViewController.m */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		3A99E1B218B511DA00C9BB55 /* Newsfeed */ = {
+			isa = PBXGroup;
+			children = (
+				3AFE993B18A97CB600D3D9EE /* NewsfeedViewController.h */,
+				3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */,
+				3A99E1AE18B50AB800C9BB55 /* NewsfeedCell.h */,
+				3A99E1AF18B50AB800C9BB55 /* NewsfeedCell.m */,
+			);
+			name = Newsfeed;
+			sourceTree = "<group>";
+		};
+		3A99E1B318B5122000C9BB55 /* FriendsGroup */ = {
+			isa = PBXGroup;
+			children = (
+				3A5A592F18AEB2E00046F00B /* FriendsGroupDetailCell.h */,
+				3A5A593018AEB2E00046F00B /* FriendsGroupDetailCell.m */,
+				3A5A592C18AE8D1A0046F00B /* FriendsViewController.h */,
+				3A5A592D18AE8D1A0046F00B /* FriendsViewController.m */,
+			);
+			name = FriendsGroup;
+			sourceTree = "<group>";
+		};
+		3A99E1B418B5124C00C9BB55 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				E0984CE118AA8D5E00AAE67A /* GroupsViewController.h */,
+				E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */,
+			);
+			name = Group;
+			sourceTree = "<group>";
+		};
+		3A99E1B518B5125900C9BB55 /* CreateGroup */ = {
+			isa = PBXGroup;
+			children = (
+				D1378F3918B2CBEA00CD5109 /* NewTableViewCell.h */,
+				D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */,
+				3AFE993818A9432C00D3D9EE /* CreateGroupViewController.h */,
+				3AFE993918A9432C00D3D9EE /* CreateGroupViewController.m */,
+			);
+			name = CreateGroup;
+			sourceTree = "<group>";
+		};
+		3A99E1B618B5126400C9BB55 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E0984CE418AAD79100AAE67A /* ProfileViewController.h */,
+				E0984CE518AAD79100AAE67A /* ProfileViewController.m */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		3A99E1B718B5127500C9BB55 /* AddPoint */ = {
+			isa = PBXGroup;
+			children = (
+				3A5A593418B04E0A0046F00B /* AddPointViewController.h */,
+				3A5A593518B04E0A0046F00B /* AddPointViewController.m */,
+			);
+			name = AddPoint;
+			sourceTree = "<group>";
+		};
 		3A9A37E418A9267800F604F0 = {
 			isa = PBXGroup;
 			children = (
@@ -176,30 +247,17 @@
 		3A9A37F618A9267800F604F0 /* Points */ = {
 			isa = PBXGroup;
 			children = (
+				3A99E1B718B5127500C9BB55 /* AddPoint */,
+				3A99E1B618B5126400C9BB55 /* Profile */,
+				3A99E1B518B5125900C9BB55 /* CreateGroup */,
+				3A99E1B418B5124C00C9BB55 /* Group */,
+				3A99E1B318B5122000C9BB55 /* FriendsGroup */,
+				3A99E1B218B511DA00C9BB55 /* Newsfeed */,
+				3A99E1B118B511C600C9BB55 /* Notifications */,
 				E0984CEA18B27EDE00AAE67A /* detailpoints */,
 				3A9A37FF18A9267800F604F0 /* AppDelegate.h */,
 				3A9A380018A9267800F604F0 /* AppDelegate.m */,
 				3A9A380218A9267800F604F0 /* Main.storyboard */,
-				D1AA2CF718B454300053E8CB /* NotificationTableViewCell.h */,
-				D1AA2CF818B454300053E8CB /* NotificationTableViewCell.m */,
-				D1378F3918B2CBEA00CD5109 /* NewTableViewCell.h */,
-				D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */,
-				3A5A592F18AEB2E00046F00B /* FriendsGroupDetailCell.h */,
-				3A5A593018AEB2E00046F00B /* FriendsGroupDetailCell.m */,
-				D1AA2CF418B42C820053E8CB /* NotificationViewController.h */,
-				D1AA2CF518B42C820053E8CB /* NotificationViewController.m */,
-				3A5A593418B04E0A0046F00B /* AddPointViewController.h */,
-				3A5A593518B04E0A0046F00B /* AddPointViewController.m */,
-				E0984CE418AAD79100AAE67A /* ProfileViewController.h */,
-				E0984CE518AAD79100AAE67A /* ProfileViewController.m */,
-				3AFE993B18A97CB600D3D9EE /* NewsfeedViewController.h */,
-				3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */,
-				3A99E1AE18B50AB800C9BB55 /* NewsfeedCell.h */,
-				3A99E1AF18B50AB800C9BB55 /* NewsfeedCell.m */,
-				3AFE993818A9432C00D3D9EE /* CreateGroupViewController.h */,
-				3AFE993918A9432C00D3D9EE /* CreateGroupViewController.m */,
-				E0984CE118AA8D5E00AAE67A /* GroupsViewController.h */,
-				E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */,
 				3A9A380518A9267800F604F0 /* ViewController.h */,
 				3A9A380618A9267800F604F0 /* ViewController.m */,
 				3A9A380818A9267800F604F0 /* Images.xcassets */,
@@ -241,8 +299,6 @@
 		E0984CEA18B27EDE00AAE67A /* detailpoints */ = {
 			isa = PBXGroup;
 			children = (
-				3A5A592C18AE8D1A0046F00B /* FriendsViewController.h */,
-				3A5A592D18AE8D1A0046F00B /* FriendsViewController.m */,
 				E0984CE718B279A700AAE67A /* DetailPointsPageViewController.h */,
 				E0984CE818B279A700AAE67A /* DetailPointsPageViewController.m */,
 			);
@@ -298,6 +354,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matthew Graham";
 				TargetAttributes = {
+					3A9A37EC18A9267800F604F0 = {
+						DevelopmentTeam = 54GA323Y2J;
+					};
 					3A9A380D18A9267800F604F0 = {
 						TestTargetID = 3A9A37EC18A9267800F604F0;
 					};
@@ -524,6 +583,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Sidreddy/Desktop/FacebookSDK,
@@ -532,6 +593,7 @@
 				GCC_PREFIX_HEADER = "Points/Points-Prefix.pch";
 				INFOPLIST_FILE = "Points/Points-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -542,6 +604,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Sidreddy/Desktop/FacebookSDK,
@@ -550,6 +614,7 @@
 				GCC_PREFIX_HEADER = "Points/Points-Prefix.pch";
 				INFOPLIST_FILE = "Points/Points-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

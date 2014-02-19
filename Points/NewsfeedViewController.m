@@ -146,6 +146,7 @@
     PFUser *currentUser = [PFUser currentUser];
     
         //there is a current user object
+
         NSLog(@"currentUser object: %@", currentUser);
         NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
 
@@ -156,8 +157,7 @@
                 //result is a dictionary with the users Data
                 
                 NSDictionary *userData = (NSDictionary *)result;
-                
-                  NSString *facebookID = userData[@"id"];
+                NSString *facebookID = userData[@"id"];
                 NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
                 
                 
@@ -209,25 +209,11 @@
 
 
 
-// Sent to the delegate to determine whether the log in request should be submitted to the server.
-- (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password
-{
-    // Check if both fields are completed
-    if (username && password && username.length != 0 && password.length != 0)
-    {
-        return YES; // Begin login process
-    }
-    [[[UIAlertView alloc] initWithTitle:@"Missing Information"
-                                message:@"Make sure you fill out all of the information!"
-                               delegate:nil
-                      cancelButtonTitle:@"ok"
-                      otherButtonTitles:nil] show];
-    return NO; // Interrupt login process
-}
+
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
 {
-     [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
+    [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 // Sent to the delegate when the log in attempt fails.
@@ -266,7 +252,6 @@
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    //[self dismissModalViewControllerAnimated:YES]; // Dismiss the PFSignUpViewController
     user[@"pointsAvailable"] = @10; // Give the user 10 points for signing up
 }
 // Sent to the delegate when the sign up attempt fails.
