@@ -8,8 +8,9 @@
 
 #import "NotificationViewController.h"
 #import "Parse/Parse.h"
+#import "NotificationTableViewCell.h"
 
-@interface NotificationViewController ()
+@interface NotificationViewController () <UITableViewDataSource, UITableViewDelegate>
 
 {
     PFUser *currentUser;
@@ -37,15 +38,25 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
-    // need to query the database to find out all the notifications
-
-
+    [tableViewWithNotifications setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - TableView Delegate methods
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NotificationTableViewCell *cell = [NotificationTableViewCell new];
+
+    cell.labelContainingGroupInformation.text = @"Sid Reddy has invited you to the Group Party";
+    [cell.buttonToDeclineTheInvite setTitle:@"Decline" forState:UIControlStateNormal];
+    [cell.buttonToAcceptTheInvite setTitle:@"Accept" forState:UIControlStateNormal];
+
+    return cell;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
 
 @end

@@ -10,4 +10,9 @@
 
 @interface NotificationTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *labelContainingGroupInformation;
+@property (nonatomic, strong) UIButton * buttonToAcceptTheInvite;
+@property (nonatomic, strong) UIButton * buttonToDeclineTheInvite;
+
+
 @end
