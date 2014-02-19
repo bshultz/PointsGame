@@ -17,7 +17,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
 
-        CGSize size = self.contentView.frame.size;
+//        CGSize size = self.contentView.frame.size;
 
         self.labelContainingGroupInformation = [[UILabel alloc]initWithFrame:CGRectMake(30.0f, 0.0f, 300, 100)];
         labelContainingGroupInformation.numberOfLines = 0;
