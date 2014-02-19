@@ -55,12 +55,14 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    [tableViewContaingFriends setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+
     arrayWithFriendsWhoDontHaveAnAccount = [NSMutableArray new];
     arrayWithFriendsWhoHaveAnAccount = [NSMutableArray new];
     
     if (arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons.count != 0){
         // tableViews do not show up because the number of cells will be zero
-        tableViewContaingFriends.alpha = 1;
+
         [groupTextField removeFromSuperview];
         [addButton removeFromSuperview];
     
@@ -116,7 +118,7 @@
         
     } else {
         //
-        tableViewContaingFriends.alpha = 0;
+
     groupTextField = [[UITextField alloc] initWithFrame:CGRectMake(30.0f, 68.0f, 260.0f, 30.0f)];
     groupTextField.placeholder = @"Group Name";
     groupTextField.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:23.0f];
