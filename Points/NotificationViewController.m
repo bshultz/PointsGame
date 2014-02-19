@@ -13,6 +13,7 @@
 
 {
     PFUser *currentUser;
+    IBOutlet UITableView *tableViewWithNotifications;
 }
 
 @end

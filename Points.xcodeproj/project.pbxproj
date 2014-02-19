@@ -32,6 +32,7 @@
 		D12D5EBF18AD445200940381 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBE18AD445200940381 /* AddressBookUI.framework */; };
 		D1378F3B18B2CBEA00CD5109 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */; };
 		D1AA2CF618B42C820053E8CB /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA2CF518B42C820053E8CB /* NotificationViewController.m */; };
+		D1AA2CF918B454300053E8CB /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA2CF818B454300053E8CB /* NotificationTableViewCell.m */; };
 		E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */; };
 		E0984CE618AAD79100AAE67A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE518AAD79100AAE67A /* ProfileViewController.m */; };
 		E0984CE918B279A700AAE67A /* DetailPointsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE818B279A700AAE67A /* DetailPointsPageViewController.m */; };
@@ -86,6 +87,8 @@
 		D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTableViewCell.m; sourceTree = "<group>"; };
 		D1AA2CF418B42C820053E8CB /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		D1AA2CF518B42C820053E8CB /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		D1AA2CF718B454300053E8CB /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
+		D1AA2CF818B454300053E8CB /* NotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewCell.m; sourceTree = "<group>"; };
 		D1B235AE18AEFCA7009D5BDD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		D1B235B018AF202A009D5BDD /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		D1B235B118AF202A009D5BDD /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -174,6 +177,8 @@
 				3A9A37FF18A9267800F604F0 /* AppDelegate.h */,
 				3A9A380018A9267800F604F0 /* AppDelegate.m */,
 				3A9A380218A9267800F604F0 /* Main.storyboard */,
+				D1AA2CF718B454300053E8CB /* NotificationTableViewCell.h */,
+				D1AA2CF818B454300053E8CB /* NotificationTableViewCell.m */,
 				D1378F3918B2CBEA00CD5109 /* NewTableViewCell.h */,
 				D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */,
 				D1AA2CF418B42C820053E8CB /* NotificationViewController.h */,
@@ -374,6 +379,7 @@
 			files = (
 				3A9A380718A9267800F604F0 /* ViewController.m in Sources */,
 				3A5A593118AEB2E00046F00B /* FriendsGroupDetailCell.m in Sources */,
+				D1AA2CF918B454300053E8CB /* NotificationTableViewCell.m in Sources */,
 				3A9A380118A9267800F604F0 /* AppDelegate.m in Sources */,
 				3AFE993A18A9432C00D3D9EE /* CreateGroupViewController.m in Sources */,
 				3A9A37FD18A9267800F604F0 /* main.m in Sources */,
