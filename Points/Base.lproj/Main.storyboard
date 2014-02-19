@@ -151,7 +151,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="MhB-UE-q4t">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="onLogoutButtonPressed:" destination="Xxn-kh-kej" id="pPb-yj-lRF"/>
+                                <action selector="onLogoutButtonPressed:" destination="Xxn-kh-kej" id="BkT-x9-6lk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
