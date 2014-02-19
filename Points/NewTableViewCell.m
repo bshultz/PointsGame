@@ -39,25 +39,44 @@
                 NSLog(@"Save Error: %@", error);
 
             } else {
-                [relation addObject:object];
 
- 
-                [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if(!error){
-                        PFRelation *relation1 = [object relationForKey:@"myGroups"];
-                        [relation1 addObject:group];
-                        [object saveInBackground];
-                        
+                // create a invite object and send a invite this person
+
+                PFObject *invite = [PFObject objectWithClassName:@"invite"];
+                invite[@"fromUser"] = currentUser;
+                invite[@"toUser"] = object;
+                [invite setObject:[NSNumber numberWithBool:NO] forKey:@"acceptedInvite"];
+                invite[@"group"] = group;
+
+
+                [invite saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (error){
+                        // prnt the error
+
+
                     }
                 }];
-                
+
+//
+////                [relation addObject:object];
+//
+// 
+//                [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//                    if(!error){
+//                        PFRelation *relation1 = [object relationForKey:@"myGroups"];
+//                        [relation1 addObject:group];
+//                        [object saveInBackground];
+//                        
+//                    }
+//                }];
+//                
             }
-        }];
+            }];
+
         
         
         
-        
-    }  else {
+            }  else {
         NSLog(@"else");
     }
     

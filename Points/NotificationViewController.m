@@ -7,8 +7,13 @@
 //
 
 #import "NotificationViewController.h"
+#import "Parse/Parse.h"
 
 @interface NotificationViewController ()
+
+{
+    PFUser *currentUser;
+}
 
 @end
 
@@ -26,7 +31,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    // need to query the database to find out all the notifications
+
+
 }
 
 - (void)didReceiveMemoryWarning
