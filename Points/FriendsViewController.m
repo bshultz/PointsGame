@@ -17,6 +17,7 @@
     NSMutableArray *friends;
     NSMutableArray *friendImages;
     NSMutableArray *toUserObjectID;
+    NSMutableArray *usernames;
     __weak IBOutlet UITableView *friendsTableView;
     PFQuery *pointQuery;
     NSMutableArray *points;
@@ -43,6 +44,7 @@
     friends = [NSMutableArray new];
     friendImages = [NSMutableArray new];
     toUserObjectID = [NSMutableArray new];
+    usernames = [NSMutableArray new];
     PFQuery *query = [PFQuery queryWithClassName:@"Group"];
     group = [PFObject objectWithClassName:@"Group"];
     
@@ -80,6 +82,7 @@
                 {
                     [friends addObject:[object objectForKey:@"fullName"]];
                     [friendImages addObject:[object objectForKey:@"userImage"]];
+                    [usernames addObject:[object objectForKey:@"username"]];
                     [toUserObjectID addObject:object.objectId];
                     [friendsTableView reloadData];
                     NSLog(@"Friends are %@", friends);
@@ -108,7 +111,7 @@
     
     for (PFObject *object in points)
     {
-        if ([[[object objectForKey:@"toUser"] objectForKey:@"username"] isEqualToString:[friends objectAtIndex:indexPath.row]])
+        if ([[[object objectForKey:@"toUser"] objectForKey:@"username"] isEqualToString:[usernames objectAtIndex:indexPath.row]])
         {
             pointValue++;
         }

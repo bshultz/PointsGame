@@ -79,8 +79,6 @@
 
 }
 
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
