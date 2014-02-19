@@ -32,14 +32,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationController.title = @"Give Point";
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
+    self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
+    
     friendNameLabel.text = self.friendName;
     
     // Get the number of points the user has available
     
     PFUser *currentUser = [PFUser currentUser];
 //    Artifically set the number of points the user has avaiable. Uncomment if necessay for testing.
-    currentUser[@"pointsAvailable"] = @250;
-    [currentUser saveInBackground];
+//    currentUser[@"pointsAvailable"] = @250;
+//    [currentUser saveInBackground];
     pointsAvailable = (NSNumber *)[currentUser objectForKey:@"pointsAvailable"];
 }
 
@@ -112,5 +118,11 @@
     [currentUser incrementKey:@"pointsAvailable" byAmount:[NSNumber numberWithInt:-1]];
     [currentUser saveInBackground];
 }
+
+- (IBAction)onCancelButtonPressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

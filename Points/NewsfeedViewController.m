@@ -188,7 +188,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewsfeedCell"];
     PFUser *fromUser = [from objectAtIndex:indexPath.row];
     PFUser *toUser = [to objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ gave %@ a point!", fromUser.username, toUser.username ];
+    cell.textLabel.font = [UIFont systemFontOfSize:12.0];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ gave %@ a point!", [fromUser objectForKey:@"fullName"], [toUser objectForKey:@"fullName"]];
     cell.textLabel.textColor = [UIColor colorWithRed:0.05f green:0.345 blue:0.65f alpha:1.0f];
     
     return cell;
