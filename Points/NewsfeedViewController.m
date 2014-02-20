@@ -52,8 +52,9 @@
         
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
-        [logInViewController setFacebookPermissions:@[@"user_about_me", @"user_birthday", @"user_relationships"]];
-        
+        [logInViewController setFacebookPermissions:@[@"user_about_me",@"user_birthday", @"user_relationships", @"email", @"publish_actions"]];
+        // @[@"user_about_me", @"user_birthday", @"user_relationships", @"email", @"read_insights", @"publish_actions", @"user_location"]];
+
         logInViewController.fields = PFLogInFieldsFacebook;
         UILabel *logo = [UILabel new];
         logo.text = @"PointsBank";
@@ -218,7 +219,7 @@
 }
 // Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    NSLog(@"Failed to log in...");
+    NSLog(@"Failed to log in... %@", error);
 }
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {

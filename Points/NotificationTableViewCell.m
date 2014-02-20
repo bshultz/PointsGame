@@ -57,6 +57,7 @@
         } else {
             PFRelation *relation = [object relationForKey:@"members"];
             [relation addObject:currentUser];
+            
             [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (error){
                      NSLog (@"%@ %@", error, [error userInfo]);
