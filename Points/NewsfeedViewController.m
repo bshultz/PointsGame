@@ -40,41 +40,7 @@
     
 }
 
-#pragma mark: Login New User
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    if (![PFUser currentUser]) {
-        // No user logged in
-        // Create the log in view controller
-        
-        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
-        [logInViewController setDelegate:self]; // Set ourselves as the delegate
-        [logInViewController setFacebookPermissions:@[@"user_about_me", @"user_birthday", @"user_relationships"]];
-        
-        logInViewController.fields = PFLogInFieldsFacebook;
-        UILabel *logo = [UILabel new];
-        logo.text = @"PointsBank";
-        logo.textColor = [UIColor whiteColor];
-        [logo sizeToFit];
-        logInViewController.logInView.logo = logo;
-
-        
-        // Create the sign up view controller
-        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
-        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
-        
-        // Assign our sign up controller to be displayed from the login controller
-        [logInViewController setSignUpController:signUpViewController];
-        
-        // Present the log in view controller
-        [self presentViewController:logInViewController animated:YES completion:NULL];
-        
- //       [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
-    }
-}
 
 
 -(void)viewDidAppear:(BOOL)animated
@@ -138,7 +104,41 @@
      }];
 }
 
+#pragma mark: Login New User
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (![PFUser currentUser]) {
+        // No user logged in
+        // Create the log in view controller
+        
+        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        [logInViewController setDelegate:self]; // Set ourselves as the delegate
+        [logInViewController setFacebookPermissions:@[@"user_about_me", @"user_birthday", @"user_relationships"]];
+        
+        logInViewController.fields = PFLogInFieldsFacebook;
+        UILabel *logo = [UILabel new];
+        logo.text = @"PointsBank";
+        logo.textColor = [UIColor whiteColor];
+        [logo sizeToFit];
+        logInViewController.logInView.logo = logo;
+        
+        
+        // Create the sign up view controller
+        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
+        
+        // Assign our sign up controller to be displayed from the login controller
+        [logInViewController setSignUpController:signUpViewController];
+        
+        // Present the log in view controller
+        [self presentViewController:logInViewController animated:YES completion:NULL];
+        
+        //       [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
+    }
+}
 
 // called from viewWilAppear and only called when no user is currently logged in
 
