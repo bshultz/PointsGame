@@ -12,6 +12,7 @@
 		3A5A593318AEB6230046F00B /* addbutton.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3A5A593218AEB6230046F00B /* addbutton.jpeg */; };
 		3A5A593618B04E0A0046F00B /* AddPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A593518B04E0A0046F00B /* AddPointViewController.m */; };
 		3A99E1B018B50AB800C9BB55 /* NewsfeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A99E1AF18B50AB800C9BB55 /* NewsfeedCell.m */; };
+		3A99E1BA18B65FEA00C9BB55 /* NewsfeedDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A99E1B918B65FEA00C9BB55 /* NewsfeedDetailViewController.m */; };
 		3A9A37F118A9267800F604F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9A37F018A9267800F604F0 /* Foundation.framework */; };
 		3A9A37F318A9267800F604F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9A37F218A9267800F604F0 /* CoreGraphics.framework */; };
 		3A9A37F518A9267800F604F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9A37F418A9267800F604F0 /* UIKit.framework */; };
@@ -61,6 +62,8 @@
 		3A5A593518B04E0A0046F00B /* AddPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPointViewController.m; sourceTree = "<group>"; };
 		3A99E1AE18B50AB800C9BB55 /* NewsfeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedCell.h; sourceTree = "<group>"; };
 		3A99E1AF18B50AB800C9BB55 /* NewsfeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedCell.m; sourceTree = "<group>"; };
+		3A99E1B818B65FEA00C9BB55 /* NewsfeedDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedDetailViewController.h; sourceTree = "<group>"; };
+		3A99E1B918B65FEA00C9BB55 /* NewsfeedDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedDetailViewController.m; sourceTree = "<group>"; };
 		3A9A37ED18A9267800F604F0 /* Points.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Points.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9A37F018A9267800F604F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A9A37F218A9267800F604F0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -147,6 +150,8 @@
 		3A99E1B218B511DA00C9BB55 /* Newsfeed */ = {
 			isa = PBXGroup;
 			children = (
+				3A99E1B818B65FEA00C9BB55 /* NewsfeedDetailViewController.h */,
+				3A99E1B918B65FEA00C9BB55 /* NewsfeedDetailViewController.m */,
 				3AFE993B18A97CB600D3D9EE /* NewsfeedViewController.h */,
 				3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */,
 				3A99E1AE18B50AB800C9BB55 /* NewsfeedCell.h */,
@@ -355,10 +360,7 @@
 				ORGANIZATIONNAME = "Matthew Graham";
 				TargetAttributes = {
 					3A9A37EC18A9267800F604F0 = {
-
 						DevelopmentTeam = 54GA323Y2J;
-
-
 					};
 					3A9A380D18A9267800F604F0 = {
 						TestTargetID = 3A9A37EC18A9267800F604F0;
@@ -456,6 +458,7 @@
 				D1378F3B18B2CBEA00CD5109 /* NewTableViewCell.m in Sources */,
 				E0984CE618AAD79100AAE67A /* ProfileViewController.m in Sources */,
 				E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */,
+				3A99E1BA18B65FEA00C9BB55 /* NewsfeedDetailViewController.m in Sources */,
 				E0984CE918B279A700AAE67A /* DetailPointsPageViewController.m in Sources */,
 				3AFE993D18A97CB600D3D9EE /* NewsfeedViewController.m in Sources */,
 				3A5A593618B04E0A0046F00B /* AddPointViewController.m in Sources */,

@@ -16,6 +16,8 @@
     __weak IBOutlet UILabel *usernameLabel;
     __weak IBOutlet UILabel *emailLabel;
     __weak IBOutlet UILabel *pointsAvailableLabel;
+    __weak IBOutlet UILabel *pointsAvailableStatic;
+    
 
     NSData *imageData;
 }
@@ -45,10 +47,14 @@
             //there is a current user object
             NSLog(@"currentUser object: %@", currentUser);
             NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
-
+            
+            usernameLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
             usernameLabel.text = currentUser[@"fullName"];
+            emailLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];;
             emailLabel.text = currentUser[@"email"];
+            pointsAvailableLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
             pointsAvailableLabel.text = [NSString stringWithFormat:@"%@", currentUser[@"pointsAvailable"]]  ;
+            pointsAvailableStatic.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
             
             PFFile *userImageFile = currentUser[@"userImage"];
             [userImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {

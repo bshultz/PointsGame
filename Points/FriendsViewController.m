@@ -98,6 +98,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FriendsGroupDetailCell *cell = [FriendsGroupDetailCell new];
+    cell.name.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
     cell.name.text = [friends objectAtIndex:indexPath.row];
     PFFile *theImage = [friendImages objectAtIndex:indexPath.row];
     NSData *imageData = [theImage getData];

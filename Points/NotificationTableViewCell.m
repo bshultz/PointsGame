@@ -19,13 +19,15 @@
 
 //        CGSize size = self.contentView.frame.size;
 
-        self.labelContainingGroupInformation = [[UILabel alloc]initWithFrame:CGRectMake(30.0f, 0.0f, 300, 100)];
+        self.labelContainingGroupInformation = [[UILabel alloc]initWithFrame:CGRectMake(10.0f, -30.0f, 300.0f, 120.0f)];
         labelContainingGroupInformation.numberOfLines = 0;
         labelContainingGroupInformation.lineBreakMode = NSLineBreakByWordWrapping;
+        labelContainingGroupInformation.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:self.labelContainingGroupInformation];
 
         self.buttonToAcceptTheInvite = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         self.buttonToAcceptTheInvite.frame = CGRectMake(60.0f, 60.0f, 60, 20);
+        self.buttonToAcceptTheInvite.tintColor = [UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f];
         [self.contentView addSubview:self.buttonToAcceptTheInvite];
         [self.buttonToAcceptTheInvite addTarget:self action:@selector(addPersonToGroup) forControlEvents:UIControlEventTouchUpInside];
 
@@ -33,6 +35,7 @@
 
         self.buttonToDeclineTheInvite = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         self.buttonToDeclineTheInvite.frame = CGRectMake(200.0f, 60.0f, 60, 20);
+        self.buttonToDeclineTheInvite.tintColor = [UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f];
          [self.contentView addSubview:self.buttonToDeclineTheInvite];
         [self.buttonToDeclineTheInvite addTarget:self action:@selector(doNotAddPersonToGroup) forControlEvents:UIControlEventTouchUpInside];
 

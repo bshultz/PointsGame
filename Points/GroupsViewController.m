@@ -37,6 +37,9 @@
     
     self.searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
     self.myTableView.tableHeaderView = self.searchBar;
+    self.myTableView.separatorColor = [UIColor colorWithRed:0.05f green:0.345f blue:0.65f alpha:0.5f];
+    self.myTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    [self.myTableView setSeparatorInset:UIEdgeInsetsZero];
 
     
  // adding a clear button to the searchBar. Searchbar has a textfield, i find the textfield and then display the clear button
@@ -108,6 +111,7 @@
          object = self.arrayOfAllTheUsersGroups[indexPath.row];
         
     }
+    cell.textLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
     cell.textLabel.text = object[@"name"];
     return cell;
 
