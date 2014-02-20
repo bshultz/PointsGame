@@ -218,7 +218,7 @@
 }
 // Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    NSLog(@"Failed to log in...");
+    NSLog(@"Failed to log in... %@", error);
 }
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
