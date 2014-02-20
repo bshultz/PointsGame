@@ -360,7 +360,7 @@
 				ORGANIZATIONNAME = "Matthew Graham";
 				TargetAttributes = {
 					3A9A37EC18A9267800F604F0 = {
-						DevelopmentTeam = 54GA323Y2J;
+						DevelopmentTeam = WSG5MU94V2;
 					};
 					3A9A380D18A9267800F604F0 = {
 						TestTargetID = 3A9A37EC18A9267800F604F0;
@@ -528,7 +528,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Siddharth Sukumar (5K787M4AYB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Siddharth Sukumar (5K787M4AYB)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
