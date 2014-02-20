@@ -103,7 +103,7 @@
 
 
                 } else {
-                cell.labelContainingGroupInformation.text = [NSString stringWithFormat:@"%@ has invited you to the group %@", name, object[@"name"] ];
+                cell.labelContainingGroupInformation.text = [NSString stringWithFormat:@"%@ has invited you to the group '%@'", name, object[@"name"] ];
                 [cell.buttonToDeclineTheInvite setTitle:@"Decline" forState:UIControlStateNormal];
                 [cell.buttonToAcceptTheInvite setTitle:@"Accept" forState:UIControlStateNormal];
                 }

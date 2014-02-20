@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
     PFQuery *query = [PFQuery queryWithClassName:@"Point"];
     [query includeKey:@"fromUser"];
     [query includeKey:@"toUser"];
@@ -51,6 +52,8 @@
                  PFObject *toUserObject = [object objectForKey:@"toUser"];
                  PFFile *theImage = [toUserObject objectForKey:@"userImage"];
                  NSData *theData = [theImage getData];
+                 profileImage.layer.masksToBounds = YES;
+                 profileImage.layer.cornerRadius = 25.0f;
                  profileImage.contentMode = UIViewContentModeScaleAspectFill;
                  profileImage.image = [UIImage imageWithData:theData];
                  

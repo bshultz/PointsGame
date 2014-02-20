@@ -59,7 +59,9 @@
             PFFile *userImageFile = currentUser[@"userImage"];
             [userImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                 if(!error){
-                profileImage.image = [UIImage imageWithData:data];
+                    profileImage.layer.masksToBounds = YES;
+                    profileImage.layer.cornerRadius = 25.0f;
+                    profileImage.image = [UIImage imageWithData:data];
                 }
             }];
         } else {
