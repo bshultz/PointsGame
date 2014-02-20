@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A15A97C18B6C4FA00CF1169 /* FacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A15A97B18B6C4FA00CF1169 /* FacebookViewController.m */; };
 		3A5A592E18AE8D1A0046F00B /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A592D18AE8D1A0046F00B /* FriendsViewController.m */; };
 		3A5A593118AEB2E00046F00B /* FriendsGroupDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A593018AEB2E00046F00B /* FriendsGroupDetailCell.m */; };
 		3A5A593318AEB6230046F00B /* addbutton.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3A5A593218AEB6230046F00B /* addbutton.jpeg */; };
@@ -53,6 +54,8 @@
 /* Begin PBXFileReference section */
 		03A8F29B83624CD0B44B30BC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F1CBA4AED6447B596F9C26C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		3A15A97A18B6C4FA00CF1169 /* FacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookViewController.h; sourceTree = "<group>"; };
+		3A15A97B18B6C4FA00CF1169 /* FacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookViewController.m; sourceTree = "<group>"; };
 		3A5A592C18AE8D1A0046F00B /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		3A5A592D18AE8D1A0046F00B /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		3A5A592F18AEB2E00046F00B /* FriendsGroupDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsGroupDetailCell.h; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 				3A9A37FF18A9267800F604F0 /* AppDelegate.h */,
 				3A9A380018A9267800F604F0 /* AppDelegate.m */,
 				3A9A380218A9267800F604F0 /* Main.storyboard */,
+				3A15A97A18B6C4FA00CF1169 /* FacebookViewController.h */,
+				3A15A97B18B6C4FA00CF1169 /* FacebookViewController.m */,
 				3A9A380518A9267800F604F0 /* ViewController.h */,
 				3A9A380618A9267800F604F0 /* ViewController.m */,
 				3A9A380818A9267800F604F0 /* Images.xcassets */,
@@ -450,6 +455,7 @@
 				3A99E1B018B50AB800C9BB55 /* NewsfeedCell.m in Sources */,
 				3A5A593118AEB2E00046F00B /* FriendsGroupDetailCell.m in Sources */,
 				D1AA2CF918B454300053E8CB /* NotificationTableViewCell.m in Sources */,
+				3A15A97C18B6C4FA00CF1169 /* FacebookViewController.m in Sources */,
 				3A9A380118A9267800F604F0 /* AppDelegate.m in Sources */,
 				3AFE993A18A9432C00D3D9EE /* CreateGroupViewController.m in Sources */,
 				3A9A37FD18A9267800F604F0 /* main.m in Sources */,
@@ -568,7 +574,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Matthew Graham (54GA323Y2J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matthew Graham (54GA323Y2J)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -596,6 +603,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Sidreddy/Desktop/FacebookSDK,
+					/Users/McMurdo1/Documents/MyApplications/PointsGame,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Points/Points-Prefix.pch";
@@ -612,11 +620,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Matthew Graham (54GA323Y2J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matthew Graham (54GA323Y2J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Sidreddy/Desktop/FacebookSDK,
+					/Users/McMurdo1/Documents/MyApplications/PointsGame,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Points/Points-Prefix.pch";

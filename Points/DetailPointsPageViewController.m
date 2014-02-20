@@ -13,11 +13,10 @@
 {
     //instance variables
     PFQuery *query;
-    NSMutableArray *usersGroups;
-    NSMutableArray *transactions;
-    NSMutableArray *from;
-    NSMutableArray *to;
-    NSMutableArray *objectIDs;
+    NSMutableArray *fromUsers;
+    NSMutableArray *comments;
+    NSMutableArray *timeStamps;
+
     
 
     __weak IBOutlet UITableView *detailPointsTableView;
@@ -33,42 +32,50 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-//    [self getGroups];
-    [self getTransactions];
     NSLog(@"username: %@", self.userName);
     NSLog(@"groupname: %@", self.groupName);
+    [self getPointDetail];
+
 }
 
 
 
 
--(void)getTransactions
+-(void)getPointDetail
 {
-    query = [PFQuery queryWithClassName:@"Transaction"];
-    query.limit = 25;
+    query = [PFQuery queryWithClassName:@"Point"];
     [query orderByDescending:@"createdAt"];
-
-//    [query whereKey:@"toUser" equalTo:self.userName];
+    [query whereKey:@"group" equalTo:self.groupName];
+    [query includeKey:@"fromUser"];
+    [query includeKey:@"toUser"];
+    PFQuery *toUserQuery = [PFQuery queryWithClassName:@"User"];
+    [toUserQuery whereKey:@"objectId" equalTo:self.userName];
     
-//    [query whereKey:@"groupId" equalTo:self.groupName];
+
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
-         transactions = [NSMutableArray new];
-         from = [NSMutableArray new];
-         to = [NSMutableArray new];
-         objectIDs = [NSMutableArray new];
-         for (PFObject *object in objects)
+         if (!error)
          {
-             if (object)
+             fromUsers = [NSMutableArray new];
+             comments = [NSMutableArray new];
+             timeStamps = [NSMutableArray new];
+             for (PFObject *object in objects)
              {
-                 [transactions addObject:object];
-                 [from addObject:[object objectForKey:@"fromUser"]];
-                 [to addObject:[object objectForKey:@"toUser"]];
-                 [objectIDs addObject:object.objectId];
-                 NSLog(@"%@", object);
+                 PFObject *toUser = [object objectForKey:@"toUser"];
+                 if ([toUser.objectId isEqualToString:self.userName])
+                 {
+                     PFObject *fromUser = [object objectForKey:@"fromUser"];
+                     [fromUsers addObject:[fromUser objectForKey:@"fullName"]];
+                     [timeStamps addObject:object.createdAt];
+                     [comments addObject:[object objectForKey:@"comment"]];
+                     [detailPointsTableView reloadData];
+                 }
              }
          }
-         [detailPointsTableView reloadData];
+         else
+         {
+             NSLog(@"Error: %@", error);
+         }
      }];
 }
 
@@ -77,21 +84,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return transactions.count;
+    return comments.count;
     
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    PFObject *object;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsCommentsCell"];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }    
-        object = transactions[indexPath.row];
-    cell.textLabel.text = object[@"action"];
+    cell.textLabel.text = [comments objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [fromUsers objectAtIndex:indexPath.row];
+    
     return cell;
     
 }

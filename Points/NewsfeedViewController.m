@@ -22,6 +22,7 @@
     NSMutableArray *objectIDs;
     NSMutableArray *usersGroups;
     NSMutableArray *pointId;
+    NSArray *permissions;
     PFQuery *query;
     
     
@@ -34,7 +35,17 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+//    [super viewDidLoad];
+//    [PFFacebookUtils logInWithPermissions:permissions block:^(PFUser *user, NSError *error) {
+//        if (!user) {
+//            NSLog(@"Uh oh. The user cancelled the Facebook login.");
+//        } else if (user.isNew) {
+//            NSLog(@"User signed up and logged in through Facebook!");
+//        } else {
+//            NSLog(@"User logged in through Facebook!");
+//        }
+//    }];
+    
     self.navigationController.title = @"PointBank";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
@@ -47,7 +58,9 @@
 -(void)viewDidAppear:(BOOL)animated
 
 {
+    
     [super viewDidAppear:YES];
+    permissions = [NSArray arrayWithObjects:@"read_friendlists", @"basic_info" , nil];
     [self getGroups];
 }
 
@@ -249,6 +262,10 @@
         ndvc.pointId = [pointId objectAtIndex:indexPath.row];
     }
 }
+
+
+
+
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
