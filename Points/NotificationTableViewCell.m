@@ -49,6 +49,30 @@
     // if the first step succeeds, the second step is to add the group to the 'myGroups" relation of the user object"
     // if the second step succeeds, the next step is to delete the invite object
 
+   PFRelation *relation = [self.group relationForKey:@"members"];
+    [relation addObject:currentUser];
+    [self.group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if(error){
+         NSLog (@"%@ %@", error, [error userInfo]);
+        } else {
+            PFRelation *relation = [currentUser relationForKey:@"myGroups"];
+             [relation addObject:self.group];
+             [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                 if (error){
+                    NSLog (@"%@ %@", error, [error userInfo]);
+                 } else {
+                     [self.invite deleteInBackground];
+                     
+                 }
+             }];
+
+        }
+    }];
+
+
+
+
+/*
     PFQuery *query = [PFQuery queryWithClassName:@"Group"];
     [query whereKey:@"objectId" equalTo:self.group.objectId];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
@@ -88,10 +112,10 @@
     }];
 
 
-
+*/
 }
 
-- (void) doNotAddPersonToGroups {
+- (void) doNotAddPersonToGroup {
 
     PFQuery *query = [PFQuery queryWithClassName:@"invite"];
     [query whereKey:@"objectId" equalTo:self.invite.objectId];

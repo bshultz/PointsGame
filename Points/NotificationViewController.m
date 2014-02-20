@@ -45,6 +45,8 @@
     PFQuery *query = [PFQuery queryWithClassName:@"invite"];
 
     [query includeKey:@"toUser"];
+    [query includeKey:@"fromUser"];
+    
     [query whereKey:@"toUser" equalTo:currentUser];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
@@ -87,6 +89,7 @@
 
     PFQuery *userQuery = [PFUser query];
     [userQuery whereKey:@"objectId" equalTo:user.objectId];
+    [userQuery includeKey:@"fromUser"];
     [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (error){
             NSLog (@"%@ %@", error, [error userInfo]);
