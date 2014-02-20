@@ -9,7 +9,7 @@
 #import "DetailPointsPageViewController.h"
 #import "Parse/Parse.h"
 
-@interface DetailPointsPageViewController ()
+@interface DetailPointsPageViewController ()  <UITableViewDataSource, UITableViewDelegate>
 {
     //instance variables
     PFQuery *query;
@@ -33,41 +33,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self getGroups];
-    NSLog(@"%@", self.userName);
+//    [self getGroups];
+    [self getTransactions];
+    NSLog(@"username: %@", self.userName);
+    NSLog(@"groupname: %@", self.groupName);
 }
 
 
--(void)getGroups
-{
-    PFRelation *relation = [[PFUser currentUser] relationForKey:@"myGroups"];
-    PFQuery *userQuery = [relation query];
-    
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
-         if (!error)
-         {
-             usersGroups = [NSMutableArray new];
-             for (PFObject *object in objects)
-             {
-                 [usersGroups addObject:object.objectId];
-                 NSLog(@"My Groups are %@", usersGroups);
-                 [self getTransactions];
-             }
-         }
-     }];
-}
+
 
 -(void)getTransactions
 {
     query = [PFQuery queryWithClassName:@"Transaction"];
     query.limit = 25;
     [query orderByDescending:@"createdAt"];
-    [query includeKey:@"fromUser"];
-    [query includeKey:@"toUser"];
-    [query whereKey:@"toUser" equalTo:self.userName];
+
+//    [query whereKey:@"toUser" equalTo:self.userName];
     
-    [query whereKey:@"groupId" equalTo:self.groupName];
+//    [query whereKey:@"groupId" equalTo:self.groupName];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
      {
          transactions = [NSMutableArray new];
@@ -82,6 +65,7 @@
                  [from addObject:[object objectForKey:@"fromUser"]];
                  [to addObject:[object objectForKey:@"toUser"]];
                  [objectIDs addObject:object.objectId];
+                 NSLog(@"%@", object);
              }
          }
          [detailPointsTableView reloadData];
@@ -98,21 +82,16 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     PFObject *object;
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }
-    
-  
-        
-
+    }    
         object = transactions[indexPath.row];
-        
-    
-    cell.textLabel.text = object[@"name"];
+    cell.textLabel.text = object[@"action"];
     return cell;
     
 }

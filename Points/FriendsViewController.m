@@ -33,9 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-
-
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -142,6 +139,7 @@
     pointVC.fromUserObjectID = [PFUser currentUser].objectId;
     pointVC.friendName = [friends objectAtIndex:indexPath.row];
     pointVC.groupID = self.groupID;
+    pointVC.profileImage = cell.profileImage;
     
     [self.navigationController presentViewController:pointVC animated:YES completion:nil];
 }
