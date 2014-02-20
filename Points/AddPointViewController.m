@@ -114,6 +114,7 @@
     transaction[@"toUser"] = [toQuery getObjectWithId:self.toUserObjectID error:nil];
     transaction[@"action"] = @"Point Awarded";
     transaction[@"groupId"] = self.groupID;
+    transaction[@"pointId"] = point.objectId;
     
     [transaction saveInBackground];
     

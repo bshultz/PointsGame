@@ -12,6 +12,7 @@
 #import "Parse/Parse.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "NewsfeedCell.h"
+#import "NewsfeedDetailViewController.h"
 
 @interface NewsfeedViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -20,6 +21,7 @@
     NSMutableArray *to;
     NSMutableArray *objectIDs;
     NSMutableArray *usersGroups;
+    NSMutableArray *pointId;
     PFQuery *query;
     
     
@@ -42,16 +44,11 @@
     [newsfeedTableView setSeparatorInset:UIEdgeInsetsZero];
 }
 
-
-
-
 -(void)viewDidAppear:(BOOL)animated
 
 {
     [super viewDidAppear:YES];
     [self getGroups];
-
-
 }
 
 #pragma mark Get the User's Groups
@@ -92,6 +89,7 @@
          from = [NSMutableArray new];
          to = [NSMutableArray new];
          objectIDs = [NSMutableArray new];
+         pointId = [NSMutableArray new];
          for (PFObject *object in objects)
          {
              if (object)
@@ -99,6 +97,7 @@
                  [transactions addObject:object];
                  [from addObject:[object objectForKey:@"fromUser"]];
                  [to addObject:[object objectForKey:@"toUser"]];
+                 [pointId addObject:[object objectForKey:@"pointId"]];
                  [objectIDs addObject:object.objectId];
              }
          }
@@ -208,9 +207,22 @@
     return transactions.count;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NewsfeedCell *cell = [newsfeedTableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"NewsfeedDetail" sender:cell];
+}
 
-
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"NewsfeedDetail"])
+    {
+        NewsfeedDetailViewController *ndvc = segue.destinationViewController;
+        NSIndexPath *indexPath = [newsfeedTableView indexPathForSelectedRow];
+        NewsfeedCell *cell = [newsfeedTableView cellForRowAtIndexPath:indexPath];
+        ndvc.pointId = [pointId objectAtIndex:indexPath.row];
+    }
+}
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user

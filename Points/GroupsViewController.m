@@ -111,6 +111,7 @@
          object = self.arrayOfAllTheUsersGroups[indexPath.row];
         
     }
+    cell.textLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
     cell.textLabel.text = object[@"name"];
     return cell;
 
