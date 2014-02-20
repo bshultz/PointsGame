@@ -196,6 +196,16 @@
 
 - (void) gettingFacebookFriends : (id) sender {
 
+    // finding out which facebook friends have the app and which dont
+
+    NSMutableArray *arrayWithFacebookIDs = currentUser[@"facebookFriends"];
+    NSMutableArray *arrayWithFacebookNames = currentUser[@"facebookFriendNames"];
+
+    
+
+
+
+
 //    [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
 //        NSDictionary *friends = result;
 //        NSLog(@"friends = %@", friends);
