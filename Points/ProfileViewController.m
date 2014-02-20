@@ -46,7 +46,6 @@
             NSLog(@"currentUser object: %@", currentUser);
             NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
 
-            
             usernameLabel.text = currentUser[@"fullName"];
             emailLabel.text = currentUser[@"email"];
             pointsAvailableLabel.text = [NSString stringWithFormat:@"%@", currentUser[@"pointsAvailable"]]  ;
