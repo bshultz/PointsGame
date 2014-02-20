@@ -17,7 +17,7 @@
     __weak IBOutlet UILabel *emailLabel;
     __weak IBOutlet UILabel *pointsAvailableLabel;
     __weak IBOutlet UILabel *pointsAvailableStatic;
-    
+        PFUser *currentUser;
 
     NSData *imageData;
 }
@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     [self currentUser];
+    [self getAggregateScoreForUser];
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
@@ -42,7 +43,7 @@
 -(void)currentUser
 {
     
-    PFUser *currentUser = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
         if (currentUser) {
             //there is a current user object
             NSLog(@"currentUser object: %@", currentUser);
@@ -93,6 +94,23 @@
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+-(void)getAggregateScoreForUser
+{
+    NSLog(@"currentUserID: %@", [currentUser objectForKey:@"uniqueFacebookID"]);
+    PFQuery *query = [PFQuery queryWithClassName:@"Point"];
+    [query includeKey:@"toUser"];
+    [query whereKey:@"uniqueFacebookID" equalTo:[currentUser objectForKey:@"uniqueFacebookID"]];
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+        if (!error) {
+            // The count request succeeded. Log the count
+            NSLog(@"You have %d points", count);
+        } else {
+            // The request failed
+        }
+    }];
 }
 
 

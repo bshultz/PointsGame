@@ -136,7 +136,10 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    if ([commentTextView.text isEqualToString:@"Add comment..."]) { commentTextView.text = @"";}
+    if ([commentTextView.text isEqualToString:@"Add comment..."])
+    {
+        commentTextView.text = @"";
+    }
 }
 
 
