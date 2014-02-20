@@ -159,6 +159,7 @@
                 
                 NSDictionary *userData = (NSDictionary *)result;
                 NSString *facebookID = userData[@"id"];
+
                 NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
                 
                 
@@ -174,11 +175,36 @@
                     if (error){
                         NSLog (@"%@ %@", error, [error userInfo]);
                         
+                    } else {
+                        // get the users friends information
+                        [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                            if(!error){
+                                NSArray *data = [result objectForKey:@"data"];
+                                NSLog(@"data = %@", data);
+                                NSMutableArray *names = [[NSMutableArray alloc]initWithCapacity:data.count];
+                                NSMutableArray *facebookIDs = [[NSMutableArray alloc]initWithCapacity:data.count];
+                                for (NSDictionary *friendData in data){
+                                    [facebookIDs addObject:friendData[@"id"]];
+                                    [names addObject:friendData[@"name"]];
+
+                                }
+                                [currentUser setObject:names forKey:@"facebookFriendNames"];
+                                [currentUser setObject:facebookIDs forKey:@"facebookFriends"];
+                                [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                    if (error){
+                                        NSLog (@"%@ %@", error, [error userInfo]);
+
+                                    }
+                                }];
+
+                            }
+                        }];
                     }
                     
                 }];
             }
         }];
+
     
 }
 
