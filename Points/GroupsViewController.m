@@ -71,7 +71,9 @@
 
     PFUser *currentUser = [PFUser currentUser];
     PFRelation *relation = [currentUser relationForKey:@"myGroups"];
-    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    PFQuery *query = [relation query];
+    [query orderByAscending:@"name"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error){
             NSLog (@"%@ %@", error, [error userInfo]);
         } else {

@@ -43,8 +43,13 @@
     
     friendNameLabel.text = self.friendName;
     userProfileImage.contentMode = UIViewContentModeScaleAspectFill;
+    userProfileImage.layer.masksToBounds = YES;
+    userProfileImage.layer.cornerRadius = 25.0f;
     userProfileImage.image = self.profileImage.image;
     // Get the number of points the user has available
+    
+    commentTextView.layer.masksToBounds = YES;
+    commentTextView.layer.cornerRadius = 5.0f;
     
     PFUser *currentUser = [PFUser currentUser];
 //    Artifically set the number of points the user has avaiable. Uncomment if necessay for testing.

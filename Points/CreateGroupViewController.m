@@ -119,13 +119,13 @@
     } else {
         //
 
-    groupTextField = [[UITextField alloc] initWithFrame:CGRectMake(30.0f, 68.0f, 260.0f, 30.0f)];
+    groupTextField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 75.0f, 240.0f, 30.0f)];
     groupTextField.placeholder = @"Group Name";
     groupTextField.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:23.0f];
     [groupTextField setBorderStyle:UITextBorderStyleRoundedRect];
-    addButton = [[UIButton alloc] initWithFrame:CGRectMake(250.0f, 105.0f, 40.0f, 30.0f)];
+    addButton = [[UIButton alloc] initWithFrame:CGRectMake(270.0f, 75.0f, 40.0f, 30.0f)];
     [addButton setTitle:@"Add" forState:UIControlStateNormal];
-    [addButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [addButton setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
     
     [self.view addSubview:groupTextField];
     [self.view addSubview:addButton];
@@ -275,41 +275,20 @@
     cell.group = group;
     cell.stringContainingUserID = object[@"uniqueID"];
     cell.currentUser = currentUser;
-    
-   cell.textfield.text = object[@"name"];
+    cell.textfield.text = object[@"name"];
     if ([object[@"number"]isEqualToString:@"1"]){
         // this person already has an account
-        [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
         [cell.buttonWithTextToAddOrInvite setTitle:@"Add" forState:UIControlStateNormal];
     } else if ([object[@"number"]isEqualToString:@"2"]) {
         // this person does not have an account
         [cell.buttonWithTextToAddOrInvite setTitle:@"Invite" forState:UIControlStateNormal];
-        [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
        
         [cell sizeToFit];
         [cell bringSubviewToFront:cell.buttonWithTextToAddOrInvite];
     }
-    
-    
-    
-    
-//    if (tableView == tableViewWithPeopleWhoDontHaveAnAcoount){
-//        
-//        id <FBGraphUser> user = arrayWithFriendsWhoDontHaveAnAccount[indexPath.row];
-//        cell.textLabel.text = user.name;
-//        return cell;
-//        
-//        
-//        
-//        
-//    } else if (tableView == tableViewWithPeopleWhoHaveAnAccount){
-//        
-//        id <FBGraphUser> user = arrayWithFriendsWhoHaveAnAccount[indexPath.row];
-//        cell.textLabel.text = user.name;
-//        return cell;
-//
-//        
-//    }
+
 
     return cell;
     
