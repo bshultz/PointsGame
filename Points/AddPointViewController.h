@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface AddPointViewController : ViewController
+@interface AddPointViewController : ViewController <UITextViewDelegate>
 @property NSString *friendName;
 @property NSString *toUserObjectID;
 @property NSString *fromUserObjectID;

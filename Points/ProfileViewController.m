@@ -96,4 +96,19 @@
 }
 
 
+-(void)getAggregateScoreForUser
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Point"];
+    [query whereKey:@"toUser" equalTo:@"Sean Plott"];
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+        if (!error) {
+            // The count request succeeded. Log the count
+            NSLog(@"Sean has played %d games", count);
+        } else {
+            // The request failed
+        }
+    }];
+}
+
+
 @end
