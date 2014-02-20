@@ -10,7 +10,7 @@
 #import "Parse/Parse.h"
 #import "FriendsViewController.h"
 
-@interface AddPointViewController () <UIAlertViewDelegate>
+@interface AddPointViewController () <UIAlertViewDelegate, UITextViewDelegate>
 {
     __weak IBOutlet UILabel *friendNameLabel;
     __weak IBOutlet UITextView *commentTextView;
@@ -48,7 +48,7 @@
     
     PFUser *currentUser = [PFUser currentUser];
 //    Artifically set the number of points the user has avaiable. Uncomment if necessay for testing.
-    currentUser[@"pointsAvailable"] = @250;
+//    currentUser[@"pointsAvailable"] = @250;
 //    [currentUser saveInBackground];
     pointsAvailable = (NSNumber *)[currentUser objectForKey:@"pointsAvailable"];
 }
@@ -127,6 +127,11 @@
 - (IBAction)onCancelButtonPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if ([commentTextView.text isEqualToString:@"Add comment..."]) { commentTextView.text = @"";}
 }
 
 
