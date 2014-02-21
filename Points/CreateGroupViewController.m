@@ -26,7 +26,13 @@
     NSMutableArray *arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons;
     NSMutableArray *arrayWithFriendsWhoHaveAnAccount;
     NSMutableArray *arrayWithFriendsWhoDontHaveAnAccount;
+    NSMutableArray *arrayOFFacebookIdsOfFriendsWhoHaveAnAccount;
+    NSMutableArray *arrayOFFacebookIdsOfFriendsWhoDontHaveAnAccount;
     NSMutableArray *finalArrayToDisplayInTheCells;
+
+
+
+
     
     
     IBOutlet UITableView *tableViewContaingFriends;
@@ -59,6 +65,8 @@
 
     arrayWithFriendsWhoDontHaveAnAccount = [NSMutableArray new];
     arrayWithFriendsWhoHaveAnAccount = [NSMutableArray new];
+    arrayOFFacebookIdsOfFriendsWhoDontHaveAnAccount = [NSMutableArray new];
+    arrayOFFacebookIdsOfFriendsWhoHaveAnAccount = [NSMutableArray new];
     
     if (arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons.count != 0){
         // tableViews do not show up because the number of cells will be zero
@@ -201,6 +209,73 @@
     NSMutableArray *arrayWithFacebookIDs = currentUser[@"facebookFriends"];
     NSMutableArray *arrayWithFacebookNames = currentUser[@"facebookFriendNames"];
 
+
+    // array of dictionaries
+    NSMutableArray *array = [NSMutableArray new];
+
+
+    PFQuery *query = [PFUser query];
+    __block NSArray *arrayOFPFUsers;
+
+
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error){
+
+        } else {
+
+    // if the query is succesful, create array of dictinaries and also create two seperate arrays for friends who have an account and for those who do not
+//            for (int i = 0; i < arrayWithFacebookIDs.count; i++){
+
+//                // create the dictinaries
+//                NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+//
+//                [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
+//                [dict setObject:arrayWithFacebookNames[i] forKey:@"names"];
+//                [array addObject:dict];
+
+                // populate the two different arrays
+                // the query returns PFObjects, but i need to crete an array containig the facebookId's of the PFObjects
+                NSMutableArray *arrayWithMyFacebookId = [NSMutableArray new];
+                arrayOFPFUsers = objects;
+                for (int i = 0; i < arrayOFPFUsers.count; i++) {
+                    PFUser *user = arrayOFPFUsers[i];
+                    [arrayWithMyFacebookId addObject:user[@"uniqueFacebookID"]];
+
+                }
+                for (int i = 0; i < arrayWithFacebookIDs.count; i++){
+
+                    if ([arrayWithMyFacebookId containsObject:arrayWithFacebookIDs[i]]){
+                        NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+                        [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
+                        [dict setObject:arrayWithFacebookNames[i] forKey:@"name"];
+                        [dict setObject:@"yes" forKey:@"InTheGroup"];
+                        [arrayWithFriendsWhoHaveAnAccount addObject:dict];
+
+                    } else {
+                        NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+                        [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
+                        [dict setObject:arrayWithFacebookNames[i] forKey:@"name"];
+                        [dict setObject:@"no" forKey:@"InTheGroup"];
+                        [arrayWithFriendsWhoDontHaveAnAccount addObject:dict];
+
+                    }
+
+                }
+                [finalArrayToDisplayInTheCells addObject: arrayWithFriendsWhoHaveAnAccount];
+                [finalArrayToDisplayInTheCells addObject: arrayWithFriendsWhoDontHaveAnAccount];
+                [tableViewContaingFriends reloadData];
+
+
+
+
+
+
+
+
+
+        }
+    }];
+
     
 
 
@@ -256,13 +331,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-//    if (tableView == tableViewWithPeopleWhoDontHaveAnAcoount){
-//        
-//        return arrayWithFriendsWhoDontHaveAnAccount.count;
-//        
-//    } else if (tableView == tableViewWithPeopleWhoHaveAnAccount){
-//        return arrayWithFriendsWhoHaveAnAccount.count;
-//    }
+
     return finalArrayToDisplayInTheCells.count;
     
 }
@@ -276,11 +345,11 @@
     cell.stringContainingUserID = object[@"uniqueID"];
     cell.currentUser = currentUser;
     cell.textfield.text = object[@"name"];
-    if ([object[@"number"]isEqualToString:@"1"]){
+    if ([object[@"InTheGroup"]isEqualToString:@"yes"]){
         // this person already has an account
         [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
         [cell.buttonWithTextToAddOrInvite setTitle:@"Add" forState:UIControlStateNormal];
-    } else if ([object[@"number"]isEqualToString:@"2"]) {
+    } else if ([object[@"InTheGroup"]isEqualToString:@"no"]) {
         // this person does not have an account
         [cell.buttonWithTextToAddOrInvite setTitle:@"Invite" forState:UIControlStateNormal];
         [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];

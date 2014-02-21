@@ -24,7 +24,7 @@
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width/2)), 250);
     [self.view addSubview:loginView];
-    loginView.readPermissions = @[@"user_about_me", @"email", @"user_relationships"];
+    loginView.readPermissions = @[@"user_about_me", @"email", @"user_relationships", @"read_insights", @"publish_actions"];;
     
     [PFFacebookUtils logInWithPermissions:loginView.readPermissions block:^(PFUser *user, NSError *error) {
         if (!user) {
