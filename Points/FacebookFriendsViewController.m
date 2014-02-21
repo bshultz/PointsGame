@@ -42,6 +42,10 @@
     arrayWithFriendsWhoDontHaveAnAccount = [NSMutableArray new];
     arrayWithFriendsWhoHaveAnAccount = [NSMutableArray new];
     finalArrayToDisplayInTheCells = [NSArray new];
+    
+    tableViewContainingFriends.separatorColor = [UIColor colorWithRed:0.05f green:0.345f blue:0.65f alpha:0.5f];
+    tableViewContainingFriends.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    [tableViewContainingFriends setSeparatorInset:UIEdgeInsetsZero];
    
 }
 

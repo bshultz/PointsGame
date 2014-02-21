@@ -34,6 +34,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    friendsTableView.separatorColor = [UIColor colorWithRed:0.05f green:0.345f blue:0.65f alpha:0.5f];
+    friendsTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    [friendsTableView setSeparatorInset:UIEdgeInsetsZero];
 }
 
 -(void)viewWillAppear:(BOOL)animated
