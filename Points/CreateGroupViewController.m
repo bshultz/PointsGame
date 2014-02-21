@@ -197,8 +197,9 @@
         [groupTextField resignFirstResponder];
     }
 
+   // [self gettingFacebookFriends:sender];
     [self performSegueWithIdentifier:@"FacebookFriends" sender:self];
-    [self gettingFacebookFriends:sender];
+
 }
 
 - (void) gettingFacebookFriends : (id) sender {
@@ -288,42 +289,42 @@
     
     // FBSample logic
     // if the session is open, then load the data for our view controller
-    if (!FBSession.activeSession.isOpen) {
-        // if the session is closed, then we open it here, and establish a handler for state changes
-        [FBSession openActiveSessionWithReadPermissions:nil
-                                           allowLoginUI:YES
-                                      completionHandler:^(FBSession *session,
-                                                          FBSessionState state,
-                                                          NSError *error) {
-                                          if (error) {
-                                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                                                  message:error.localizedDescription
-                                                                                                 delegate:nil
-                                                                                        cancelButtonTitle:@"OK"
-                                                                                        otherButtonTitles:nil];
-                                              [alertView show];
-                                          } else if (session.isOpen) {
-                                              [self onAddButtonPressed:sender];
-                                          }
-                                      }];
-        return;
-    }
-    
-    if (self.friendPickerController == nil) {
-        // Create friend picker, and get data loaded into it.
-        self.friendPickerController = [[FBFriendPickerViewController alloc] init];
-        self.friendPickerController.title = @"Pick Friends";
-        self.friendPickerController.delegate = self;
-        NSSet *fields = [NSSet setWithObjects:@"installed", nil];
-        self.friendPickerController.fieldsForRequest = fields;
-    }
-    
-    [self.friendPickerController loadData];
-    [self.friendPickerController clearSelection];
-    
-    [self presentViewController:self.friendPickerController animated:YES completion:nil];
-
-
+//    if (!FBSession.activeSession.isOpen) {
+//        // if the session is closed, then we open it here, and establish a handler for state changes
+//        [FBSession openActiveSessionWithReadPermissions:nil
+//                                           allowLoginUI:YES
+//                                      completionHandler:^(FBSession *session,
+//                                                          FBSessionState state,
+//                                                          NSError *error) {
+//                                          if (error) {
+//                                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+//                                                                                                  message:error.localizedDescription
+//                                                                                                 delegate:nil
+//                                                                                        cancelButtonTitle:@"OK"
+//                                                                                        otherButtonTitles:nil];
+//                                              [alertView show];
+//                                          } else if (session.isOpen) {
+//                                              [self onAddButtonPressed:sender];
+//                                          }
+//                                      }];
+//        return;
+//    }
+//    
+//    if (self.friendPickerController == nil) {
+//        // Create friend picker, and get data loaded into it.
+//        self.friendPickerController = [[FBFriendPickerViewController alloc] init];
+//        self.friendPickerController.title = @"Pick Friends";
+//        self.friendPickerController.delegate = self;
+//        NSSet *fields = [NSSet setWithObjects:@"installed", nil];
+//        self.friendPickerController.fieldsForRequest = fields;
+//    }
+//    
+//    [self.friendPickerController loadData];
+//    [self.friendPickerController clearSelection];
+//    
+//    [self presentViewController:self.friendPickerController animated:YES completion:nil];
+//
+//
 }
 
 #pragma mark- TableView Delegate methods 
