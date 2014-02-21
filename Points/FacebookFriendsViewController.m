@@ -7,35 +7,76 @@
 //
 
 #import "FacebookFriendsViewController.h"
+#import "NewTableViewCell.h"
+#import "Parse/Parse.h"
 
-@interface FacebookFriendsViewController (){
+@interface FacebookFriendsViewController () <UITableViewDataSource, UITableViewDelegate>
+{
 
     IBOutlet UITableView *tableViewContainingFriends;
+
+    NSMutableArray *arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons;
+    NSMutableArray *arrayWithFriendsWhoHaveAnAccount;
+    NSMutableArray *arrayWithFriendsWhoDontHaveAnAccount;
+
+     NSMutableArray *finalArrayToDisplayInTheCells;
+
+    PFObject *group;
+     PFUser *currentUser;
+
 }
 
 @end
 
 @implementation FacebookFriendsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+     currentUser = [PFUser currentUser];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
+
+    id object = finalArrayToDisplayInTheCells[indexPath.row];
+    cell.group = group;
+    cell.stringContainingUserID = object[@"uniqueID"];
+    cell.currentUser = currentUser;
+    cell.textfield.text = object[@"name"];
+    if ([object[@"InTheGroup"]isEqualToString:@"yes"]){
+        // this person already has an account
+        [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
+        [cell.buttonWithTextToAddOrInvite setTitle:@"Add" forState:UIControlStateNormal];
+    } else if ([object[@"InTheGroup"]isEqualToString:@"no"]) {
+        // this person does not have an account
+        [cell.buttonWithTextToAddOrInvite setTitle:@"Invite" forState:UIControlStateNormal];
+        [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
+
+        [cell sizeToFit];
+        [cell bringSubviewToFront:cell.buttonWithTextToAddOrInvite];
+    }
+
+
+    return cell;
+    
+}
+
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+    return finalArrayToDisplayInTheCells.count;
+}
+
 
 @end

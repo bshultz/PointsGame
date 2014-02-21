@@ -26,8 +26,7 @@
     NSMutableArray *arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons;
     NSMutableArray *arrayWithFriendsWhoHaveAnAccount;
     NSMutableArray *arrayWithFriendsWhoDontHaveAnAccount;
-    NSMutableArray *arrayOFFacebookIdsOfFriendsWhoHaveAnAccount;
-    NSMutableArray *arrayOFFacebookIdsOfFriendsWhoDontHaveAnAccount;
+
     NSMutableArray *finalArrayToDisplayInTheCells;
 
 
@@ -65,8 +64,7 @@
 
     arrayWithFriendsWhoDontHaveAnAccount = [NSMutableArray new];
     arrayWithFriendsWhoHaveAnAccount = [NSMutableArray new];
-    arrayOFFacebookIdsOfFriendsWhoDontHaveAnAccount = [NSMutableArray new];
-    arrayOFFacebookIdsOfFriendsWhoHaveAnAccount = [NSMutableArray new];
+    
     
     if (arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons.count != 0){
         // tableViews do not show up because the number of cells will be zero
