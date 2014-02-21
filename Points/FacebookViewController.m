@@ -7,7 +7,9 @@
 //
 
 #import "FacebookViewController.h"
+#import "Parse/Parse.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "NewsfeedViewController.h"
 
 @interface FacebookViewController ()
 
@@ -23,7 +25,21 @@
     loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width/2)), 250);
     [self.view addSubview:loginView];
     loginView.readPermissions = @[@"user_about_me", @"email", @"user_relationships"];
+    
+    [PFFacebookUtils logInWithPermissions:loginView.readPermissions block:^(PFUser *user, NSError *error) {
+        if (!user) {
+            NSLog(@"Uh oh. The user cancelled the Facebook login.");
+        } else if (user.isNew) {
+            NSLog(@"User signed up and logged in through Facebook!");
+        } else {
+            NSLog(@"User logged in through Facebook!");
+                     
+            [self performSegueWithIdentifier:@"FacebookSegue" sender:self];
+        }
+    }];
 }
+
+
 
 
 @end

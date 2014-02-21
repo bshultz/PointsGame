@@ -32,10 +32,10 @@
         [self.contentView addSubview:points];
     
         addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        addButton.frame = CGRectMake(280.0f, 10.0f, 150.0f, 150.0f);
+        addButton.frame = CGRectMake(280.0f, 0.0f, 150.0f, 150.0f);
         
         CGRect buttonFrame = addButton.frame;
-        buttonFrame.size = CGSizeMake(45.0f, 45.0f);
+        buttonFrame.size = CGSizeMake(45.0f, 35.0f);
         addButton.frame = buttonFrame;
         addButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.contentView addSubview:addButton];

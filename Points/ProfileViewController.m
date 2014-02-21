@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "Parse/Parse.h"
+#import "FacebookViewController.h"
 
 @interface ProfileViewController () <NSURLConnectionDataDelegate>
 {
@@ -75,9 +76,12 @@
 - (IBAction)onLogoutButtonPressed:(id)sender
 {
     [PFUser logOut];
-    int index = 0;
-    self.tabBarController.selectedIndex = index;
-    [self.tabBarController.viewControllers[index] popToRootViewControllerAnimated:NO];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FacebookViewController *fbvc = [storyboard instantiateViewControllerWithIdentifier:@"FacebookViewController"];
+    [self.navigationController presentViewController:fbvc animated:YES completion:nil];
+//    int index = 0;
+//    self.tabBarController.selectedIndex = index;
+//    [self.tabBarController.viewControllers[index] popToRootViewControllerAnimated:NO];
     NSLog(@"Current user logged in is %@", [PFUser currentUser]);
 }
 
