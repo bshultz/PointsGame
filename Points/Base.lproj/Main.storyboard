@@ -168,6 +168,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4L-nl-X7l">
+                                <rect key="frame" x="258" y="342" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -184,6 +190,8 @@
                         <outlet property="pointsAvailableLabel" destination="Q46-iR-4Qb" id="6If-B1-w30"/>
                         <outlet property="pointsAvailableStatic" destination="h22-No-26o" id="GZA-5e-VUI"/>
                         <outlet property="profileImage" destination="DT8-cV-JM7" id="tbd-OT-Ecd"/>
+                        <outlet property="totalPointsReceivedLabel" destination="k4L-nl-X7l" id="vea-Zc-gnl"/>
+                        <outlet property="totalPointsReceivedStatic" destination="fpe-Sj-LIE" id="62L-tN-AID"/>
                         <outlet property="usernameLabel" destination="iGz-J2-plj" id="T0s-rm-d9z"/>
                     </connections>
                 </viewController>
