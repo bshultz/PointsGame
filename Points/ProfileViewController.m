@@ -99,10 +99,11 @@
 
 -(void)getAggregateScoreForUser
 {
-    NSLog(@"currentUserID: %@", [currentUser objectForKey:@"uniqueFacebookID"]);
+    NSLog(@"uniqueFacebookID: %@", [currentUser objectForKey:@"uniqueFacebookID"]);
+    NSLog(@"uniqueFacebookIdentifier: %@", [currentUser objectForKey:@"uniqueFacebookIdentifier"]);
     PFQuery *query = [PFQuery queryWithClassName:@"Point"];
     [query includeKey:@"toUser"];
-    [query whereKey:@"uniqueFacebookID" equalTo:[currentUser objectForKey:@"uniqueFacebookID"]];
+    [query whereKey:@"uniqueFacebookIdentifier" equalTo:[currentUser objectForKey:@"uniqueFacebookIdentifier"]];
     [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
         if (!error) {
             // The count request succeeded. Log the count
