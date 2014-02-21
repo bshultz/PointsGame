@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parse/Parse.h"
 
 @interface FacebookFriendsViewController : UIViewController
 
+@property (nonatomic, strong) PFObject *group;;
 @end

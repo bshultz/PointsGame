@@ -11,6 +11,7 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import "NewTableViewCell.h"
+#import "FacebookFriendsViewController.h"
 
 
 @interface CreateGroupViewController () < UIAlertViewDelegate, FBFriendPickerDelegate, UITableViewDelegate, UITableViewDataSource>
@@ -202,6 +203,17 @@
 
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    FacebookFriendsViewController *vc = segue.destinationViewController;
+    vc.group = group;
+
+}
+
+
+
+
+
 - (void) gettingFacebookFriends : (id) sender {
 
     // finding out which facebook friends have the app and which dont
@@ -287,44 +299,6 @@
 //    }];
 
     
-    // FBSample logic
-    // if the session is open, then load the data for our view controller
-//    if (!FBSession.activeSession.isOpen) {
-//        // if the session is closed, then we open it here, and establish a handler for state changes
-//        [FBSession openActiveSessionWithReadPermissions:nil
-//                                           allowLoginUI:YES
-//                                      completionHandler:^(FBSession *session,
-//                                                          FBSessionState state,
-//                                                          NSError *error) {
-//                                          if (error) {
-//                                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-//                                                                                                  message:error.localizedDescription
-//                                                                                                 delegate:nil
-//                                                                                        cancelButtonTitle:@"OK"
-//                                                                                        otherButtonTitles:nil];
-//                                              [alertView show];
-//                                          } else if (session.isOpen) {
-//                                              [self onAddButtonPressed:sender];
-//                                          }
-//                                      }];
-//        return;
-//    }
-//    
-//    if (self.friendPickerController == nil) {
-//        // Create friend picker, and get data loaded into it.
-//        self.friendPickerController = [[FBFriendPickerViewController alloc] init];
-//        self.friendPickerController.title = @"Pick Friends";
-//        self.friendPickerController.delegate = self;
-//        NSSet *fields = [NSSet setWithObjects:@"installed", nil];
-//        self.friendPickerController.fieldsForRequest = fields;
-//    }
-//    
-//    [self.friendPickerController loadData];
-//    [self.friendPickerController clearSelection];
-//    
-//    [self presentViewController:self.friendPickerController animated:YES completion:nil];
-//
-//
 }
 
 #pragma mark- TableView Delegate methods 
@@ -342,7 +316,7 @@
     
     id object = finalArrayToDisplayInTheCells[indexPath.row];
     cell.group = group;
-    cell.stringContainingUserID = object[@"uniqueID"];
+    cell.stringContainingUserID = object[@"ids"];
     cell.currentUser = currentUser;
     cell.textfield.text = object[@"name"];
     if ([object[@"InTheGroup"]isEqualToString:@"yes"]){

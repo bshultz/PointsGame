@@ -21,7 +21,7 @@
 
      NSArray *finalArrayToDisplayInTheCells;
 
-    PFObject *group;
+    
      PFUser *currentUser;
 
 }
@@ -29,6 +29,8 @@
 @end
 
 @implementation FacebookFriendsViewController
+
+@synthesize group;
 
 
 - (void)viewDidLoad
@@ -136,8 +138,8 @@
     NewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
 
     id object = finalArrayToDisplayInTheCells[indexPath.row];
-    cell.group = group;
-    cell.stringContainingUserID = object[@"uniqueID"];
+    cell.group = self.group;
+    cell.stringContainingUserID = object[@"ids"];
     cell.currentUser = currentUser;
     cell.textfield.text = object[@"name"];
     if ([object[@"InTheGroup"]isEqualToString:@"yes"]){
