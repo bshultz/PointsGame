@@ -17,8 +17,6 @@
     NSMutableArray *comments;
     NSMutableArray *timeStamps;
 
-    
-
     __weak IBOutlet UITableView *detailPointsTableView;
 
 }
