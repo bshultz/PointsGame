@@ -42,7 +42,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Newsfeed" id="Aks-ng-PVr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="C6L-XF-Jhb">
+                        <barButtonItem key="rightBarButtonItem" title="Invites" id="C6L-XF-Jhb">
                             <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="OGT-7D-TS4" kind="push" identifier="NotificationSegue" id="Fvc-eh-1dn"/>
@@ -500,7 +500,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add comment..." translatesAutoresizingMaskIntoConstraints="NO" id="t2g-Lc-jor">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t2g-Lc-jor">
                                 <rect key="frame" x="25" y="274" width="275" height="164"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
