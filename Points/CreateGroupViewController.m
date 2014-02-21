@@ -198,7 +198,8 @@
         }];
         [groupTextField resignFirstResponder];
     }
-    
+
+    [self performSegueWithIdentifier:@"FacebookFriends" sender:self];
     [self gettingFacebookFriends:sender];
 }
 

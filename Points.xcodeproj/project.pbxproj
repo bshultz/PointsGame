@@ -35,6 +35,7 @@
 		D12D5EBD18AD444B00940381 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBC18AD444B00940381 /* AddressBook.framework */; };
 		D12D5EBF18AD445200940381 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBE18AD445200940381 /* AddressBookUI.framework */; };
 		D1378F3B18B2CBEA00CD5109 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */; };
+		D13B940618B7E1ED005441D9 /* FacebookFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D13B940518B7E1ED005441D9 /* FacebookFriendsViewController.m */; };
 		D1AA2CF618B42C820053E8CB /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA2CF518B42C820053E8CB /* NotificationViewController.m */; };
 		D1AA2CF918B454300053E8CB /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA2CF818B454300053E8CB /* NotificationTableViewCell.m */; };
 		E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */; };
@@ -96,6 +97,8 @@
 		D12D5EBE18AD445200940381 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		D1378F3918B2CBEA00CD5109 /* NewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTableViewCell.h; sourceTree = "<group>"; };
 		D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTableViewCell.m; sourceTree = "<group>"; };
+		D13B940418B7E1ED005441D9 /* FacebookFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookFriendsViewController.h; sourceTree = "<group>"; };
+		D13B940518B7E1ED005441D9 /* FacebookFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookFriendsViewController.m; sourceTree = "<group>"; };
 		D1AA2CF418B42C820053E8CB /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		D1AA2CF518B42C820053E8CB /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		D1AA2CF718B454300053E8CB /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
@@ -278,6 +281,8 @@
 				3A9A37FF18A9267800F604F0 /* AppDelegate.h */,
 				3A9A380018A9267800F604F0 /* AppDelegate.m */,
 				3A9A380218A9267800F604F0 /* Main.storyboard */,
+				D13B940418B7E1ED005441D9 /* FacebookFriendsViewController.h */,
+				D13B940518B7E1ED005441D9 /* FacebookFriendsViewController.m */,
 				3A9A380518A9267800F604F0 /* ViewController.h */,
 				3A9A380618A9267800F604F0 /* ViewController.m */,
 				3A9A380818A9267800F604F0 /* Images.xcassets */,
@@ -471,6 +476,7 @@
 				3A9A380118A9267800F604F0 /* AppDelegate.m in Sources */,
 				3AFE993A18A9432C00D3D9EE /* CreateGroupViewController.m in Sources */,
 				3A9A37FD18A9267800F604F0 /* main.m in Sources */,
+				D13B940618B7E1ED005441D9 /* FacebookFriendsViewController.m in Sources */,
 				D1AA2CF618B42C820053E8CB /* NotificationViewController.m in Sources */,
 				3A5A592E18AE8D1A0046F00B /* FriendsViewController.m in Sources */,
 				D1378F3B18B2CBEA00CD5109 /* NewTableViewCell.m in Sources */,
