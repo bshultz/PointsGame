@@ -10,7 +10,7 @@
 #import "Parse/Parse.h"
 #import "FriendsViewController.h"
 
-@interface AddPointViewController () <UIAlertViewDelegate, UITextViewDelegate>
+@interface AddPointViewController () <UIAlertViewDelegate, UITextViewDelegate, UITextViewDelegate>
 {
     __weak IBOutlet UILabel *friendNameLabel;
     __weak IBOutlet UITextView *commentTextView;
@@ -19,6 +19,7 @@
     PFObject *point;
     NSNumber *pointsAvailable;
     PFQuery *toQuery;
+    CGPoint txco;
 }
 
 @end
@@ -50,6 +51,7 @@
     
     commentTextView.layer.masksToBounds = YES;
     commentTextView.layer.cornerRadius = 5.0f;
+
     
     PFUser *currentUser = [PFUser currentUser];
 //    Artifically set the number of points the user has avaiable. Uncomment if necessay for testing.
@@ -134,13 +136,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    if ([commentTextView.text isEqualToString:@"Add comment..."])
-    {
-        commentTextView.text = @"";
-    }
-}
+
+
 
 
 @end
