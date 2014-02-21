@@ -45,12 +45,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="C6L-XF-Jhb">
                             <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="OGT-7D-TS4" kind="push" id="Fvc-eh-1dn"/>
+                                <segue destination="OGT-7D-TS4" kind="push" identifier="NotificationSegue" id="Fvc-eh-1dn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="newsfeedTableView" destination="CRF-QM-IiC" id="Xu2-cH-N7M"/>
+                        <outlet property="notificationsButton" destination="C6L-XF-Jhb" id="oto-rh-a5G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -421,7 +422,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrc-Bd-Ort" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1114" y="40"/>
+            <point key="canvasLocation" x="1650" y="72"/>
         </scene>
         <!--Add Point View Controller-->
         <scene sceneID="H8V-jx-q0b">
@@ -551,7 +552,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPR-Kx-XLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1616" y="40"/>
+            <point key="canvasLocation" x="2152" y="72"/>
         </scene>
         <!--Facebook View Controller-->
         <scene sceneID="cc5-a5-uh3">
