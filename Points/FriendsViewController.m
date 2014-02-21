@@ -117,7 +117,7 @@
     }
     
     cell.points.text = [NSString stringWithFormat:@"%ld",(long)pointValue];
-    [cell.addButton setBackgroundImage:[UIImage imageNamed:@"addbutton.jpeg"] forState:UIControlStateNormal];
+    [cell.addButton setBackgroundImage:[UIImage imageNamed:@"orangebutton.png"] forState:UIControlStateNormal];
     
     [cell.addButton addTarget:self action:@selector(addPoint:) forControlEvents:UIControlEventTouchUpInside];
     

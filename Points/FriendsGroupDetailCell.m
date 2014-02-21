@@ -28,17 +28,22 @@
         name = [[UILabel alloc] initWithFrame:CGRectMake(55.0f, 0.0f, size.width - 60.0f, size.height - 4.0f)];
         [self.contentView addSubview:name];
         
-        points = [[UILabel alloc] initWithFrame:CGRectMake(260.0f, 0.0f, size.width - 20.0f, size.height - 4.0f)];
+        points = [[UILabel alloc] initWithFrame:CGRectMake(300.0f, 0.0f, size.width - 20.0f, size.height - 4.0f)];
         [self.contentView addSubview:points];
     
         addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        addButton.frame = CGRectMake(280.0f, 0.0f, 150.0f, 150.0f);
+        addButton.frame = CGRectMake(210.0f, 5.0f, 40.0f, 80.0f);
         
         CGRect buttonFrame = addButton.frame;
-        buttonFrame.size = CGSizeMake(45.0f, 35.0f);
+        buttonFrame.size = CGSizeMake(80.0f, 35.0f);
         addButton.frame = buttonFrame;
-        addButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        addButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:addButton];
+        
+        UILabel *addLabel = [[UILabel alloc] initWithFrame:(CGRectMake(10.0f, 5.0f, 70.0f, 25.0f))];
+        addLabel.text = @"+ Point";
+        addLabel.textColor = [UIColor whiteColor];
+        [addButton addSubview:addLabel];
         
         
     }

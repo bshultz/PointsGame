@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A15A97C18B6C4FA00CF1169 /* FacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A15A97B18B6C4FA00CF1169 /* FacebookViewController.m */; };
+		3A15A97E18B7BF4900CF1169 /* orangebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A15A97D18B7BF4900CF1169 /* orangebutton.png */; };
 		3A5A592E18AE8D1A0046F00B /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A592D18AE8D1A0046F00B /* FriendsViewController.m */; };
 		3A5A593118AEB2E00046F00B /* FriendsGroupDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A593018AEB2E00046F00B /* FriendsGroupDetailCell.m */; };
 		3A5A593318AEB6230046F00B /* addbutton.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3A5A593218AEB6230046F00B /* addbutton.jpeg */; };
@@ -56,6 +57,7 @@
 		2F1CBA4AED6447B596F9C26C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		3A15A97A18B6C4FA00CF1169 /* FacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookViewController.h; sourceTree = "<group>"; };
 		3A15A97B18B6C4FA00CF1169 /* FacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookViewController.m; sourceTree = "<group>"; };
+		3A15A97D18B7BF4900CF1169 /* orangebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangebutton.png; sourceTree = "<group>"; };
 		3A5A592C18AE8D1A0046F00B /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		3A5A592D18AE8D1A0046F00B /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		3A5A592F18AEB2E00046F00B /* FriendsGroupDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsGroupDetailCell.h; sourceTree = "<group>"; };
@@ -139,6 +141,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A15A97F18B7C23400CF1169 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				3A15A97A18B6C4FA00CF1169 /* FacebookViewController.h */,
+				3A15A97B18B6C4FA00CF1169 /* FacebookViewController.m */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
 		3A99E1B118B511C600C9BB55 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +266,7 @@
 		3A9A37F618A9267800F604F0 /* Points */ = {
 			isa = PBXGroup;
 			children = (
+				3A15A97F18B7C23400CF1169 /* Facebook */,
 				3A99E1B718B5127500C9BB55 /* AddPoint */,
 				3A99E1B618B5126400C9BB55 /* Profile */,
 				3A99E1B518B5125900C9BB55 /* CreateGroup */,
@@ -266,8 +278,6 @@
 				3A9A37FF18A9267800F604F0 /* AppDelegate.h */,
 				3A9A380018A9267800F604F0 /* AppDelegate.m */,
 				3A9A380218A9267800F604F0 /* Main.storyboard */,
-				3A15A97A18B6C4FA00CF1169 /* FacebookViewController.h */,
-				3A15A97B18B6C4FA00CF1169 /* FacebookViewController.m */,
 				3A9A380518A9267800F604F0 /* ViewController.h */,
 				3A9A380618A9267800F604F0 /* ViewController.m */,
 				3A9A380818A9267800F604F0 /* Images.xcassets */,
@@ -280,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				3A5A593218AEB6230046F00B /* addbutton.jpeg */,
+				3A15A97D18B7BF4900CF1169 /* orangebutton.png */,
 				3A9A37F818A9267800F604F0 /* Points-Info.plist */,
 				3A9A37F918A9267800F604F0 /* InfoPlist.strings */,
 				3A9A37FC18A9267800F604F0 /* main.m */,
@@ -399,6 +410,7 @@
 				3A9A380918A9267800F604F0 /* Images.xcassets in Resources */,
 				3A9A37FB18A9267800F604F0 /* InfoPlist.strings in Resources */,
 				3A9A380418A9267800F604F0 /* Main.storyboard in Resources */,
+				3A15A97E18B7BF4900CF1169 /* orangebutton.png in Resources */,
 				3A5A593318AEB6230046F00B /* addbutton.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
