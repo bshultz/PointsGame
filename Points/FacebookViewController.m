@@ -9,7 +9,6 @@
 #import "FacebookViewController.h"
 #import "Parse/Parse.h"
 #import <FacebookSDK/FacebookSDK.h>
-#import "NewsfeedViewController.h"
 
 @interface FacebookViewController ()
 
@@ -21,6 +20,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if ([PFUser currentUser] == nil)
+    {
+   
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width/2)), 250);
     [self.view addSubview:loginView];
@@ -40,6 +42,19 @@
             [self performSegueWithIdentifier:@"FacebookSegue" sender:self];
         }
     }];
+    }
+    
+
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    if ([PFUser currentUser])
+    {
+        [self performSegueWithIdentifier:@"FacebookSegue" sender:self];
+        NSLog(@"The user is currently logged in");
+    }
 }
 
 - (void) savePropertiesOfTheCurrentFacebookUserToTheDatabase {
