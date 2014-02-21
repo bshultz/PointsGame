@@ -18,8 +18,10 @@
     __weak IBOutlet UILabel *emailLabel;
     __weak IBOutlet UILabel *pointsAvailableLabel;
     __weak IBOutlet UILabel *pointsAvailableStatic;
-        PFUser *currentUser;
-
+    __weak IBOutlet UILabel *totalPointsReceivedStatic;
+    __weak IBOutlet UILabel *totalPointsReceivedLabel;
+    
+    PFUser *currentUser;
     NSData *imageData;
 }
 
@@ -33,6 +35,7 @@
     [super viewDidLoad];
     [self currentUser];
     [self getAggregateScoreForUser];
+    [self getPointsAvailable];
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
@@ -47,16 +50,15 @@
     currentUser = [PFUser currentUser];
         if (currentUser) {
             //there is a current user object
-            NSLog(@"currentUser object: %@", currentUser);
-            NSLog(@"The current user's email address is: %@ ", [currentUser objectForKey:@"email"]);
-            
             usernameLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
             usernameLabel.text = currentUser[@"fullName"];
             emailLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];;
             emailLabel.text = currentUser[@"email"];
             pointsAvailableLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
-            pointsAvailableLabel.text = [NSString stringWithFormat:@"%@", currentUser[@"pointsAvailable"]]  ;
             pointsAvailableStatic.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
+            totalPointsReceivedStatic.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
+            totalPointsReceivedLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
+            
             
             PFFile *userImageFile = currentUser[@"userImage"];
             [userImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -107,10 +109,15 @@
     {
         if (!error)
         {
-            NSLog(@"Number of points %@", objects.count);
+            NSLog(@"Number of points %i", objects.count);
+            totalPointsReceivedLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)objects.count];
         }
     }];
 }
 
+-(void)getPointsAvailable
+{
+    pointsAvailableLabel.text = [NSString stringWithFormat:@"%@", currentUser[@"pointsAvailable"]];
+}
 
 @end
