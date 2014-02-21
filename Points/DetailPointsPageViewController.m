@@ -90,7 +90,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsCommentsCell"];
-    
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.textLabel.numberOfLines = 0;
     cell.textLabel.text = [comments objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [fromUsers objectAtIndex:indexPath.row];
     
@@ -98,5 +99,9 @@
     
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 150.0f;
+}
 
 @end

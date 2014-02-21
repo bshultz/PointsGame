@@ -79,9 +79,6 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     FacebookViewController *fbvc = [storyboard instantiateViewControllerWithIdentifier:@"FacebookViewController"];
     [self.navigationController presentViewController:fbvc animated:YES completion:nil];
-//    int index = 0;
-//    self.tabBarController.selectedIndex = index;
-//    [self.tabBarController.viewControllers[index] popToRootViewControllerAnimated:NO];
     NSLog(@"Current user logged in is %@", [PFUser currentUser]);
 }
 

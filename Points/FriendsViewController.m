@@ -56,8 +56,8 @@
             for (PFObject *object in objects)
             {
                 [points addObject:object];
-                [friendsTableView reloadData];
             }
+            [friendsTableView reloadData];
         }
         else
         {
@@ -81,9 +81,9 @@
                     [friendImages addObject:[object objectForKey:@"userImage"]];
                     [usernames addObject:[object objectForKey:@"username"]];
                     [toUserObjectID addObject:object.objectId];
-                    [friendsTableView reloadData];
                     NSLog(@"Friends are %@", friends);
                 }
+                [friendsTableView reloadData];
             }
             else
             {
@@ -118,7 +118,6 @@
     
     cell.points.text = [NSString stringWithFormat:@"%ld",(long)pointValue];
     [cell.addButton setBackgroundImage:[UIImage imageNamed:@"orangebutton.png"] forState:UIControlStateNormal];
-    
     [cell.addButton addTarget:self action:@selector(addPoint:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
@@ -150,17 +149,15 @@
     NSLog(@"Friend Selected - transition to friend detail page");
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DetailPointsPageViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DetailPointsPageViewController"];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     dvc.groupName = self.groupID;
     dvc.userName = toUserObjectID[0];
- //   dvc.userName = cell.textLabel.text;
     
     [self.navigationController pushViewController:dvc animated:YES];
 }
 
 - (IBAction)onInviteButtonPressed:(id)sender
 {
-    
+    // Add code here for when we have a target for inviting new users
 }
 
 
