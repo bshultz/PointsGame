@@ -8,7 +8,10 @@
 
 #import "FacebookFriendsViewController.h"
 
-@interface FacebookFriendsViewController ()
+@interface FacebookFriendsViewController (){
+
+    IBOutlet UITableView *tableViewContainingFriends;
+}
 
 @end
 
