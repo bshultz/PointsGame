@@ -10,6 +10,7 @@
 #import "FriendsGroupDetailCell.h"
 #import "AddPointViewController.h"
 #import "DetailPointsPageViewController.h"
+#import "FacebookFriendsViewController.h"
 
 @interface FriendsViewController () <UITableViewDataSource, UITableViewDelegate>
 {
@@ -94,6 +95,16 @@
     }];
     
 }
+- (IBAction)onInviteButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"FacebookFriends" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    FacebookFriendsViewController *vc = segue.destinationViewController;
+    vc.group = group;
+    
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -155,10 +166,7 @@
     [self.navigationController pushViewController:dvc animated:YES];
 }
 
-- (IBAction)onInviteButtonPressed:(id)sender
-{
-    // Add code here for when we have a target for inviting new users
-}
+
 
 
 // Try to have the user leave the group

@@ -322,7 +322,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0EB-sa-IGh"/>
+                    <navigationItem key="navigationItem" title="Create Group" id="0EB-sa-IGh"/>
                     <connections>
                         <segue destination="tbc-8r-WCK" kind="push" identifier="FacebookFriends" id="QbM-Xu-RpQ"/>
                     </connections>
@@ -331,7 +331,7 @@
             </objects>
             <point key="canvasLocation" x="1633" y="-652"/>
         </scene>
-        <!--Facebook Friends View Controller-->
+        <!--Facebook Friends View Controller - Add Friends-->
         <scene sceneID="AgR-8Y-7ur">
             <objects>
                 <viewController id="tbc-8r-WCK" customClass="FacebookFriendsViewController" sceneMemberID="viewController">
@@ -385,7 +385,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="WAW-Rj-cSl"/>
+                    <navigationItem key="navigationItem" title="Add Friends" id="WAW-Rj-cSl"/>
                     <connections>
                         <outlet property="tableViewContainingFriends" destination="Df2-4z-Ely" id="PSL-yV-1Mb"/>
                     </connections>
@@ -406,10 +406,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cue-r1-y8K">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cue-r1-y8K">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="zur-Zc-mKw"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendDetailCell" id="OrF-5N-UWh">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
@@ -435,12 +438,13 @@
                         <barButtonItem key="rightBarButtonItem" title="Invite" id="y3A-uT-aeW">
                             <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="onInviteButtonPressed:" destination="8yP-cs-7rk" id="t4z-Tt-CEg"/>
+                                <action selector="onInviteButtonPressed:" destination="8yP-cs-7rk" id="Gwo-vC-kcx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="friendsTableView" destination="Cue-r1-y8K" id="GMB-YW-eHH"/>
+                        <segue destination="PS4-Ej-bRh" kind="push" identifier="FacebookFriends" id="Ycb-Wb-BPH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrc-Bd-Ort" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -575,7 +579,72 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPR-Kx-XLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2152" y="72"/>
+            <point key="canvasLocation" x="2188" y="-14"/>
+        </scene>
+        <!--Facebook Friends View Controller - Add Friends-->
+        <scene sceneID="c2g-Ko-tGx">
+            <objects>
+                <viewController id="PS4-Ej-bRh" customClass="FacebookFriendsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0O6-xj-NUr"/>
+                        <viewControllerLayoutGuide type="bottom" id="y9I-wN-6MQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6rR-PW-y7O">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jLi-LS-eio">
+                                <rect key="frame" x="0.0" y="65" width="320" height="476"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifier" id="Kdn-5t-djv" customClass="NewTableViewCell">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kdn-5t-djv" id="vM9-Z3-nIA">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceW-Bn-9S1">
+                                                    <rect key="frame" x="254" y="7" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="OnAddButtonPressed:" destination="Kdn-5t-djv" eventType="touchUpInside" id="pRs-a9-Rpa"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHl-4P-UMG">
+                                                    <rect key="frame" x="20" y="11" width="217" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="buttonWithTextToAddOrInvite" destination="ceW-Bn-9S1" id="tE1-5K-eTS"/>
+                                            <outlet property="textfield" destination="gHl-4P-UMG" id="kNd-KQ-fDb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="PS4-Ej-bRh" id="c07-s4-BU0"/>
+                                    <outlet property="delegate" destination="PS4-Ej-bRh" id="d1T-ed-rQX"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Friends" id="aBh-xU-qRx"/>
+                    <connections>
+                        <outlet property="tableViewContainingFriends" destination="jLi-LS-eio" id="pVr-bx-aUH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pXl-7r-pNv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2166" y="790"/>
         </scene>
         <!--Facebook View Controller-->
         <scene sceneID="cc5-a5-uh3">
