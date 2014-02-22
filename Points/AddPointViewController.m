@@ -118,12 +118,30 @@
     transaction[@"groupId"] = self.groupID;
     transaction[@"pointId"] = point.objectId;
     
-    [transaction saveInBackground];
-    
-    // Update the points available to the user
-    PFUser *currentUser = [PFUser currentUser];
-    [currentUser incrementKey:@"pointsAvailable" byAmount:[NSNumber numberWithInt:-1]];
-    [currentUser saveInBackground];
+    [transaction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {
+
+        } else {
+            // Update the points available to the user
+            PFUser *currentUser = [PFUser currentUser];
+            [currentUser incrementKey:@"pointsAvailable" byAmount:[NSNumber numberWithInt:-1]];
+            [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (error) {
+                    NSLog (@"%@ %@", error, [error userInfo]);
+
+                } else {
+                    [group addObject:transaction forKey:@"myTransactions"];
+                    [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (error){
+                             NSLog (@"%@ %@", error, [error userInfo]);
+                        }
+                    }];
+                }
+            }];
+
+        }
+    }];
+
 }
 
 - (IBAction)onCancelButtonPressed:(id)sender
