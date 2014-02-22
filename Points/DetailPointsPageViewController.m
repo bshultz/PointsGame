@@ -33,6 +33,10 @@
     NSLog(@"username: %@", self.userName);
     NSLog(@"groupname: %@", self.groupName);
     [self getPointDetail];
+    
+    detailPointsTableView.separatorColor = [UIColor colorWithRed:0.05f green:0.345f blue:0.65f alpha:0.5f];
+    detailPointsTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    [detailPointsTableView setSeparatorInset:UIEdgeInsetsZero];
 
 }
 
