@@ -25,12 +25,7 @@
 @end
 
 @implementation AddPointViewController
-@synthesize toUserObjectID;
-@synthesize fromUserObjectID;
-@synthesize friendName;
-@synthesize groupID;
-@synthesize profileImage;
-
+@synthesize toUserObjectID, fromUserObjectID, friendName, groupID, group;
 
 
 - (void)viewDidLoad

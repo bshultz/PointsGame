@@ -7,12 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "Parse/Parse.h"
 
 @interface AddPointViewController : ViewController <UITextViewDelegate>
 @property NSString *friendName;
 @property NSString *toUserObjectID;
 @property NSString *fromUserObjectID;
 @property NSString *groupID;
+@property PFObject *group;
 @property UIImageView *profileImage;
 
 @end
