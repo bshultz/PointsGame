@@ -222,10 +222,6 @@
     NSMutableArray *arrayWithFacebookNames = currentUser[@"facebookFriendNames"];
 
 
-    // array of dictionaries
-    NSMutableArray *array = [NSMutableArray new];
-
-
     PFQuery *query = [PFUser query];
     __block NSArray *arrayOFPFUsers;
 
@@ -236,14 +232,6 @@
         } else {
 
     // if the query is succesful, create array of dictinaries and also create two seperate arrays for friends who have an account and for those who do not
-//            for (int i = 0; i < arrayWithFacebookIDs.count; i++){
-
-//                // create the dictinaries
-//                NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-//
-//                [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
-//                [dict setObject:arrayWithFacebookNames[i] forKey:@"names"];
-//                [array addObject:dict];
 
                 // populate the two different arrays
                 // the query returns PFObjects, but i need to crete an array containig the facebookId's of the PFObjects
@@ -275,28 +263,9 @@
                 }
                 [finalArrayToDisplayInTheCells addObject: arrayWithFriendsWhoHaveAnAccount];
                 [finalArrayToDisplayInTheCells addObject: arrayWithFriendsWhoDontHaveAnAccount];
-                [tableViewContaingFriends reloadData];
-
-
-
-
-
-
-
-
-
+            [tableViewContaingFriends reloadData];
         }
     }];
-
-    
-
-
-
-
-//    [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-//        NSDictionary *friends = result;
-//        NSLog(@"friends = %@", friends);
-//    }];
 
     
 }
@@ -337,45 +306,6 @@
     
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-    
-}
-
-#pragma mark - FBFriendPickerController delegate methods
-
-- (void)facebookViewControllerDoneWasPressed:(id)sender {
-    NSMutableString *text = [[NSMutableString alloc] init];
-    NSLog(@"friends = %@", self.friendPickerController.selection);
-    
-    
-    // we pick up the users from the selection, and create a string that we use to update the text view
-    // at the bottom of the display; note that self.selection is a property inherited from our base class
-    for (id<FBGraphUser> user in self.friendPickerController.selection) {
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-//        [arrayContainingFacebookFriendsThatAreSelected addObject:user];
-        [dict setObject:user[@"name"] forKey:@"name"];
-        [dict setObject:user[@"id"] forKey:@"uniqueID"];
-        NSLog(@"user id = %@", user[@"id"]);
-        NSLog(@"user name= %@", user[@"name"]);
-        
-        [arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons addObject:dict];
-        
-        
-        
-        }
-    [self dismissViewControllerAnimated:YES completion:NULL];
-    
-    }
-    
-//    [self fillTextBoxAndDismiss:text.length > 0 ? text : @"<None>"];
-
-
-
-
-//- (BOOL)friendPickerViewController:(FBFriendPickerViewController *)friendPicker shouldIncludeUser:(id<FBGraphUser>)user {
-//    BOOL installed = [user objectForKey:@"installed"] != nil;
-//    return installed;
-//}
 
 
 

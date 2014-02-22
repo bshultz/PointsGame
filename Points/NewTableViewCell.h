@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Parse/Parse.h"
 
+
 @interface NewTableViewCell : UITableViewCell
 
 @property IBOutlet UIButton *buttonWithTextToAddOrInvite;
@@ -16,5 +17,9 @@
 @property NSString *stringContainingUserID;;
 @property PFObject *group;
 @property PFUser *currentUser;
+
+
+
 @end
+
 

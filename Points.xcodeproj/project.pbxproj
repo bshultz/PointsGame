@@ -95,6 +95,7 @@
 		3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedViewController.m; sourceTree = "<group>"; };
 		D12D5EBC18AD444B00940381 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D12D5EBE18AD445200940381 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		D134B8F518B888260030A796 /* NotificationTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCellDelegate.h; sourceTree = "<group>"; };
 		D1378F3918B2CBEA00CD5109 /* NewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTableViewCell.h; sourceTree = "<group>"; };
 		D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTableViewCell.m; sourceTree = "<group>"; };
 		D13B940418B7E1ED005441D9 /* FacebookFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookFriendsViewController.h; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 		3A99E1B118B511C600C9BB55 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				D134B8F518B888260030A796 /* NotificationTableViewCellDelegate.h */,
 				D1AA2CF718B454300053E8CB /* NotificationTableViewCell.h */,
 				D1AA2CF818B454300053E8CB /* NotificationTableViewCell.m */,
 				D1AA2CF418B42C820053E8CB /* NotificationViewController.h */,

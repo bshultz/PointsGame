@@ -10,12 +10,17 @@
 #import "Parse/Parse.h"
 #import "NotificationTableViewCell.h"
 
-@interface NotificationViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface NotificationViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, NotificationTableViewCellDelegate>
 
 {
     PFUser *currentUser;
     IBOutlet UITableView *tableViewWithNotifications;
     NSMutableArray *arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser;
+    int indexOfTheArrayThatNeedsToBeDelted;
+    int numberThatNeedsToBeSubtracted;
+    UIAlertView *alertIfNoNotificationsPresent;
+    BOOL theUserHasNoMoreNotifications;
+    int numberOFfObjectsInArray;
 }
 
 @end
@@ -36,16 +41,19 @@
     
     currentUser = [PFUser currentUser];
     arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser = [[NSMutableArray alloc]init];
+    indexOfTheArrayThatNeedsToBeDelted = 0;
 
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
+    numberThatNeedsToBeSubtracted = 0;
     [tableViewWithNotifications setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     PFQuery *query = [PFQuery queryWithClassName:@"invite"];
 
     [query includeKey:@"toUser"];
     [query includeKey:@"fromUser"];
+    [query includeKey:@"group"];
     
     [query whereKey:@"toUser" equalTo:currentUser];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -54,9 +62,13 @@
             NSLog (@"%@ %@", error, [error userInfo]);
 
         } else {
+            numberOFfObjectsInArray = objects.count;
             for (id object in objects){
+                PFObject *group = object[@"group"];
+
                 NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
                 [dict setObject:object[@"group"] forKey:@"group"];
+                [dict setObject:group.objectId forKey:@"stringContainingId"];
                 [dict setObject:object forKey:@"invite"];
                 [dict setObject:object[@"fromUser"] forKey:@"fromUser"];
 
@@ -70,6 +82,40 @@
 
 }
 
+#pragma mark - Custom Delegate for notification tableViewCell
+
+//- (void) didWantToDeleteCell: (NotificationTableViewCell*) NewTableViewCell atIndexPath:(NSIndexPath *)indexPath forGroup:(NSString *) groupId{
+//
+////    int index = number - numberThatNeedsToBeSubtracted;
+////
+////    [arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser removeObjectAtIndex:index];
+////    number = arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
+//
+//    numberThatNeedsToBeSubtracted++;
+//    numberOFfObjectsInArray--;
+//
+//    if(numberOFfObjectsInArray == 0){
+//        theUserHasNoMoreNotifications = YES;
+//    }
+//
+//        [tableViewWithNotifications beginUpdates];
+//
+//    NSMutableArray *temporaryArray = [NSMutableArray new];
+//    for (NSMutableDictionary * dict in arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser){
+//
+//        if ([dict[@"stringContainingId"] isEqualToString:groupId]){
+//            [temporaryArray addObject:dict];
+//        }
+//
+//    }
+//    [arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser removeObjectsInArray:temporaryArray];
+//
+//        [tableViewWithNotifications deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    [tableViewWithNotifications reloadData];
+//        [tableViewWithNotifications endUpdates];
+//    
+//}
+
 #pragma mark - TableView Delegate methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -78,8 +124,15 @@
 
     NSMutableDictionary *dict = arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser[indexPath.row];
 
+    
+
     cell.group = dict[@"group"];
     cell.invite = dict[@"invite"];
+    cell.indexPath = indexPath;
+    cell.delegate = self;
+    cell.number = indexOfTheArrayThatNeedsToBeDelted;
+    cell.groupID = dict[@"stringContainingId"];
+    indexOfTheArrayThatNeedsToBeDelted++;
 
     PFUser *user = dict[@"fromUser"];
     PFObject *group = dict[@"group"];
@@ -121,8 +174,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
+    if (numberOFfObjectsInArray == 0 && theUserHasNoMoreNotifications){
+        alertIfNoNotificationsPresent = [[UIAlertView alloc] initWithTitle:@"No more notifications" message:nil delegate:self cancelButtonTitle:@"Go to the newsfeed page" otherButtonTitles:nil, nil];
+        [alertIfNoNotificationsPresent show];
+    }
+
+    return numberOFfObjectsInArray;
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+    if (buttonIndex == 0){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
 
 
 @end
