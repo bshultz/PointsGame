@@ -84,22 +84,22 @@
 
 #pragma mark - Custom Delegate for notification tableViewCell
 
-//- (void) didWantToDeleteCell: (NotificationTableViewCell*) NewTableViewCell atIndexPath:(NSIndexPath *)indexPath forGroup:(NSString *) groupId{
+- (void) didWantToDeleteCell: (NotificationTableViewCell*) NewTableViewCell atIndexPath:(NSIndexPath *)indexPath forGroup:(NSString *) groupId{
+
+//    int index = number - numberThatNeedsToBeSubtracted;
 //
-////    int index = number - numberThatNeedsToBeSubtracted;
-////
-////    [arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser removeObjectAtIndex:index];
-////    number = arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
-//
-//    numberThatNeedsToBeSubtracted++;
-//    numberOFfObjectsInArray--;
-//
-//    if(numberOFfObjectsInArray == 0){
-//        theUserHasNoMoreNotifications = YES;
-//    }
-//
-//        [tableViewWithNotifications beginUpdates];
-//
+//    [arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser removeObjectAtIndex:index];
+//    number = arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
+
+    numberThatNeedsToBeSubtracted++;
+    numberOFfObjectsInArray--;
+
+    if(numberOFfObjectsInArray == 0){
+        theUserHasNoMoreNotifications = YES;
+    }
+
+        [tableViewWithNotifications beginUpdates];
+
 //    NSMutableArray *temporaryArray = [NSMutableArray new];
 //    for (NSMutableDictionary * dict in arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser){
 //
@@ -108,13 +108,15 @@
 //        }
 //
 //    }
-//    [arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser removeObjectsInArray:temporaryArray];
-//
+    NSMutableDictionary *dict = arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser[indexPath.row];
+    [arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser removeObject:dict];
+
+
 //        [tableViewWithNotifications deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    [tableViewWithNotifications reloadData];
-//        [tableViewWithNotifications endUpdates];
-//    
-//}
+    [tableViewWithNotifications reloadData];
+ //       [tableViewWithNotifications endUpdates];
+    
+}
 
 #pragma mark - TableView Delegate methods
 
