@@ -287,7 +287,7 @@
     cell.group = group;
     cell.stringContainingUserID = object[@"ids"];
     cell.currentUser = currentUser;
-    cell.textfield.text = object[@"name"];
+    cell.labelWithPersonsName.text = object[@"name"];
     if ([object[@"InTheGroup"]isEqualToString:@"yes"]){
         // this person already has an account
         [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];

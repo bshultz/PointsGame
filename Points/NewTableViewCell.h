@@ -12,9 +12,11 @@
 
 @interface NewTableViewCell : UITableViewCell
 
-@property IBOutlet UIButton *buttonWithTextToAddOrInvite;
-@property IBOutlet UILabel *textfield;
+
+
 @property NSString *stringContainingUserID;;
+@property UIButton *buttonWithTextToAddOrInvite;
+@property  UILabel *labelWithPersonsName;
 @property PFObject *group;
 @property PFUser *currentUser;
 

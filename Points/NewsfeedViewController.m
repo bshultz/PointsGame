@@ -102,8 +102,6 @@
 
             } [newsfeedTableView reloadData];
 
-
-            NSLog(@"objects = %@", objects);
         }
     }];
 

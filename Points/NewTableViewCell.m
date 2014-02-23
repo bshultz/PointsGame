@@ -11,22 +11,29 @@
 
 @implementation NewTableViewCell
 
-@synthesize buttonWithTextToAddOrInvite, textfield, stringContainingUserID, group, currentUser;
+@synthesize labelWithPersonsName, buttonWithTextToAddOrInvite, stringContainingUserID, group, currentUser;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
-        
-        
+
+        self.labelWithPersonsName = [[UILabel alloc]initWithFrame:CGRectMake(20.0f, 5.0f, 180.0f, 40.0f)];
+        [self.contentView addSubview:self.labelWithPersonsName];
+
+
+        self.buttonWithTextToAddOrInvite = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        self.buttonWithTextToAddOrInvite.frame = CGRectMake(250.0f, 5.0f, 60, 40.0f);
+        self.buttonWithTextToAddOrInvite.tintColor = [UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f];
+        [self.contentView addSubview:self.buttonWithTextToAddOrInvite];
+        [self.buttonWithTextToAddOrInvite addTarget:self action:@selector(OnAddButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 
     }
     return self;
 }
 
-- (IBAction)OnAddButtonPressed:(UIButton *)sender{
+- (void)OnAddButtonPressed:(UIButton *)sender{
     
     if([sender.titleLabel.text isEqualToString:@"Add"]){
         PFRelation *relation = [group relationForKey:@"members"];

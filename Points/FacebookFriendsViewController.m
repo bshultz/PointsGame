@@ -10,16 +10,20 @@
 #import "NewTableViewCell.h"
 #import "Parse/Parse.h"
 
-@interface FacebookFriendsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface FacebookFriendsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
 {
 
     IBOutlet UITableView *tableViewContainingFriends;
 
     NSMutableArray *arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons;
+    NSMutableArray *filteredArray;
+
     NSMutableArray *arrayWithFriendsWhoHaveAnAccount;
     NSMutableArray *arrayWithFriendsWhoDontHaveAnAccount;
 
      NSArray *finalArrayToDisplayInTheCells;
+    UISearchBar *searchBar;
+    UISearchDisplayController *searchDisplayController;
 
     
      PFUser *currentUser;
@@ -38,6 +42,18 @@
     [super viewDidLoad];
 
      currentUser = [PFUser currentUser];
+
+     searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
+    tableViewContainingFriends.tableHeaderView = searchBar;
+
+    searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:searchBar contentsController:self];
+    searchDisplayController.delegate = self;
+    searchDisplayController.searchResultsDataSource = self;
+    searchDisplayController.searchResultsDelegate = self;
+
+
+
+
     arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons = [NSMutableArray new];
     arrayWithFriendsWhoDontHaveAnAccount = [NSMutableArray new];
     arrayWithFriendsWhoHaveAnAccount = [NSMutableArray new];
@@ -120,14 +136,6 @@
 //            [finalArrayToDisplayInTheCells addObject: arrayWithFriendsWhoHaveAnAccount];
 //            [finalArrayToDisplayInTheCells addObject: arrayWithFriendsWhoDontHaveAnAccount];
 //            [tableViewContainingFriends reloadData];
-
-            
-            
-            
-            
-            
-            
-            
             
         }
     }];
@@ -139,13 +147,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    NewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellIdentifier" forIndexPath:indexPath];
+    NewTableViewCell *cell = [[NewTableViewCell alloc]init];
 
-    id object = finalArrayToDisplayInTheCells[indexPath.row];
+    if (cell == nil) {
+        cell = [[NewTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
+    }
+
+
+    id object ;
+
+    if (tableView == searchDisplayController.searchResultsTableView) {
+
+        object = filteredArray[indexPath.row];
+
+    } else {
+        object = finalArrayToDisplayInTheCells[indexPath.row];
+
+    }
+
     cell.group = self.group;
     cell.stringContainingUserID = object[@"ids"];
     cell.currentUser = currentUser;
-    cell.textfield.text = object[@"name"];
+    cell.labelWithPersonsName.text = object[@"name"];
     if ([object[@"InTheGroup"]isEqualToString:@"yes"]){
         // this person already has an account
         [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
@@ -169,8 +192,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return finalArrayToDisplayInTheCells.count;
+    if (tableView == searchDisplayController.searchResultsTableView) {
+        return [filteredArray count];
+
+    } else {
+         return finalArrayToDisplayInTheCells.count;
+    }
+
+   }
+
+#pragma mark - Content Filtering
+
+// Update the filtered array based on the scope and searchText
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    [filteredArray removeAllObjects];
+
+    // Filter the array using NSPredicate
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF.name contains [c] %@", searchString];
+    filteredArray = [NSMutableArray arrayWithArray:[finalArrayToDisplayInTheCells filteredArrayUsingPredicate:resultPredicate]];
+
+    return YES;
 }
+
 
 
 @end
