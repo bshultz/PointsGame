@@ -78,12 +78,25 @@
 - (IBAction)onLogoutButtonPressed:(id)sender
 {
     [PFUser logOut];
+    NSLog(@"Logged out of facebook");
+    //
+    //    FBSession* session = [FBSession activeSession];
+    //    [session closeAndClearTokenInformation];
+    //    [session close];
+    //    [FBSession setActiveSession:nil];
+    //
+    //    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    //    NSArray* facebookCookies = [cookies cookiesForURL:[NSURL URLWithString:@"https://facebook.com/"]];
+    //
+    //    for (NSHTTPCookie* cookie in facebookCookies) {
+    //        [cookies deleteCookie:cookie];
+    //    }
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     FacebookViewController *fbvc = [storyboard instantiateViewControllerWithIdentifier:@"FacebookViewController"];
     [self.navigationController presentViewController:fbvc animated:YES completion:nil];
     NSLog(@"Current user logged in is %@", [PFUser currentUser]);
+    //    [self performSegueWithIdentifier:@"UserLogOut" sender:self];}
 }
-
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user

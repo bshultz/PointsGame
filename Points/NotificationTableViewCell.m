@@ -10,7 +10,7 @@
 
 @implementation NotificationTableViewCell
 
-@synthesize labelContainingGroupInformation, buttonToAcceptTheInvite, buttonToDeclineTheInvite;
+@synthesize labelContainingGroupInformation, buttonToAcceptTheInvite, buttonToDeclineTheInvite, delegate, indexPath, number;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -65,6 +65,7 @@
                     NSLog (@"%@ %@", error, [error userInfo]);
                  } else {
                      [self.invite deleteInBackground];
+                     [self.delegate  didWantToDeleteCell:self atIndexPath:self.indexPath forGroup:self.groupID];
                      
                  }
              }];

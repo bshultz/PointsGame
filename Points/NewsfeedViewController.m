@@ -38,7 +38,6 @@
 {
     [super viewDidLoad];
 
-    
     self.navigationController.title = @"PointBank";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
@@ -49,6 +48,7 @@
     NSMutableArray *toolbarButtons = [self.toolbarItems mutableCopy];
     [toolbarButtons removeObject:notificationsButton];
     [self setToolbarItems:toolbarButtons animated:YES];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -57,78 +57,58 @@
     
     [super viewDidAppear:YES];
     permissions = [NSArray arrayWithObjects:@"read_friendlists", @"basic_info" , nil];
-    [self getGroups];
+
+    // get the transactions associated with the current user
+
+    [self getTransactions];
 }
 
 #pragma mark Get the User's Groups
 
--(void)getGroups
-{
+- (void) getTransactions {
+
     PFRelation *relation = [[PFUser currentUser] relationForKey:@"myGroups"];
     PFQuery *userQuery = [relation query];
-    
-    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
-         if (!error)
-         {
-             usersGroups = [NSMutableArray new];
-             for (PFObject *object in objects)
-             {
-                 [usersGroups addObject:object.objectId];
-                 NSLog(@"My Groups are %@", usersGroups);
-                 
-             }
-             [self getTransactions];
-         }
-     }];
-}
+    [userQuery includeKey:@"myTransactions"];
+    [userQuery includeKey:@"myTransactions.fromUser"];
+    [userQuery includeKey:@"myTransactions.toUser"];
 
-#pragma mark Get the Filtered Transactions
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog (@"%@ %@", error, [error userInfo]);
 
--(void)getTransactions
-{
-    query = [PFQuery queryWithClassName:@"Transaction"];
-    query.limit = 25;
-    [query orderByDescending:@"createdAt"];
-    [query includeKey:@"fromUser"];
-    [query includeKey:@"toUser"];
-    [query whereKey:@"groupId" containedIn:usersGroups];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-     {
-         transactions = [NSMutableArray new];
-         from = [NSMutableArray new];
-         to = [NSMutableArray new];
-         objectIDs = [NSMutableArray new];
-         pointId = [NSMutableArray new];
-         for (PFObject *object in objects)
-         {
-             if (object)
-             {
-                 [transactions addObject:object];
-                 [from addObject:[object objectForKey:@"fromUser"]];
-                 [to addObject:[object objectForKey:@"toUser"]];
-                 [pointId addObject:[object objectForKey:@"pointId"]];
-                 [objectIDs addObject:object.objectId];
-             }
-         }
-         [newsfeedTableView reloadData];
-     }];
-}
-     
+        } else {
 
-     
-#pragma mark: Login New User
+            transactions = [NSMutableArray new];
+            from = [NSMutableArray new];
+            to = [NSMutableArray new];
+            objectIDs = [NSMutableArray new];
+            pointId = [NSMutableArray new];
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+            for (id object in objects){
+                PFObject *group = object;
+                NSArray *transactionObjects = group[@"myTransactions"];
+                for (PFObject *transaction in transactionObjects){
+
+
+                    [transactions addObject:transaction];
+                    [from addObject: [transaction objectForKey:@"fromUser"]];
+                    [to addObject:[transaction objectForKey:@"toUser"]];
+                    [pointId addObject:[transaction objectForKey:@"pointId"]];
+                    [objectIDs addObject:transaction.objectId];
+                    NSLog(@"transaction = %@", transaction);
+
+                }
+
+            } [newsfeedTableView reloadData];
+
+        }
+    }];
 
 }
 
-// called from viewWilAppear and only called when no user is currently logged in
 
-
-#pragma mark: News Items Table View
+#pragma mark- TableView Delegate methods
 
 // Set the cell properties
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -155,7 +135,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NewsfeedCell *cell = [newsfeedTableView cellForRowAtIndexPath:indexPath];
+    NewsfeedCell *cell = (NewsfeedCell *)[newsfeedTableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"NewsfeedDetail" sender:cell];
 }
 
