@@ -619,7 +619,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rvg-OO-cu7"/>
                     <connections>
-                        <segue destination="O7B-kK-8jL" kind="modal" identifier="FacebookSegue" id="Cro-vG-fLV"/>
+                        <segue destination="O7B-kK-8jL" kind="modal" identifier="FacebookLogin" id="Cro-vG-fLV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8p-B0-bk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
