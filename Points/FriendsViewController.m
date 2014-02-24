@@ -41,6 +41,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+
     [super viewWillAppear:YES];
     friends = [NSMutableArray new];
     friendImages = [NSMutableArray new];
@@ -59,14 +60,17 @@
         {
             for (PFObject *object in objects)
             {
+//                NSLog(@"group test run number");
                 [points addObject:object];
+                
             }
-            [friendsTableView reloadData];
+//            [friendsTableView reloadData];
         }
         else
         {
             NSLog(@"pointsQuery error is %@", error);
         }
+        [friendsTableView reloadData];
     }];
     
     [query whereKey:@"objectId" equalTo:self.groupID];
