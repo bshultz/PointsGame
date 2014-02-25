@@ -24,7 +24,7 @@
 
 
         self.buttonWithTextToAddOrInvite = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        self.buttonWithTextToAddOrInvite.frame = CGRectMake(250.0f, 5.0f, 60, 40.0f);
+        self.buttonWithTextToAddOrInvite.frame = CGRectMake(200.0f, 5.0f, 120, 40.0f);
         self.buttonWithTextToAddOrInvite.tintColor = [UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f];
         [self.contentView addSubview:self.buttonWithTextToAddOrInvite];
         [self.buttonWithTextToAddOrInvite addTarget:self action:@selector(OnAddButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -69,6 +69,7 @@
     else
     {
         // Send an invite to a non-registered user
+//       [[[UIApplication sharedApplication] delegate] sendRequest];
         NSLog(@"The invite button was pressed.");
     }
     

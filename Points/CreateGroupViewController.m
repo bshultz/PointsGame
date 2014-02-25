@@ -65,8 +65,7 @@
 
     arrayWithFriendsWhoDontHaveAnAccount = [NSMutableArray new];
     arrayWithFriendsWhoHaveAnAccount = [NSMutableArray new];
-    
-    
+
     if (arrayContainingDictionaroesOfTheNameAndUniqueIdOFtheSelectedPersons.count != 0){
         // tableViews do not show up because the number of cells will be zero
 

@@ -76,47 +76,6 @@
 
 
 
-/*
-    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
-    [query whereKey:@"objectId" equalTo:self.group.objectId];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (error){
-           NSLog (@"%@ %@", error, [error userInfo]);
-        } else {
-            PFRelation *relation = [object relationForKey:@"members"];
-            [relation addObject:currentUser];
-            
-            [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (error){
-                     NSLog (@"%@ %@", error, [error userInfo]);
-                } else {
-
-                    PFRelation *relation = [currentUser relationForKey:@"myGroups"];
-                    [relation addObject:self.group];
-                    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                        if (error){
-                              NSLog (@"%@ %@", error, [error userInfo]);
-                        } else {
-                            PFQuery *query = [PFQuery queryWithClassName:@"invite"];
-                            [query whereKey:@"objectId" equalTo:self.invite.objectId];
-                            [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                                [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                    if (error){
-                                        NSLog (@"%@ %@", error, [error userInfo]);
-                                    }
-                                }];
-                            }];
-
-                        }
-                    }];
-
-                }
-            }];
-        }
-    }];
-
-
-*/
 }
 
 - (void) doNotAddPersonToGroup {
@@ -128,6 +87,8 @@
             if (error){
                 NSLog (@"%@ %@", error, [error userInfo]);
                 
+            } else  {
+                [self.delegate  didWantToDeleteCell:self atIndexPath:self.indexPath forGroup:self.groupID];
             }
         }];
     }];

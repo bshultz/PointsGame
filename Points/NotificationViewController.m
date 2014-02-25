@@ -68,9 +68,10 @@
             numberOFfObjectsInArray = objects.count;
 
             if (objects.count == 0){
-                alertIfNoNotificationsPresentInitially = [[UIAlertView alloc] initWithTitle:@"No notifications present" message:nil delegate:self cancelButtonTitle:@"Go to the newsfeed page" otherButtonTitles:nil, nil];
-                [alertIfNoNotificationsPresentInitially show];
 
+                alertIfNoNotificationsPresentInitially = [[UIAlertView alloc] initWithTitle:@"No notifications present" message:nil delegate:self cancelButtonTitle:@"Go to the newsfeed page" otherButtonTitles:nil, nil];
+
+               [alertIfNoNotificationsPresentInitially show];
 
             }
 
@@ -92,6 +93,8 @@
 
 
 }
+
+
 
 #pragma mark - Custom Delegate for notification tableViewCell
 
@@ -137,39 +140,6 @@
     [cell.buttonToDeclineTheInvite setTitle:@"Decline" forState:UIControlStateNormal];
     [cell.buttonToAcceptTheInvite setTitle:@"Accept" forState:UIControlStateNormal];
 
-/*
-
-    __block NSString *name;
-
-
-    PFQuery *userQuery = [PFUser query];
-    [userQuery whereKey:@"objectId" equalTo:user.objectId];
-    [userQuery includeKey:@"fromUser"];
-    [userQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (error){
-            NSLog (@"%@ %@", error, [error userInfo]);
-        } else {
-           name = object[@"fullName"];
-            PFQuery *groupQuery = [PFQuery queryWithClassName:@"Group"];
-            [groupQuery whereKey:@"objectId" equalTo:group.objectId];
-            [groupQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                if (error){
-                    NSLog (@"%@ %@", error, [error userInfo]);
-
-
-                } else {
-                cell.labelContainingGroupInformation.text = [NSString stringWithFormat:@"%@ has invited you to the group '%@'", name, object[@"name"] ];
-                [cell.buttonToDeclineTheInvite setTitle:@"Decline" forState:UIControlStateNormal];
-                [cell.buttonToAcceptTheInvite setTitle:@"Accept" forState:UIControlStateNormal];
-                }
-            }];
-        }
-
-
-    }];
-
-
-*/
 
 
     return cell;
@@ -178,10 +148,19 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (numberOFfObjectsInArray == 0 && theUserHasNoMoreNotifications){
         alertIfNoNotificationsPresent = [[UIAlertView alloc] initWithTitle:@"No more notifications" message:nil delegate:self cancelButtonTitle:@"Go to the newsfeed page" otherButtonTitles:nil, nil];
-        [alertIfNoNotificationsPresent show];
+        [self performSelector:@selector(showAlertView) withObject:self afterDelay:4.0];
+
+
     }
 
     return arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
+}
+
+- (void) showAlertView {
+
+    [alertIfNoNotificationsPresent show];
+    
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
