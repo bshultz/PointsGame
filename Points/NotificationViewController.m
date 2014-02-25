@@ -181,7 +181,7 @@
         [alertIfNoNotificationsPresent show];
     }
 
-    return numberOFfObjectsInArray;
+    return arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

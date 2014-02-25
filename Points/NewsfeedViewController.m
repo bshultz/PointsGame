@@ -13,7 +13,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "NewsfeedCell.h"
 #import "NewsfeedDetailViewController.h"
-#import "CSAnimationView.h"
+//#import "CSAnimationView.h"
 
 @interface NewsfeedViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
