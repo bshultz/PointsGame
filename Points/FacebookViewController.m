@@ -107,10 +107,12 @@
 
 {
     [super viewDidAppear:animated];
+
     if ([PFUser currentUser])
     {
-        [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
-        NSLog(@"The user is currently logged in");
+        id vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+        [self presentViewController:vc animated:NO completion:nil];
+//        NSLog(@"The user is currently logged in");
     }
 }
 
