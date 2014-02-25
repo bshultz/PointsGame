@@ -19,6 +19,8 @@
     int indexOfTheArrayThatNeedsToBeDelted;
     int numberThatNeedsToBeSubtracted;
     UIAlertView *alertIfNoNotificationsPresent;
+    UIAlertView *alertIfNoNotificationsPresentInitially;
+
     BOOL theUserHasNoMoreNotifications;
     int numberOFfObjectsInArray;
 }
@@ -31,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
@@ -63,6 +66,14 @@
 
         } else {
             numberOFfObjectsInArray = objects.count;
+
+            if (objects.count == 0){
+                alertIfNoNotificationsPresentInitially = [[UIAlertView alloc] initWithTitle:@"No notifications present" message:nil delegate:self cancelButtonTitle:@"Go to the newsfeed page" otherButtonTitles:nil, nil];
+                [alertIfNoNotificationsPresentInitially show];
+
+
+            }
+
             for (id object in objects){
                 PFObject *group = object[@"group"];
 
@@ -86,35 +97,15 @@
 
 - (void) didWantToDeleteCell: (NotificationTableViewCell*) NewTableViewCell atIndexPath:(NSIndexPath *)indexPath forGroup:(NSString *) groupId{
 
-//    int index = number - numberThatNeedsToBeSubtracted;
-//
-//    [arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser removeObjectAtIndex:index];
-//    number = arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
-
-    numberThatNeedsToBeSubtracted++;
-    numberOFfObjectsInArray--;
-
-    if(numberOFfObjectsInArray == 0){
-        theUserHasNoMoreNotifications = YES;
-    }
-
-        [tableViewWithNotifications beginUpdates];
-
-//    NSMutableArray *temporaryArray = [NSMutableArray new];
-//    for (NSMutableDictionary * dict in arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser){
-//
-//        if ([dict[@"stringContainingId"] isEqualToString:groupId]){
-//            [temporaryArray addObject:dict];
-//        }
-//
-//    }
     NSMutableDictionary *dict = arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser[indexPath.row];
     [arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser removeObject:dict];
+    numberOFfObjectsInArray--;
+    if(numberOFfObjectsInArray == 0){
+                theUserHasNoMoreNotifications = YES;
+            }
 
 
-//        [tableViewWithNotifications deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [tableViewWithNotifications reloadData];
- //       [tableViewWithNotifications endUpdates];
     
 }
 
@@ -138,6 +129,15 @@
 
     PFUser *user = dict[@"fromUser"];
     PFObject *group = dict[@"group"];
+    PFUser *fromUser = dict[@"fromUser"];
+    NSString *name = fromUser[@"fullName"];
+    NSString *groupName = group[@"name"];
+
+    cell.labelContainingGroupInformation.text = [NSString stringWithFormat:@"%@ has invited you to the group '%@'", name, groupName ];
+    [cell.buttonToDeclineTheInvite setTitle:@"Decline" forState:UIControlStateNormal];
+    [cell.buttonToAcceptTheInvite setTitle:@"Accept" forState:UIControlStateNormal];
+
+/*
 
     __block NSString *name;
 
@@ -169,7 +169,7 @@
     }];
 
 
-
+*/
 
 
     return cell;
@@ -181,7 +181,7 @@
         [alertIfNoNotificationsPresent show];
     }
 
-    return numberOFfObjectsInArray;
+    return arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
