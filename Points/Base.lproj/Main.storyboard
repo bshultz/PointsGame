@@ -26,7 +26,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsfeedCell" id="d6I-BA-Ldi">
-                                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d6I-BA-Ldi" id="fhc-a8-nXU">
                                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -83,7 +83,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationCell" rowHeight="100" id="ANw-co-UqP" customClass="NotificationTableViewCell">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ANw-co-UqP" id="mbw-in-gAD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
@@ -225,7 +225,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Dx6-yk-eEG">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dx6-yk-eEG" id="3mY-Eg-AUU">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -332,14 +332,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Group" id="0EB-sa-IGh"/>
                     <connections>
-                        <segue destination="tbc-8r-WCK" kind="modal" identifier="FacebookFriends" id="QbM-Xu-RpQ"/>
+                        <segue destination="9G5-8M-faL" kind="modal" identifier="FacebookFriends" id="DWR-z7-CiK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvi-GI-KCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1633" y="-652"/>
         </scene>
-        <!--Facebook Friends View Controller - Add Friends-->
+        <!--Facebook Friends View Controller - Facebook Friends-->
         <scene sceneID="AgR-8Y-7ur">
             <objects>
                 <viewController id="tbc-8r-WCK" customClass="FacebookFriendsViewController" sceneMemberID="viewController">
@@ -373,14 +373,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Friends" id="WAW-Rj-cSl"/>
+                    <navigationItem key="navigationItem" title="Facebook Friends" id="WAW-Rj-cSl">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="yKk-gk-NCT">
+                            <connections>
+                                <action selector="onCancelButtonPressed:" destination="tbc-8r-WCK" id="Gi0-gO-RAo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="IeW-Ig-7Tl">
+                            <connections>
+                                <action selector="onDoneButtonPressed:" destination="tbc-8r-WCK" id="wXF-2m-EdY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableViewContainingFriends" destination="Df2-4z-Ely" id="PSL-yV-1Mb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5q-eC-70A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2188" y="-730"/>
+            <point key="canvasLocation" x="2760" y="-636"/>
         </scene>
         <!--Friends View Controller-->
         <scene sceneID="Io9-c7-kyg">
@@ -403,7 +414,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendDetailCell" id="OrF-5N-UWh">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OrF-5N-UWh" id="hTF-fx-5uD">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -528,7 +539,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendsCommentsCell" textLabel="bwl-fL-av8" detailTextLabel="X1D-y7-GXY" rowHeight="150" style="IBUITableViewCellStyleSubtitle" id="pLk-1r-mfi">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="150"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pLk-1r-mfi" id="fkg-XU-08p">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
@@ -711,6 +722,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rad-p3-r7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="596" y="-1575"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1jC-YP-WHQ">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="9G5-8M-faL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="azD-Im-AjC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tbc-8r-WCK" kind="relationship" relationship="rootViewController" id="fSN-gF-jPy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DQL-0G-242" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2234" y="-636"/>
         </scene>
     </scenes>
     <resources>

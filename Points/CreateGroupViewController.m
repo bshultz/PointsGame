@@ -204,9 +204,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
-    FacebookFriendsViewController *vc = segue.destinationViewController;
+    UINavigationController *navController = segue.destinationViewController;
+    FacebookFriendsViewController *vc = navController.viewControllers.firstObject;
     vc.group = group;
-
 }
 
 

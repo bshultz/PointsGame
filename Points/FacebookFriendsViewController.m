@@ -214,7 +214,29 @@
 
     return YES;
 }
+- (IBAction)onDoneButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
+//if the person presses the cancel button, the group that was created needs to be deleted
+
+- (IBAction)onCancelButtonPressed:(id)sender {
+
+
+
+    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
+    [query whereKey:@"objectId" equalTo:group.objectId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if(error) {
+
+        } else {
+            [object deleteInBackground];
+        }
+    }];
+
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 @end

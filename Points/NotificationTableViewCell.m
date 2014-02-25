@@ -83,15 +83,19 @@
     PFQuery *query = [PFQuery queryWithClassName:@"invite"];
     [query whereKey:@"objectId" equalTo:self.invite.objectId];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (error){
-                NSLog (@"%@ %@", error, [error userInfo]);
-                
-            } else  {
-                [self.delegate  didWantToDeleteCell:self atIndexPath:self.indexPath forGroup:self.groupID];
-            }
-        }];
-    }];
+        if (!error){
+            [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (error){
+                    NSLog (@"%@ %@", error, [error userInfo]);
+
+                } else  {
+                    [self.delegate  didWantToDeleteCell:self atIndexPath:self.indexPath forGroup:self.groupID];
+                }
+            }];
+
+
+        }
+            }];
 
 
 
