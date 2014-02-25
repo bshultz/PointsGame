@@ -148,7 +148,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (numberOFfObjectsInArray == 0 && theUserHasNoMoreNotifications){
         alertIfNoNotificationsPresent = [[UIAlertView alloc] initWithTitle:@"No more notifications" message:nil delegate:self cancelButtonTitle:@"Go to the newsfeed page" otherButtonTitles:nil, nil];
-        [self performSelector:@selector(showAlertView) withObject:self afterDelay:4.0];
+         [alertIfNoNotificationsPresent show];
 
 
     }
@@ -156,12 +156,12 @@
     return arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
 }
 
-- (void) showAlertView {
-
-    [alertIfNoNotificationsPresent show];
-    
-    
-}
+//- (void) showAlertView {
+//
+//    [alertIfNoNotificationsPresent show];
+//    
+//    
+//}
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 

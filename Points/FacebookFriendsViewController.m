@@ -25,16 +25,19 @@
     UISearchBar *searchBar;
     UISearchDisplayController *searchDisplayController;
 
+
+
     
      PFUser *currentUser;
 
 }
 
+
 @end
 
 @implementation FacebookFriendsViewController
 
-@synthesize group;
+@synthesize group, isANewGroupBeingAdded;
 
 
 - (void)viewDidLoad
@@ -222,7 +225,7 @@
 
 - (IBAction)onCancelButtonPressed:(id)sender {
 
-
+    if(self.isANewGroupBeingAdded) {
 
     PFQuery *query = [PFQuery queryWithClassName:@"Group"];
     [query whereKey:@"objectId" equalTo:group.objectId];
@@ -233,9 +236,9 @@
             [object deleteInBackground];
         }
     }];
-
-
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 

@@ -11,5 +11,6 @@
 
 @interface FacebookFriendsViewController : UIViewController
 
-@property (nonatomic, strong) PFObject *group;;
+@property (nonatomic, strong) PFObject *group;
+@property (nonatomic) BOOL isANewGroupBeingAdded;
 @end

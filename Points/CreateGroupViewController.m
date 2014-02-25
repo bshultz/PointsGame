@@ -207,6 +207,7 @@
     UINavigationController *navController = segue.destinationViewController;
     FacebookFriendsViewController *vc = navController.viewControllers.firstObject;
     vc.group = group;
+    vc.isANewGroupBeingAdded = YES;
 }
 
 

@@ -160,6 +160,7 @@
     
     
     if ([[segue identifier] isEqualToString:@"FriendsDetail"]) {
+        
         FriendsViewController *friendsListDetailViewController = [segue destinationViewController];
         if (sender == self.searchDisplayController.searchResultsTableView) {
             
