@@ -38,9 +38,12 @@
     [self getPointsAvailable];
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
-    self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
+//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
+//    self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
 
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0 green:153 blue:153 alpha:1.0f];
+//    self.view.backgroundColor = [UIColor colorWithRed:51 green:204 blue:204 alpha:1];
+    
 }
 
 
