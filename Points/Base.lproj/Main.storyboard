@@ -49,8 +49,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Newsfeed" id="Aks-ng-PVr">
-                        <barButtonItem key="rightBarButtonItem" title="Invites" id="C6L-XF-Jhb">
-                            <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="rightBarButtonItem" image="envelope-smaller.png" id="C6L-XF-Jhb">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="OGT-7D-TS4" kind="push" identifier="NotificationSegue" id="Fvc-eh-1dn"/>
                             </connections>
@@ -713,6 +713,9 @@
             <point key="canvasLocation" x="596" y="-1575"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="envelope-smaller.png" width="56" height="56"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

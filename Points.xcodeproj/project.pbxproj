@@ -41,6 +41,8 @@
 		E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */; };
 		E0984CE618AAD79100AAE67A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE518AAD79100AAE67A /* ProfileViewController.m */; };
 		E0984CE918B279A700AAE67A /* DetailPointsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE818B279A700AAE67A /* DetailPointsPageViewController.m */; };
+		E0984D0618BD017100AAE67A /* envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = E0984D0518BD017100AAE67A /* envelope.png */; };
+		E0984D0818BD021E00AAE67A /* envelope-smaller.png in Resources */ = {isa = PBXBuildFile; fileRef = E0984D0718BD021E00AAE67A /* envelope-smaller.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +118,8 @@
 		E0984CE518AAD79100AAE67A /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		E0984CE718B279A700AAE67A /* DetailPointsPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPointsPageViewController.h; sourceTree = "<group>"; };
 		E0984CE818B279A700AAE67A /* DetailPointsPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailPointsPageViewController.m; sourceTree = "<group>"; };
+		E0984D0518BD017100AAE67A /* envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = envelope.png; sourceTree = "<group>"; };
+		E0984D0718BD021E00AAE67A /* envelope-smaller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "envelope-smaller.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +300,8 @@
 		3A9A37F718A9267800F604F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E0984D0718BD021E00AAE67A /* envelope-smaller.png */,
+				E0984D0518BD017100AAE67A /* envelope.png */,
 				3A5A593218AEB6230046F00B /* addbutton.jpeg */,
 				3A15A97D18B7BF4900CF1169 /* orangebutton.png */,
 				3A9A37F818A9267800F604F0 /* Points-Info.plist */,
@@ -417,7 +423,9 @@
 				3A9A380918A9267800F604F0 /* Images.xcassets in Resources */,
 				3A9A37FB18A9267800F604F0 /* InfoPlist.strings in Resources */,
 				3A9A380418A9267800F604F0 /* Main.storyboard in Resources */,
+				E0984D0618BD017100AAE67A /* envelope.png in Resources */,
 				3A15A97E18B7BF4900CF1169 /* orangebutton.png in Resources */,
+				E0984D0818BD021E00AAE67A /* envelope-smaller.png in Resources */,
 				3A5A593318AEB6230046F00B /* addbutton.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
