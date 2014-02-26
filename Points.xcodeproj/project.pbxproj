@@ -32,6 +32,7 @@
 		3AFE993A18A9432C00D3D9EE /* CreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE993918A9432C00D3D9EE /* CreateGroupViewController.m */; };
 		3AFE993D18A97CB600D3D9EE /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */; };
 		A6D5181BE02142D4B5159C35 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A8F29B83624CD0B44B30BC /* libPods.a */; };
+		D12B38BA18BE18F9005B9E9C /* facebook_login.png in Resources */ = {isa = PBXBuildFile; fileRef = D12B38B918BE18F9005B9E9C /* facebook_login.png */; };
 		D12D5EBD18AD444B00940381 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBC18AD444B00940381 /* AddressBook.framework */; };
 		D12D5EBF18AD445200940381 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBE18AD445200940381 /* AddressBookUI.framework */; };
 		D1378F3B18B2CBEA00CD5109 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */; };
@@ -95,6 +96,8 @@
 		3AFE993918A9432C00D3D9EE /* CreateGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateGroupViewController.m; sourceTree = "<group>"; };
 		3AFE993B18A97CB600D3D9EE /* NewsfeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedViewController.h; sourceTree = "<group>"; };
 		3AFE993C18A97CB600D3D9EE /* NewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedViewController.m; sourceTree = "<group>"; };
+		D12B38B918BE18F9005B9E9C /* facebook_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_login.png; sourceTree = "<group>"; };
+		D12C8C7218BE4E1F000BD6F6 /* NewTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewTableViewCellDelegate.h; sourceTree = "<group>"; };
 		D12D5EBC18AD444B00940381 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D12D5EBE18AD445200940381 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		D134B8F518B888260030A796 /* NotificationTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCellDelegate.h; sourceTree = "<group>"; };
@@ -208,6 +211,7 @@
 			children = (
 				D1378F3918B2CBEA00CD5109 /* NewTableViewCell.h */,
 				D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */,
+				D12C8C7218BE4E1F000BD6F6 /* NewTableViewCellDelegate.h */,
 				3AFE993818A9432C00D3D9EE /* CreateGroupViewController.h */,
 				3AFE993918A9432C00D3D9EE /* CreateGroupViewController.m */,
 			);
@@ -285,6 +289,7 @@
 				3A99E1B118B511C600C9BB55 /* Notifications */,
 				E0984CEA18B27EDE00AAE67A /* detailpoints */,
 				3A9A37FF18A9267800F604F0 /* AppDelegate.h */,
+				D12B38B918BE18F9005B9E9C /* facebook_login.png */,
 				3A9A380018A9267800F604F0 /* AppDelegate.m */,
 				3A9A380218A9267800F604F0 /* Main.storyboard */,
 				D13B940418B7E1ED005441D9 /* FacebookFriendsViewController.h */,
@@ -427,6 +432,7 @@
 				3A15A97E18B7BF4900CF1169 /* orangebutton.png in Resources */,
 				E0984D0818BD021E00AAE67A /* envelope-smaller.png in Resources */,
 				3A5A593318AEB6230046F00B /* addbutton.jpeg in Resources */,
+				D12B38BA18BE18F9005B9E9C /* facebook_login.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

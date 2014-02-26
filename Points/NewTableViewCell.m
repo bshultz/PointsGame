@@ -9,8 +9,8 @@
 #import "NewTableViewCell.h"
 #import "Parse/Parse.h"
 
-@implementation NewTableViewCell
 
+@implementation NewTableViewCell 
 @synthesize labelWithPersonsName, buttonWithTextToAddOrInvite, stringContainingUserID, group, currentUser;
 
 
@@ -60,6 +60,7 @@
                     
                     [buttonWithTextToAddOrInvite setTitle:@"Request Sent" forState:UIControlStateNormal];
                     [buttonWithTextToAddOrInvite setEnabled:NO];
+                    
                 
 
                 }
@@ -69,8 +70,10 @@
     else
     {
         // Send an invite to a non-registered user
-//       [[[UIApplication sharedApplication] delegate] sendRequest];
+        // implement the showMailApp method in the delegate
+        [self.delegate showMailApp];
         NSLog(@"The invite button was pressed.");
+
     }
     
     

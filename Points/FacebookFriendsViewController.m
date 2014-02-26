@@ -9,8 +9,14 @@
 #import "FacebookFriendsViewController.h"
 #import "NewTableViewCell.h"
 #import "Parse/Parse.h"
+#import <MessageUI/MFMailComposeViewController.h>
+#import "NewTableViewCellDelegate.h"
+#import "GroupsViewController.h"
 
-@interface FacebookFriendsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate>
+
+
+
+@interface FacebookFriendsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, NewTableViewCellDelegate, MFMailComposeViewControllerDelegate>
 {
 
     IBOutlet UITableView *tableViewContainingFriends;
@@ -155,6 +161,7 @@
     if (cell == nil) {
         cell = [[NewTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellIdentifier"];
     }
+    cell.delegate = self;
 
 
     id object ;
@@ -204,6 +211,27 @@
 
    }
 
+#pragma mark - NewTableViewCellDelegate methods
+
+- (void) showMailApp {
+    if ([MFMailComposeViewController canSendMail]) {
+
+        MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+        mailViewController.mailComposeDelegate = self;
+        [mailViewController setSubject:@"Invitation to join the app Points Bank."];
+        [mailViewController setMessageBody:@"Your message goes here." isHTML:NO];
+        [self presentViewController:mailViewController animated:YES completion:nil];
+
+    }
+
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
 #pragma mark - Content Filtering
 
 // Update the filtered array based on the scope and searchText
@@ -217,9 +245,11 @@
 
     return YES;
 }
-- (IBAction)onDoneButtonPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//- (IBAction)onDoneButtonPressed:(id)sender {
+// //   [self performSegueWithIdentifier:@"MyGroups" sender:self];
+////    [self dismissViewControllerAnimated:YES completion:nil];
+//}
+
 
 //if the person presses the cancel button, the group that was created needs to be deleted
 

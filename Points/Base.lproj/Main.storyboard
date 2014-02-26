@@ -337,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvi-GI-KCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1633" y="-652"/>
+            <point key="canvasLocation" x="1673" y="-620"/>
         </scene>
         <!--Facebook Friends View Controller - Facebook Friends-->
         <scene sceneID="AgR-8Y-7ur">
@@ -382,6 +382,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="IeW-Ig-7Tl">
                             <connections>
                                 <action selector="onDoneButtonPressed:" destination="tbc-8r-WCK" id="wXF-2m-EdY"/>
+                                <segue destination="epR-b1-9WS" kind="unwind" unwindAction="unwindFromAddFriendsController:" id="ELC-OA-H62"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -390,8 +391,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5q-eC-70A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="epR-b1-9WS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2760" y="-636"/>
+            <point key="canvasLocation" x="2792" y="-476"/>
         </scene>
         <!--Friends View Controller-->
         <scene sceneID="Io9-c7-kyg">
@@ -448,7 +450,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrc-Bd-Ort" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1650" y="72"/>
+            <point key="canvasLocation" x="1622" y="76"/>
         </scene>
         <!--Add Point View Controller-->
         <scene sceneID="H8V-jx-q0b">
@@ -578,7 +580,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kPR-Kx-XLU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2188" y="-14"/>
+            <point key="canvasLocation" x="3242" y="284"/>
         </scene>
         <!--Facebook Friends View Controller - Facebook Friends-->
         <scene sceneID="c2g-Ko-tGx">
@@ -632,7 +634,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXl-7r-pNv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2692" y="790"/>
+            <point key="canvasLocation" x="2784" y="814"/>
         </scene>
         <!--Facebook View Controller-->
         <scene sceneID="cc5-a5-uh3">
@@ -683,6 +685,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p6q-P1-u2J" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Groups" id="DDz-FK-vvV"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Tr3-3k-IrF"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GFn-A1-4mM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -750,7 +753,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQL-0G-242" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2234" y="-636"/>
+            <point key="canvasLocation" x="2358" y="-636"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wjf-Pm-F7A">
@@ -768,7 +771,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDX-bw-l2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2166" y="790"/>
+            <point key="canvasLocation" x="2310" y="806"/>
         </scene>
     </scenes>
     <resources>

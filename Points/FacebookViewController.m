@@ -24,10 +24,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    facebookLoginButton = [[UIButton alloc]initWithFrame:CGRectMake(100, 100, 60, 20)];
+    facebookLoginButton = [[UIButton alloc]initWithFrame:CGRectMake(50, 250, 200, 110)];
     facebookLoginButton.titleLabel.text = @"Login";
-    facebookLoginButton.backgroundColor = [UIColor redColor];
+//    facebookLoginButton.backgroundColor = [UIColor redColor];
     [self.view addSubview:facebookLoginButton];
+    [facebookLoginButton setImage:[UIImage imageNamed:@"facebook_login.png"] forState:UIControlStateNormal];
     [facebookLoginButton addTarget:self action:@selector(loginButtonTouchHandler:) forControlEvents:UIControlEventTouchUpInside];
 
     //    if ([PFUser currentUser])

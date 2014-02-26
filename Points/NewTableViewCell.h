@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Parse/Parse.h"
-
+#import <MessageUI/MessageUI.h>
+#import "NewTableViewCellDelegate.h"
 
 @interface NewTableViewCell : UITableViewCell
+
 
 
 
@@ -19,6 +21,8 @@
 @property  UILabel *labelWithPersonsName;
 @property PFObject *group;
 @property PFUser *currentUser;
+
+@property id<NewTableViewCellDelegate> delegate;
 
 
 

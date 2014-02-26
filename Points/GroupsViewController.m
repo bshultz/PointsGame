@@ -75,7 +75,7 @@
     PFUser *currentUser = [PFUser currentUser];
     PFRelation *relation = [currentUser relationForKey:@"myGroups"];
     PFQuery *query = [relation query];
-    [query orderByAscending:@"name"];
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error){
             NSLog (@"%@ %@", error, [error userInfo]);
@@ -175,7 +175,12 @@
     }
 }
 
+#pragma mark - Unwind Segue
 
 
+- (IBAction) unwindFromAddFriendsController : (UIStoryboardSegue *) segue {
+
+
+}
 
 @end
