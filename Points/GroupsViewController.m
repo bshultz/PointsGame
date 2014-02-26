@@ -167,6 +167,7 @@
             NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
             friendsListDetailViewController.groupID = [[self.filteredArray objectAtIndex:indexPath.row] objectId];
             
+            
         } else {
             NSIndexPath *indexPath = [self.myTableView indexPathForSelectedRow];
             friendsListDetailViewController.groupID = [[self.arrayOfAllTheUsersGroups objectAtIndex:indexPath.row] objectId];

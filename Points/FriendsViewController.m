@@ -157,12 +157,20 @@
     NSIndexPath *indexPath = [friendsTableView indexPathForCell:cell];
     pointVC.toUserObjectID = [toUserObjectID objectAtIndex:indexPath.row];
     pointVC.fromUserObjectID = [PFUser currentUser].objectId;
+    if ([pointVC.fromUserObjectID isEqualToString:pointVC.toUserObjectID]) {
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"You cannot give yourself a point!" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
+        [alert show];
+
+
+    } else {
     pointVC.friendName = [friends objectAtIndex:indexPath.row];
     pointVC.groupID = self.groupID;
     pointVC.profileImage = cell.profileImage;
     pointVC.group = group;
     
     [self.navigationController presentViewController:pointVC animated:YES completion:nil];
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

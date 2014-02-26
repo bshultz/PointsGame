@@ -30,11 +30,6 @@
 
     NSMutableArray *finalArrayToDisplayInTheCells;
 
-
-
-
-    
-    
     IBOutlet UITableView *tableViewContaingFriends;
 }
 
@@ -58,10 +53,15 @@
     finalArrayToDisplayInTheCells = [NSMutableArray new];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [groupTextField becomeFirstResponder];
+}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
     [tableViewContaingFriends setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+
 
     arrayWithFriendsWhoDontHaveAnAccount = [NSMutableArray new];
     arrayWithFriendsWhoHaveAnAccount = [NSMutableArray new];
@@ -114,13 +114,6 @@
         }];
         
         }
-        
-        
-        
-        
-         //        [tableViewContaingFriends reloadData];
-        
-
         
     } else {
         //

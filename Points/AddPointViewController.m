@@ -65,10 +65,16 @@
     
     // Update the Point class with the from user, to user, point value (1), and the user's comments
     point = [PFObject objectWithClassName:@"Point"];
-    point[@"fromUser"] = [PFUser currentUser];
+    PFUser *fromUser = [PFUser currentUser];
+        point[@"fromUser"] = fromUser;
+
+
     
     toQuery = [PFUser query];
-    point[@"toUser"] = [toQuery getObjectWithId:self.toUserObjectID error:nil];
+    PFUser *toUser = (PFUser *)[toQuery getObjectWithId:self.toUserObjectID error:nil];
+        point[@"toUser"] = toUser;
+
+
     point[@"pointValue"] = @1;
     point[@"comment"] = commentTextView.text;
     point[@"group"] = self.groupID;
@@ -93,6 +99,7 @@
     }];
     [commentTextView resignFirstResponder];
     }
+
     else
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Out of Points!" message:@"You don't have any points to give!" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:@"Get More Points", nil];
@@ -150,11 +157,6 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
-
-
-
 
 
 -(void)keyboardWillShow {
