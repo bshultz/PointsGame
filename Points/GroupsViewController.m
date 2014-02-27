@@ -53,13 +53,9 @@
     self.searchDisplayController.delegate = self;
     self.searchDisplayController.searchResultsDataSource = self;
     self.searchDisplayController.searchResultsDelegate = self;
-
-
     
     //hides the search bar initially
     self.myTableView.contentOffset = CGPointMake(0, self.searchBar.bounds.size.height);
-
-    
 
 }
 
@@ -175,7 +171,7 @@
     }
 }
 
-#pragma mark - Unwind Segue
+#pragma mark - Unwind Segue from the add groups page
 
 
 - (IBAction) unwindFromAddFriendsController : (UIStoryboardSegue *) segue {
