@@ -105,12 +105,7 @@
                  [tableViewContaingFriends reloadData];
                 
              }
-            
-//            [finalArrayToDisplayInTheCells addObject:object];
-//            [self sortTheFinalArray];
-//            [tableViewContaingFriends reloadData];
 
-            
         }];
         
         }

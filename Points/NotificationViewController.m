@@ -162,12 +162,6 @@
     return arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
 }
 
-//- (void) showAlertView {
-//
-//    [alertIfNoNotificationsPresent show];
-//    
-//    
-//}
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 

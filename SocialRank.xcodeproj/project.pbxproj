@@ -90,23 +90,23 @@
 		3A99E1AF18B50AB800C9BB55 /* NewsfeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedCell.m; sourceTree = "<group>"; };
 		3A99E1B818B65FEA00C9BB55 /* NewsfeedDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedDetailViewController.h; sourceTree = "<group>"; };
 		3A99E1B918B65FEA00C9BB55 /* NewsfeedDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedDetailViewController.m; sourceTree = "<group>"; };
-		3A9A37ED18A9267800F604F0 /* Points.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Points.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9A37ED18A9267800F604F0 /* SocialRank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialRank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9A37F018A9267800F604F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A9A37F218A9267800F604F0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3A9A37F418A9267800F604F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		3A9A37F818A9267800F604F0 /* Points-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Points-Info.plist"; sourceTree = "<group>"; };
+		3A9A37F818A9267800F604F0 /* SocialRank-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SocialRank-Info.plist"; sourceTree = "<group>"; };
 		3A9A37FA18A9267800F604F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A9A37FC18A9267800F604F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3A9A37FE18A9267800F604F0 /* Points-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Points-Prefix.pch"; sourceTree = "<group>"; };
+		3A9A37FE18A9267800F604F0 /* SocialRank-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SocialRank-Prefix.pch"; sourceTree = "<group>"; };
 		3A9A37FF18A9267800F604F0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3A9A380018A9267800F604F0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3A9A380318A9267800F604F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A9A380518A9267800F604F0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3A9A380618A9267800F604F0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3A9A380818A9267800F604F0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3A9A380E18A9267800F604F0 /* PointsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PointsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A9A380E18A9267800F604F0 /* SocialRankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialRankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9A380F18A9267800F604F0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		3A9A381718A9267800F604F0 /* PointsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PointsTests-Info.plist"; sourceTree = "<group>"; };
+		3A9A381718A9267800F604F0 /* SocialRankTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SocialRankTests-Info.plist"; sourceTree = "<group>"; };
 		3A9A381918A9267800F604F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A9A381B18A9267800F604F0 /* PointsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointsTests.m; sourceTree = "<group>"; };
 		3AFE993818A9432C00D3D9EE /* CreateGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateGroupViewController.h; sourceTree = "<group>"; };
@@ -302,8 +302,8 @@
 		3A9A37EE18A9267800F604F0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A9A37ED18A9267800F604F0 /* Points.app */,
-				3A9A380E18A9267800F604F0 /* PointsTests.xctest */,
+				3A9A37ED18A9267800F604F0 /* SocialRank.app */,
+				3A9A380E18A9267800F604F0 /* SocialRankTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -360,10 +360,10 @@
 				E0984D0718BD021E00AAE67A /* envelope-smaller.png */,
 				3A5A593218AEB6230046F00B /* addbutton.jpeg */,
 				3A15A97D18B7BF4900CF1169 /* orangebutton.png */,
-				3A9A37F818A9267800F604F0 /* Points-Info.plist */,
+				3A9A37F818A9267800F604F0 /* SocialRank-Info.plist */,
 				3A9A37F918A9267800F604F0 /* InfoPlist.strings */,
 				3A9A37FC18A9267800F604F0 /* main.m */,
-				3A9A37FE18A9267800F604F0 /* Points-Prefix.pch */,
+				3A9A37FE18A9267800F604F0 /* SocialRank-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -380,7 +380,7 @@
 		3A9A381618A9267800F604F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3A9A381718A9267800F604F0 /* PointsTests-Info.plist */,
+				3A9A381718A9267800F604F0 /* SocialRankTests-Info.plist */,
 				3A9A381818A9267800F604F0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -398,9 +398,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A9A37EC18A9267800F604F0 /* Points */ = {
+		3A9A37EC18A9267800F604F0 /* SocialRank */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A9A381F18A9267800F604F0 /* Build configuration list for PBXNativeTarget "Points" */;
+			buildConfigurationList = 3A9A381F18A9267800F604F0 /* Build configuration list for PBXNativeTarget "SocialRank" */;
 			buildPhases = (
 				B8827056EFDA4DFC81436F64 /* Check Pods Manifest.lock */,
 				3A9A37E918A9267800F604F0 /* Sources */,
@@ -412,14 +412,14 @@
 			);
 			dependencies = (
 			);
-			name = Points;
+			name = SocialRank;
 			productName = Points;
-			productReference = 3A9A37ED18A9267800F604F0 /* Points.app */;
+			productReference = 3A9A37ED18A9267800F604F0 /* SocialRank.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3A9A380D18A9267800F604F0 /* PointsTests */ = {
+		3A9A380D18A9267800F604F0 /* SocialRankTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A9A382218A9267800F604F0 /* Build configuration list for PBXNativeTarget "PointsTests" */;
+			buildConfigurationList = 3A9A382218A9267800F604F0 /* Build configuration list for PBXNativeTarget "SocialRankTests" */;
 			buildPhases = (
 				3A9A380A18A9267800F604F0 /* Sources */,
 				3A9A380B18A9267800F604F0 /* Frameworks */,
@@ -430,9 +430,9 @@
 			dependencies = (
 				3A9A381418A9267800F604F0 /* PBXTargetDependency */,
 			);
-			name = PointsTests;
+			name = SocialRankTests;
 			productName = PointsTests;
-			productReference = 3A9A380E18A9267800F604F0 /* PointsTests.xctest */;
+			productReference = 3A9A380E18A9267800F604F0 /* SocialRankTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -452,7 +452,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A9A37E818A9267800F604F0 /* Build configuration list for PBXProject "Points" */;
+			buildConfigurationList = 3A9A37E818A9267800F604F0 /* Build configuration list for PBXProject "SocialRank" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -465,8 +465,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A9A37EC18A9267800F604F0 /* Points */,
-				3A9A380D18A9267800F604F0 /* PointsTests */,
+				3A9A37EC18A9267800F604F0 /* SocialRank */,
+				3A9A380D18A9267800F604F0 /* SocialRankTests */,
 			);
 		};
 /* End PBXProject section */
@@ -586,7 +586,7 @@
 /* Begin PBXTargetDependency section */
 		3A9A381418A9267800F604F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3A9A37EC18A9267800F604F0 /* Points */;
+			target = 3A9A37EC18A9267800F604F0 /* SocialRank */;
 			targetProxy = 3A9A381318A9267800F604F0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -709,9 +709,9 @@
 					/Users/McMurdo1/Documents/MyApplications/PointsGame,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Points/Points-Prefix.pch";
-				INFOPLIST_FILE = "Points/Points-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Points/SocialRank-Prefix.pch";
+				INFOPLIST_FILE = "Points/SocialRank-Info.plist";
+				PRODUCT_NAME = SocialRank;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -731,9 +731,9 @@
 					/Users/McMurdo1/Documents/MyApplications/PointsGame,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Points/Points-Prefix.pch";
-				INFOPLIST_FILE = "Points/Points-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Points/SocialRank-Prefix.pch";
+				INFOPLIST_FILE = "Points/SocialRank-Info.plist";
+				PRODUCT_NAME = SocialRank;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -755,8 +755,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "PointsTests/PointsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "PointsTests/SocialRankTests-Info.plist";
+				PRODUCT_NAME = SocialRankTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -774,8 +774,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Points/Points-Prefix.pch";
-				INFOPLIST_FILE = "PointsTests/PointsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "PointsTests/SocialRankTests-Info.plist";
+				PRODUCT_NAME = SocialRankTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -784,7 +784,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A9A37E818A9267800F604F0 /* Build configuration list for PBXProject "Points" */ = {
+		3A9A37E818A9267800F604F0 /* Build configuration list for PBXProject "SocialRank" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A9A381D18A9267800F604F0 /* Debug */,
@@ -793,7 +793,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A9A381F18A9267800F604F0 /* Build configuration list for PBXNativeTarget "Points" */ = {
+		3A9A381F18A9267800F604F0 /* Build configuration list for PBXNativeTarget "SocialRank" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A9A382018A9267800F604F0 /* Debug */,
@@ -802,7 +802,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A9A382218A9267800F604F0 /* Build configuration list for PBXNativeTarget "PointsTests" */ = {
+		3A9A382218A9267800F604F0 /* Build configuration list for PBXNativeTarget "SocialRankTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A9A382318A9267800F604F0 /* Debug */,

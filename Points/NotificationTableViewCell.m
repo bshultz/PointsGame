@@ -29,7 +29,7 @@
         self.buttonToAcceptTheInvite.frame = CGRectMake(60.0f, 60.0f, 60, 20);
         self.buttonToAcceptTheInvite.tintColor = [UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f];
         [self.contentView addSubview:self.buttonToAcceptTheInvite];
-        [self.buttonToAcceptTheInvite setBackgroundImage:[UIImage imageNamed:@"ic_accept_normal@2x.png"] forState:UIControlStateNormal];
+        [self.buttonToAcceptTheInvite setBackgroundImage:[UIImage imageNamed:@"ic_accept_normal.png"] forState:UIControlStateNormal];
         [self.buttonToAcceptTheInvite addTarget:self action:@selector(addPersonToGroup) forControlEvents:UIControlEventTouchUpInside];
 
         
@@ -38,7 +38,7 @@
         self.buttonToDeclineTheInvite.frame = CGRectMake(200.0f, 60.0f, 60, 20);
         self.buttonToDeclineTheInvite.tintColor = [UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f];
          [self.contentView addSubview:self.buttonToDeclineTheInvite];
-        [self.buttonToDeclineTheInvite setBackgroundImage:[UIImage imageNamed:@"ic_decline_normal@2x.png"] forState:UIControlStateNormal];
+        [self.buttonToDeclineTheInvite setBackgroundImage:[UIImage imageNamed:@"ic_decline_normal.png"] forState:UIControlStateNormal];
         [self.buttonToDeclineTheInvite addTarget:self action:@selector(doNotAddPersonToGroup) forControlEvents:UIControlEventTouchUpInside];
 
 
@@ -75,9 +75,6 @@
         }
     }];
 
-
-
-
 }
 
 - (void) doNotAddPersonToGroup {
@@ -98,11 +95,6 @@
 
         }
             }];
-
-
-
-
-
 
 }
 

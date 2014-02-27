@@ -36,7 +36,7 @@
 - (void)OnAddButtonPressed:(UIButton *)sender{
     
     if([sender.titleLabel.text isEqualToString:@"Add"]){
-        PFRelation *relation = [group relationForKey:@"members"];
+
         
         PFQuery *query = [PFUser query];
         [query whereKey:@"uniqueFacebookID" equalTo:stringContainingUserID];
