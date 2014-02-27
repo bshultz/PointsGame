@@ -34,6 +34,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    friends = [NSMutableArray new];
+    friendImages = [NSMutableArray new];
+    toUserObjectID = [NSMutableArray new];
+    usernames = [NSMutableArray new];
+
     friendsTableView.separatorColor = [UIColor colorWithRed:0.05f green:0.345f blue:0.65f alpha:0.5f];
     friendsTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [friendsTableView setSeparatorInset:UIEdgeInsetsZero];
@@ -43,10 +48,6 @@
 {
 
     [super viewWillAppear:YES];
-    friends = [NSMutableArray new];
-    friendImages = [NSMutableArray new];
-    toUserObjectID = [NSMutableArray new];
-    usernames = [NSMutableArray new];
     PFQuery *query = [PFQuery queryWithClassName:@"Group"];
     group = [PFObject objectWithClassName:@"Group"];
     
@@ -56,6 +57,7 @@
     [pointQuery whereKey:@"group" equalTo:self.groupID];
     [pointQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {
+        [points removeAllObjects];
         if (!error)
         {
             for (PFObject *object in objects)
@@ -81,6 +83,7 @@
         PFRelation *relation = [group relationForKey:@"members"];
         [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
         {
+            [friends removeAllObjects];
             if (!error)
             {
                 for (PFObject *object in objects)
@@ -100,7 +103,7 @@
 
         }];
     }];
-    
+
 }
 - (IBAction)onInviteButtonPressed:(id)sender {
     [self performSegueWithIdentifier:@"FacebookFriends" sender:self];

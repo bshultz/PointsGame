@@ -45,37 +45,40 @@
 
     NSArray *permissionsArray =  @[@"user_about_me", @"email", @"user_relationships", @"read_insights", @"publish_actions"];
 
-    // Login PFUser using Facebook
-    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-        //           [_activityIndicator stopAnimating]; // Hide loading indicator
+    if (![PFUser currentUser]) {
+        [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+            //           [_activityIndicator stopAnimating]; // Hide loading indicator
 
-        if (!user) {
-            if (!error) {
-                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+            if (!user) {
+                if (!error) {
+                    NSLog(@"Uh oh. The user cancelled the Facebook login.");
+                } else {
+                    NSLog(@"Uh oh. An error occurred: %@", error);
+                }
+            } else if (user.isNew) {
+                NSLog(@"User with facebook signed up and logged in!");
+                PFUser *currentUser = user;
+                [currentUser setObject:@10 forKey:@"pointsAvailable"];
+                [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
+
+                // save the access token so that
+                //
+                //                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                //                [defaults setObject:facebook.accessToken forKey:ACCESS_TOKEN_KEY];
+                //                [defaults setObject:facebook.expirationDate forKey:EXPIRATION_DATE_KEY];
+                //                [defaults synchronize];
+
+                [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
             } else {
-                NSLog(@"Uh oh. An error occurred: %@", error);
+                NSLog(@"User with facebook logged in!");
+                [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
+                
+                
             }
-        } else if (user.isNew) {
-            NSLog(@"User with facebook signed up and logged in!");
-            PFUser *currentUser = user;
-            [currentUser setObject:@10 forKey:@"pointsAvailable"];
-            [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
+        }];
+    }
+    // Login PFUser using Facebook
 
-            // save the access token so that
-            //
-            //                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            //                [defaults setObject:facebook.accessToken forKey:ACCESS_TOKEN_KEY];
-            //                [defaults setObject:facebook.expirationDate forKey:EXPIRATION_DATE_KEY];
-            //                [defaults synchronize];
-
-            [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
-        } else {
-            NSLog(@"User with facebook logged in!");
-            [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
-
-
-        }
-    }];
 
 
 

@@ -55,6 +55,11 @@
      searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
     tableViewContainingFriends.tableHeaderView = searchBar;
 
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:RED/255.0f green:GREEN/255.0f blue:BLUE/255.0f alpha:1.0f];
+
+
     searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:searchBar contentsController:self];
     searchDisplayController.delegate = self;
     searchDisplayController.searchResultsDataSource = self;
@@ -182,9 +187,11 @@
     if ([object[@"InTheGroup"]isEqualToString:@"yes"]){
         // this person already has an account
         [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
+        cell.buttonWithTextToAddOrInvite.exclusiveTouch = YES;
         [cell.buttonWithTextToAddOrInvite setTitle:@"Add" forState:UIControlStateNormal];
     } else if ([object[@"InTheGroup"]isEqualToString:@"no"]) {
         // this person does not have an account
+        cell.buttonWithTextToAddOrInvite.exclusiveTouch = YES;
         [cell.buttonWithTextToAddOrInvite setTitle:@"Invite" forState:UIControlStateNormal];
         [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
 

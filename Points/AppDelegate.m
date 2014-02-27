@@ -55,9 +55,9 @@
                         withSession:[PFFacebookUtils session]];
 }
 
-//- (void)applicationDidBecomeActive:(UIApplication *)application {
-//    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
-//}
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+}
 
 
 

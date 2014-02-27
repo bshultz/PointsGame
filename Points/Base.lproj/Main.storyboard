@@ -49,7 +49,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Newsfeed" id="Aks-ng-PVr">
-                        <barButtonItem key="rightBarButtonItem" image="envelope-smaller.png" id="C6L-XF-Jhb">
+                        <barButtonItem key="rightBarButtonItem" image="ic_nav_notification_normal.png" id="C6L-XF-Jhb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="OGT-7D-TS4" kind="push" identifier="NotificationSegue" id="Fvc-eh-1dn"/>
@@ -668,6 +668,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="Nen-3W-mXS">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="yPn-TF-cri" kind="relationship" relationship="viewControllers" id="363-Vy-sRX"/>
@@ -683,7 +684,7 @@
         <scene sceneID="cqU-Nn-26D">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p6q-P1-u2J" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" id="DDz-FK-vvV"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="ic_tabbar_groups_normal.png" id="DDz-FK-vvV"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Tr3-3k-IrF"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GFn-A1-4mM">
@@ -703,7 +704,7 @@
         <scene sceneID="ULs-3B-frk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E30-bS-lR0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="5zr-f6-jJ4"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="ic_tabbar_profile_normal.png" id="5zr-f6-jJ4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qsj-13-X8d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -722,7 +723,7 @@
         <scene sceneID="7hw-Np-2Nm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yPn-TF-cri" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="wyp-JL-pNw"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="ic_tabbar_newsfeed_normal.png" id="wyp-JL-pNw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4us-A3-UAR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -775,7 +776,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="envelope-smaller.png" width="56" height="56"/>
+        <image name="ic_nav_notification_normal.png" width="32" height="32"/>
+        <image name="ic_tabbar_groups_normal.png" width="48" height="32"/>
+        <image name="ic_tabbar_newsfeed_normal.png" width="48" height="32"/>
+        <image name="ic_tabbar_profile_normal.png" width="48" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
