@@ -143,8 +143,8 @@
     NSString *groupName = group[@"name"];
 
     cell.labelContainingGroupInformation.text = [NSString stringWithFormat:@"%@ has invited you to the group '%@'", name, groupName ];
-    [cell.buttonToDeclineTheInvite setTitle:@"Decline" forState:UIControlStateNormal];
-    [cell.buttonToAcceptTheInvite setTitle:@"Accept" forState:UIControlStateNormal];
+ //   [cell.buttonToDeclineTheInvite setTitle:@"Decline" forState:UIControlStateNormal];
+ //   [cell.buttonToAcceptTheInvite setTitle:@"Accept" forState:UIControlStateNormal];
 
 
 

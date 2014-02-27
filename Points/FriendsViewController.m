@@ -159,7 +159,9 @@
     NSIndexPath *indexPath = [friendsTableView indexPathForCell:cell];
     pointVC.toUserObjectID = [toUserObjectID objectAtIndex:indexPath.row];
     pointVC.fromUserObjectID = [PFUser currentUser].objectId;
+    // if a user clicks on his own name int he group
     if ([pointVC.fromUserObjectID isEqualToString:pointVC.toUserObjectID]) {
+
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"You cannot give yourself a point!" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
         [alert show];
