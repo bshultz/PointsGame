@@ -18,6 +18,8 @@
     __weak IBOutlet UITextView *commentTextView;
     __weak IBOutlet UIImageView *userProfileImage;
     
+    IBOutlet UIButton *submitButton;
+    IBOutlet UIButton *cancelButton;
     PFObject *point;
     NSNumber *pointsAvailable;
     PFQuery *toQuery;
@@ -37,7 +39,8 @@
     self.navigationController.title = @"Give Point";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
-    self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
+    self.view.backgroundColor = [UIColor colorWithRed:77.0/255.0f green:169.0f/255.0f blue:157.0f/255.0f alpha:1.0f];
+    //[UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
     
     friendNameLabel.text = self.friendName;
     userProfileImage.contentMode = UIViewContentModeScaleAspectFill;
@@ -48,6 +51,10 @@
     
     commentTextView.layer.masksToBounds = YES;
     commentTextView.layer.cornerRadius = 5.0f;
+
+    [cancelButton setBackgroundImage:[UIImage imageNamed:@"btn_orange_normal.png"] forState:UIControlStateNormal];
+    [submitButton setBackgroundImage:[UIImage imageNamed:@"btn_orange_normal.png"] forState:UIControlStateNormal];
+    
 
     
     PFUser *currentUser = [PFUser currentUser];

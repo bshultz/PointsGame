@@ -39,6 +39,10 @@
 		D12C8C7A18BEC722000BD6F6 /* ic_nav_notification_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C8C7918BEC722000BD6F6 /* ic_nav_notification_normal.png */; };
 		D12C8C7C18BF47C1000BD6F6 /* btn_orange_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C8C7B18BF47C1000BD6F6 /* btn_orange_normal.png */; };
 		D12C8C7E18BF514D000BD6F6 /* SocialRank-login-screen.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C8C7D18BF514D000BD6F6 /* SocialRank-login-screen.png */; };
+		D12C8C8018BF743F000BD6F6 /* ic_decline_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C8C7F18BF743F000BD6F6 /* ic_decline_normal.png */; };
+		D12C8C8218BF7450000BD6F6 /* ic_decline_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C8C8118BF7450000BD6F6 /* ic_decline_normal@2x.png */; };
+		D12C8C8418BF745B000BD6F6 /* ic_accept_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C8C8318BF745B000BD6F6 /* ic_accept_normal.png */; };
+		D12C8C8618BF7464000BD6F6 /* ic_accept_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C8C8518BF7464000BD6F6 /* ic_accept_normal@2x.png */; };
 		D12D5EBD18AD444B00940381 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBC18AD444B00940381 /* AddressBook.framework */; };
 		D12D5EBF18AD445200940381 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBE18AD445200940381 /* AddressBookUI.framework */; };
 		D1378F3B18B2CBEA00CD5109 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */; };
@@ -110,6 +114,10 @@
 		D12C8C7918BEC722000BD6F6 /* ic_nav_notification_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_nav_notification_normal.png; sourceTree = "<group>"; };
 		D12C8C7B18BF47C1000BD6F6 /* btn_orange_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_orange_normal.png; sourceTree = "<group>"; };
 		D12C8C7D18BF514D000BD6F6 /* SocialRank-login-screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SocialRank-login-screen.png"; sourceTree = "<group>"; };
+		D12C8C7F18BF743F000BD6F6 /* ic_decline_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_decline_normal.png; sourceTree = "<group>"; };
+		D12C8C8118BF7450000BD6F6 /* ic_decline_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_decline_normal@2x.png"; sourceTree = "<group>"; };
+		D12C8C8318BF745B000BD6F6 /* ic_accept_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_accept_normal.png; sourceTree = "<group>"; };
+		D12C8C8518BF7464000BD6F6 /* ic_accept_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_accept_normal@2x.png"; sourceTree = "<group>"; };
 		D12D5EBC18AD444B00940381 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D12D5EBE18AD445200940381 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		D134B8F518B888260030A796 /* NotificationTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCellDelegate.h; sourceTree = "<group>"; };
@@ -179,6 +187,7 @@
 				D134B8F518B888260030A796 /* NotificationTableViewCellDelegate.h */,
 				D1AA2CF718B454300053E8CB /* NotificationTableViewCell.h */,
 				D1AA2CF818B454300053E8CB /* NotificationTableViewCell.m */,
+				D1AA2CF518B42C820053E8CB /* NotificationViewController.m */,
 				D12C8C7D18BF514D000BD6F6 /* SocialRank-login-screen.png */,
 				D1AA2CF418B42C820053E8CB /* NotificationViewController.h */,
 				D12C8C7518BEC0CE000BD6F6 /* ic_tabbar_groups_normal.png */,
@@ -187,7 +196,10 @@
 				D12B38B918BE18F9005B9E9C /* facebook_login.png */,
 				D12C8C7B18BF47C1000BD6F6 /* btn_orange_normal.png */,
 				D12C8C7318BEBDEE000BD6F6 /* ic_tabbar_profile_normal.png */,
-				D1AA2CF518B42C820053E8CB /* NotificationViewController.m */,
+				D12C8C7F18BF743F000BD6F6 /* ic_decline_normal.png */,
+				D12C8C8118BF7450000BD6F6 /* ic_decline_normal@2x.png */,
+				D12C8C8318BF745B000BD6F6 /* ic_accept_normal.png */,
+				D12C8C8518BF7464000BD6F6 /* ic_accept_normal@2x.png */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -449,12 +461,16 @@
 				D12C8C7618BEC0CE000BD6F6 /* ic_tabbar_groups_normal.png in Resources */,
 				D12C8C7A18BEC722000BD6F6 /* ic_nav_notification_normal.png in Resources */,
 				3A9A37FB18A9267800F604F0 /* InfoPlist.strings in Resources */,
+				D12C8C8018BF743F000BD6F6 /* ic_decline_normal.png in Resources */,
 				D12C8C7818BEC0D7000BD6F6 /* ic_tabbar_newsfeed_normal.png in Resources */,
+				D12C8C8418BF745B000BD6F6 /* ic_accept_normal.png in Resources */,
 				3A9A380418A9267800F604F0 /* Main.storyboard in Resources */,
 				E0984D0618BD017100AAE67A /* envelope.png in Resources */,
 				3A15A97E18B7BF4900CF1169 /* orangebutton.png in Resources */,
 				E0984D0818BD021E00AAE67A /* envelope-smaller.png in Resources */,
+				D12C8C8218BF7450000BD6F6 /* ic_decline_normal@2x.png in Resources */,
 				3A5A593318AEB6230046F00B /* addbutton.jpeg in Resources */,
+				D12C8C8618BF7464000BD6F6 /* ic_accept_normal@2x.png in Resources */,
 				D12C8C7C18BF47C1000BD6F6 /* btn_orange_normal.png in Resources */,
 				D12B38BA18BE18F9005B9E9C /* facebook_login.png in Resources */,
 			);

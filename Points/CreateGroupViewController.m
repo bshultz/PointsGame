@@ -118,12 +118,13 @@
     } else {
         //
 
-    groupTextField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 75.0f, 240.0f, 30.0f)];
+    groupTextField = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 85.0f, 240.0f, 30.0f)];
     groupTextField.placeholder = @"Group Name";
-    groupTextField.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:23.0f];
+    groupTextField.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:16.0f];
     [groupTextField setBorderStyle:UITextBorderStyleRoundedRect];
-    addButton = [[UIButton alloc] initWithFrame:CGRectMake(270.0f, 75.0f, 40.0f, 30.0f)];
+    addButton = [[UIButton alloc] initWithFrame:CGRectMake(20.0f, 125.0f, 240.0f, 30.0f)];
     [addButton setTitle:@"Add" forState:UIControlStateNormal];
+        addButton.titleLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:16.0f];
     [addButton setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
     
     [self.view addSubview:groupTextField];
