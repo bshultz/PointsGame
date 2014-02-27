@@ -24,12 +24,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    facebookLoginButton = [[UIButton alloc]initWithFrame:CGRectMake(50, 250, 200, 110)];
-    facebookLoginButton.titleLabel.text = @"Login";
+//    facebookLoginButton = [[UIButton alloc]initWithFrame:CGRectMake(50, 250, 200, 110)];
+//    facebookLoginButton.titleLabel.text = @"Login";
 //    facebookLoginButton.backgroundColor = [UIColor redColor];
     [self.view addSubview:facebookLoginButton];
-    [facebookLoginButton setImage:[UIImage imageNamed:@"facebook_login.png"] forState:UIControlStateNormal];
-    [facebookLoginButton addTarget:self action:@selector(loginButtonTouchHandler:) forControlEvents:UIControlEventTouchUpInside];
+//    [facebookLoginButton setImage:[UIImage imageNamed:@"facebook_login.png"] forState:UIControlStateNormal];
+//    [facebookLoginButton addTarget:self action:@selector(loginButtonTouchHandler:) forControlEvents:UIControlEventTouchUpInside];
 
     //    if ([PFUser currentUser])
     //    {
@@ -39,8 +39,7 @@
 
 
 }
-
-- (void) loginButtonTouchHandler : (id) sender {
+- (IBAction)loginButtonTouchHandler:(id)sender {
 
 
     NSArray *permissionsArray =  @[@"user_about_me", @"email", @"user_relationships", @"read_insights", @"publish_actions"];
@@ -72,8 +71,8 @@
             } else {
                 NSLog(@"User with facebook logged in!");
                 [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
-                
-                
+
+
             }
         }];
     }
@@ -101,11 +100,16 @@
     //            [self performSegueWithIdentifier:@"FacebookSegue" sender:self];
     //        }
     //    }];
-
-
-
+    
+    
+    
+    
 
 }
+
+//- (IBAction)loginButtonTouchHandler : (id) sender {
+//
+//}
 
 -(void)viewDidAppear:(BOOL)animated
 

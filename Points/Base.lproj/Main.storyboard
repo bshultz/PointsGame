@@ -647,6 +647,22 @@
                     <view key="view" contentMode="scaleToFill" id="Gen-CB-KP0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SocialRank-login-screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="uq9-w9-znR">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLa-2u-X7T">
+                                <rect key="frame" x="13" y="375" width="297" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonTouchHandler:" destination="afH-m2-Nab" eventType="touchUpInside" id="met-9s-fxN"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="rvg-OO-cu7"/>
@@ -754,7 +770,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQL-0G-242" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2358" y="-636"/>
+            <point key="canvasLocation" x="2234" y="-638"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wjf-Pm-F7A">
@@ -776,6 +792,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="SocialRank-login-screen.png" width="640" height="1136"/>
         <image name="ic_nav_notification_normal.png" width="32" height="32"/>
         <image name="ic_tabbar_groups_normal.png" width="48" height="32"/>
         <image name="ic_tabbar_newsfeed_normal.png" width="48" height="32"/>
