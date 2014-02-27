@@ -37,11 +37,15 @@
 	<string>PointsBank</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Kulturista Medium.otf</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>armv7</string>
+		<string>Kulturista Medium.otf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

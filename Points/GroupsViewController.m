@@ -30,7 +30,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    UIFont* font = [UIFont fontWithName:@"Kulturista" size:12.0f];
+    UILabel* label  = [[UILabel alloc] initWithFrame:self.navigationItem.titleView.frame];
+
+    for (NSString* family in [UIFont familyNames]) {
+        NSLog(@"Family:  %@", family);
+
+        for (NSString* name in [UIFont fontNamesForFamilyName:family]) {
+            NSLog(@"Font:  %@", name);
+        }
+    }
+
+    label.backgroundColor = [UIColor orangeColor];
+    label.font = font;
+    label.text = @"Nothing";
+
+    [self.navigationItem.titleView addSubview:label];
+
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
 //    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
         self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];

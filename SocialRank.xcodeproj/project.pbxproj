@@ -56,6 +56,7 @@
 		D13B940618B7E1ED005441D9 /* FacebookFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D13B940518B7E1ED005441D9 /* FacebookFriendsViewController.m */; };
 		D1AA2CF618B42C820053E8CB /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA2CF518B42C820053E8CB /* NotificationViewController.m */; };
 		D1AA2CF918B454300053E8CB /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA2CF818B454300053E8CB /* NotificationTableViewCell.m */; };
+		D1B5B33318BFAEF800C8277C /* Kulturista Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B5B32E18BFAA8600C8277C /* Kulturista Medium.otf */; };
 		E0984CE318AA8D5E00AAE67A /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */; };
 		E0984CE618AAD79100AAE67A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE518AAD79100AAE67A /* ProfileViewController.m */; };
 		E0984CE918B279A700AAE67A /* DetailPointsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0984CE818B279A700AAE67A /* DetailPointsPageViewController.m */; };
@@ -149,6 +150,16 @@
 		D1B235B418AF203F009D5BDD /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		D1B235B618AF2050009D5BDD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D1B235B718AF2050009D5BDD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		D1B5B32918BFAA8600C8277C /* Kulturista Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kulturista Bold Italic.otf"; sourceTree = "<group>"; };
+		D1B5B32A18BFAA8600C8277C /* Kulturista Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kulturista Bold.otf"; sourceTree = "<group>"; };
+		D1B5B32B18BFAA8600C8277C /* Kulturista Light Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kulturista Light Italic.otf"; sourceTree = "<group>"; };
+		D1B5B32C18BFAA8600C8277C /* Kulturista Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kulturista Light.otf"; sourceTree = "<group>"; };
+		D1B5B32D18BFAA8600C8277C /* Kulturista Medium Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kulturista Medium Italic.otf"; sourceTree = "<group>"; };
+		D1B5B32E18BFAA8600C8277C /* Kulturista Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kulturista Medium.otf"; sourceTree = "<group>"; };
+		D1B5B32F18BFAA8600C8277C /* Kulturista Semibold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kulturista Semibold Italic.otf"; sourceTree = "<group>"; };
+		D1B5B33018BFAA8600C8277C /* Kulturista Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kulturista Semibold.otf"; sourceTree = "<group>"; };
+		D1B5B33118BFAA8600C8277C /* Kulturista Thin Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kulturista Thin Italic.otf"; sourceTree = "<group>"; };
+		D1B5B33218BFAA8600C8277C /* Kulturista Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kulturista Thin.otf"; sourceTree = "<group>"; };
 		E0984CE118AA8D5E00AAE67A /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
 		E0984CE218AA8D5E00AAE67A /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
 		E0984CE418AAD79100AAE67A /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -331,6 +342,7 @@
 		3A9A37F618A9267800F604F0 /* Points */ = {
 			isa = PBXGroup;
 			children = (
+				D1B5B32818BFAA7600C8277C /* Fonts */,
 				3A15A97F18B7C23400CF1169 /* Facebook */,
 				3A99E1B718B5127500C9BB55 /* AddPoint */,
 				3A99E1B618B5126400C9BB55 /* Profile */,
@@ -384,6 +396,23 @@
 				3A9A381818A9267800F604F0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D1B5B32818BFAA7600C8277C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D1B5B32918BFAA8600C8277C /* Kulturista Bold Italic.otf */,
+				D1B5B32A18BFAA8600C8277C /* Kulturista Bold.otf */,
+				D1B5B32B18BFAA8600C8277C /* Kulturista Light Italic.otf */,
+				D1B5B32C18BFAA8600C8277C /* Kulturista Light.otf */,
+				D1B5B32D18BFAA8600C8277C /* Kulturista Medium Italic.otf */,
+				D1B5B32E18BFAA8600C8277C /* Kulturista Medium.otf */,
+				D1B5B32F18BFAA8600C8277C /* Kulturista Semibold Italic.otf */,
+				D1B5B33018BFAA8600C8277C /* Kulturista Semibold.otf */,
+				D1B5B33118BFAA8600C8277C /* Kulturista Thin Italic.otf */,
+				D1B5B33218BFAA8600C8277C /* Kulturista Thin.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		E0984CEA18B27EDE00AAE67A /* detailpoints */ = {
@@ -491,6 +520,7 @@
 				3A15A97E18B7BF4900CF1169 /* orangebutton.png in Resources */,
 				E0984D0818BD021E00AAE67A /* envelope-smaller.png in Resources */,
 				D10783C418BF99450066EAB7 /* SocialRank-splash-screen-normal.png in Resources */,
+				D1B5B33318BFAEF800C8277C /* Kulturista Medium.otf in Resources */,
 				D10783C618BF994B0066EAB7 /* SocialRank-splash-screen-normal@2x.png in Resources */,
 				D12C8C8218BF7450000BD6F6 /* ic_decline_normal@2x.png in Resources */,
 				3A5A593318AEB6230046F00B /* addbutton.jpeg in Resources */,
