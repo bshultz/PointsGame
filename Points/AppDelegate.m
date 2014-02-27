@@ -14,11 +14,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    UIFont* font = [UIFont fontWithName:@"Kulturista" size:12.0f];
-//    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Kulturista" size:12.0f], NSFontAttributeName,
-//                                [UIColor whiteColor], NSForegroundColorAttributeName, nil];
-//    
-//    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Kulturista" size:16.0f], NSFontAttributeName, nil]];
 
     [Parse setApplicationId:@"OOr21JpCPWiIB69kZmcyOMzD7XW6m7PRHHXQheCg" clientKey:@"4gQPowsEoSmHDnPl7aAOWz4wPLG4kvxXOECZNtaU"];
     
