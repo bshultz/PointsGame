@@ -54,7 +54,7 @@
 
     [cancelButton setBackgroundImage:[UIImage imageNamed:@"btn_orange_normal.png"] forState:UIControlStateNormal];
     [submitButton setBackgroundImage:[UIImage imageNamed:@"btn_orange_normal.png"] forState:UIControlStateNormal];
-    
+
 
     
     PFUser *currentUser = [PFUser currentUser];
