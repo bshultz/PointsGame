@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:77.0/255.0f green:169.0f/255.0f blue:157.0f/255.0f alpha:1.0f];
+   // self.view.backgroundColor = [UIColor colorWithRed:77.0/255.0f green:169.0f/255.0f blue:157.0f/255.0f alpha:1.0f];
     PFQuery *query = [PFQuery queryWithClassName:@"Point"];
     [query includeKey:@"fromUser"];
     [query includeKey:@"toUser"];

@@ -638,7 +638,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SocialRank-login-screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="uq9-w9-znR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SocialRank-login-screen-normal.png" translatesAutoresizingMaskIntoConstraints="NO" id="uq9-w9-znR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -657,6 +657,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rvg-OO-cu7"/>
                     <connections>
+                        <outlet property="imageView" destination="uq9-w9-znR" id="SCZ-jM-GFB"/>
                         <segue destination="O7B-kK-8jL" kind="modal" identifier="FacebookLogin" id="Cro-vG-fLV"/>
                     </connections>
                 </viewController>
@@ -782,11 +783,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SocialRank-login-screen.png" width="640" height="1136"/>
+        <image name="SocialRank-login-screen-normal.png" width="640" height="960"/>
         <image name="ic_nav_notification_normal.png" width="32" height="32"/>
-        <image name="ic_tabbar_groups_normal.png" width="48" height="32"/>
-        <image name="ic_tabbar_newsfeed_normal.png" width="48" height="32"/>
-        <image name="ic_tabbar_profile_normal.png" width="48" height="32"/>
+        <image name="ic_tabbar_groups_normal.png" width="24" height="16"/>
+        <image name="ic_tabbar_newsfeed_normal.png" width="24" height="16"/>
+        <image name="ic_tabbar_profile_normal.png" width="24" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

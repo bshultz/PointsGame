@@ -14,6 +14,8 @@
 @interface FacebookViewController ()
 {
     UIButton *facebookLoginButton;
+
+    IBOutlet UIImageView *imageView;
 }
 
 @end
@@ -24,19 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    facebookLoginButton = [[UIButton alloc]initWithFrame:CGRectMake(50, 250, 200, 110)];
-//    facebookLoginButton.titleLabel.text = @"Login";
-//    facebookLoginButton.backgroundColor = [UIColor redColor];
+
     [self.view addSubview:facebookLoginButton];
-//    [facebookLoginButton setImage:[UIImage imageNamed:@"facebook_login.png"] forState:UIControlStateNormal];
-//    [facebookLoginButton addTarget:self action:@selector(loginButtonTouchHandler:) forControlEvents:UIControlEventTouchUpInside];
-
-    //    if ([PFUser currentUser])
-    //    {
-    //        [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
-    //        NSLog(@"The user is currently logged in");
-    //    }
-
 
 }
 - (IBAction)loginButtonTouchHandler:(id)sender {
@@ -60,12 +51,6 @@
                 [currentUser setObject:@10 forKey:@"pointsAvailable"];
                 [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
 
-                // save the access token so that
-                //
-                //                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                //                [defaults setObject:facebook.accessToken forKey:ACCESS_TOKEN_KEY];
-                //                [defaults setObject:facebook.expirationDate forKey:EXPIRATION_DATE_KEY];
-                //                [defaults synchronize];
 
                 [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
             } else {
@@ -76,33 +61,7 @@
             }
         }];
     }
-    // Login PFUser using Facebook
 
-
-
-
-    //    FBLoginView *loginView = [[FBLoginView alloc] init];
-    //    loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width/2)), 250);
-    //    [self.view addSubview:loginView];
-    //
-    //    loginView.readPermissions = @[@"user_about_me", @"email", @"user_relationships", @"read_insights", @"publish_actions"];;
-    //
-    //        [PFFacebookUtils logInWithPermissions:loginView.readPermissions block:^(PFUser *user, NSError *error) {
-    //        if (!user) {
-    //            NSLog(@"Uh oh. The user cancelled the Facebook login.");
-    //        } else if (user.isNew) {
-    //            NSLog(@"User signed up and logged in through Facebook!");
-    //            PFUser *currentUser = [PFUser currentUser];
-    //            [currentUser setObject:@10 forKey:@"pointsAvailable"];
-    //            [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
-    //        } else {
-    //            NSLog(@"User logged in through Facebook!");
-    //            [self performSegueWithIdentifier:@"FacebookSegue" sender:self];
-    //        }
-    //    }];
-    
-    
-    
     
 
 }
