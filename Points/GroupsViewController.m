@@ -94,6 +94,11 @@
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"FriendsDetail" sender:self];
+
+}
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -117,6 +122,7 @@
     }
     cell.textLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Regular" size:12.0f];
     cell.textLabel.text = object[@"name"];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 
 }

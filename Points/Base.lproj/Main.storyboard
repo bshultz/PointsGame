@@ -231,9 +231,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="8yP-cs-7rk" kind="push" identifier="FriendsDetail" id="0tE-X9-NLX"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -260,11 +257,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="myTableView" destination="ndp-br-rNQ" id="YgH-Ka-WtQ"/>
+                        <segue destination="8yP-cs-7rk" kind="push" identifier="FriendsDetail" id="83n-Nn-ZOJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tjc-Yg-sPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1091" y="-652"/>
+            <point key="canvasLocation" x="1093" y="-778"/>
         </scene>
         <!--Newsfeed Detail View Controller-->
         <scene sceneID="70e-gh-f0u">
