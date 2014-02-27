@@ -187,7 +187,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="bas-GJ-qez">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="MhB-UE-q4t">
-                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onLogoutButtonPressed:" destination="Xxn-kh-kej" id="BkT-x9-6lk"/>
                             </connections>
@@ -246,13 +246,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="My Groups" id="Vg5-LN-zhe">
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="search" id="has-Lb-hEW">
-                            <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onSearchButtonClicked:" destination="juO-tY-f82" id="Fwp-HN-kCh"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GXv-X9-uw2">
-                            <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="iEL-Uw-frs" kind="push" identifier="CreateGroupIdentifier" id="f1F-20-hTc"/>
                             </connections>
@@ -437,7 +437,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="peZ-k9-N4K">
                         <barButtonItem key="rightBarButtonItem" title="Invite" id="y3A-uT-aeW">
-                            <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onInviteButtonPressed:" destination="8yP-cs-7rk" id="Gwo-vC-kcx"/>
                             </connections>
@@ -618,11 +618,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Facebook Friends" id="aBh-xU-qRx">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ruC-Rs-hO5">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onCancelButtonPressed:" destination="PS4-Ej-bRh" id="lZq-KI-whn"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="wab-r1-98e">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onDoneButtonPressed:" destination="PS4-Ej-bRh" id="6tI-bN-gpl"/>
                             </connections>

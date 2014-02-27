@@ -37,6 +37,7 @@
 		D12C8C7618BEC0CE000BD6F6 /* ic_tabbar_groups_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C8C7518BEC0CE000BD6F6 /* ic_tabbar_groups_normal.png */; };
 		D12C8C7818BEC0D7000BD6F6 /* ic_tabbar_newsfeed_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C8C7718BEC0D7000BD6F6 /* ic_tabbar_newsfeed_normal.png */; };
 		D12C8C7A18BEC722000BD6F6 /* ic_nav_notification_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C8C7918BEC722000BD6F6 /* ic_nav_notification_normal.png */; };
+		D12C8C7C18BF47C1000BD6F6 /* btn_orange_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C8C7B18BF47C1000BD6F6 /* btn_orange_normal.png */; };
 		D12D5EBD18AD444B00940381 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBC18AD444B00940381 /* AddressBook.framework */; };
 		D12D5EBF18AD445200940381 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBE18AD445200940381 /* AddressBookUI.framework */; };
 		D1378F3B18B2CBEA00CD5109 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */; };
@@ -106,6 +107,7 @@
 		D12C8C7518BEC0CE000BD6F6 /* ic_tabbar_groups_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_tabbar_groups_normal.png; sourceTree = "<group>"; };
 		D12C8C7718BEC0D7000BD6F6 /* ic_tabbar_newsfeed_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_tabbar_newsfeed_normal.png; sourceTree = "<group>"; };
 		D12C8C7918BEC722000BD6F6 /* ic_nav_notification_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_nav_notification_normal.png; sourceTree = "<group>"; };
+		D12C8C7B18BF47C1000BD6F6 /* btn_orange_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_orange_normal.png; sourceTree = "<group>"; };
 		D12D5EBC18AD444B00940381 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		D12D5EBE18AD445200940381 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		D134B8F518B888260030A796 /* NotificationTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCellDelegate.h; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				D12C8C7718BEC0D7000BD6F6 /* ic_tabbar_newsfeed_normal.png */,
 				D12C8C7918BEC722000BD6F6 /* ic_nav_notification_normal.png */,
 				D12B38B918BE18F9005B9E9C /* facebook_login.png */,
+				D12C8C7B18BF47C1000BD6F6 /* btn_orange_normal.png */,
 				D12C8C7318BEBDEE000BD6F6 /* ic_tabbar_profile_normal.png */,
 				D1AA2CF518B42C820053E8CB /* NotificationViewController.m */,
 			);
@@ -448,6 +451,7 @@
 				3A15A97E18B7BF4900CF1169 /* orangebutton.png in Resources */,
 				E0984D0818BD021E00AAE67A /* envelope-smaller.png in Resources */,
 				3A5A593318AEB6230046F00B /* addbutton.jpeg in Resources */,
+				D12C8C7C18BF47C1000BD6F6 /* btn_orange_normal.png in Resources */,
 				D12B38BA18BE18F9005B9E9C /* facebook_login.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

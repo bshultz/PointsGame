@@ -66,7 +66,6 @@
                 [points addObject:object];
                 
             }
-//            [friendsTableView reloadData];
         }
         else
         {
@@ -140,7 +139,7 @@
     }
     
     cell.points.text = [NSString stringWithFormat:@"%ld",(long)pointValue];
-    [cell.addButton setBackgroundImage:[UIImage imageNamed:@"orangebutton.png"] forState:UIControlStateNormal];
+    [cell.addButton setBackgroundImage:[UIImage imageNamed:@"btn_orange_normal.png"] forState:UIControlStateNormal];
     [cell.addButton addTarget:self action:@selector(addPoint:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
