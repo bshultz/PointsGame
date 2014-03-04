@@ -701,7 +701,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "3C639686-148F-44C3-A127-54BCF342B9F9";
+				PROVISIONING_PROFILE = "1F904286-202E-4D14-B7C8-1103CF0E9095";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -735,7 +735,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "3C639686-148F-44C3-A127-54BCF342B9F9";
+				PROVISIONING_PROFILE = "1F904286-202E-4D14-B7C8-1103CF0E9095";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -758,7 +758,7 @@
 				GCC_PREFIX_HEADER = "Points/SocialRank-Prefix.pch";
 				INFOPLIST_FILE = "Points/SocialRank-Info.plist";
 				PRODUCT_NAME = SocialRank;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5FB6F598-E085-4010-9973-451C676B4E6E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -769,8 +769,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Matthew Graham (54GA323Y2J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Matthew Graham (54GA323Y2J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Sidreddy/Desktop/FacebookSDK,
@@ -780,7 +780,7 @@
 				GCC_PREFIX_HEADER = "Points/SocialRank-Prefix.pch";
 				INFOPLIST_FILE = "Points/SocialRank-Info.plist";
 				PRODUCT_NAME = SocialRank;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5FB6F598-E085-4010-9973-451C676B4E6E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -64,7 +64,7 @@
              for (PFObject *object in objects)
              {
                  PFObject *toUser = [object objectForKey:@"toUser"];
-                 if ([toUser.objectId isEqualToString:self.userName])
+                 if ([toUser.objectId isEqualToString:self.userName])   
                  {
                      PFObject *fromUser = [object objectForKey:@"fromUser"];
                      [fromUsers addObject:[fromUser objectForKey:@"fullName"]];
