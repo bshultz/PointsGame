@@ -222,28 +222,6 @@
 				D1AA2CF818B454300053E8CB /* NotificationTableViewCell.m */,
 				D1AA2CF418B42C820053E8CB /* NotificationViewController.h */,
 				D1AA2CF518B42C820053E8CB /* NotificationViewController.m */,
-				D12C8C7518BEC0CE000BD6F6 /* ic_tabbar_groups_normal@2x.png */,
-				D12C8C7718BEC0D7000BD6F6 /* ic_tabbar_newsfeed_normal@2x.png */,
-				D12C8C7318BEBDEE000BD6F6 /* ic_tabbar_profile_normal@2x.png */,
-				D12C8C7918BEC722000BD6F6 /* ic_nav_notification_normal.png */,
-				D10783B918BF96E70066EAB7 /* ic_nav_notification_normal@2x.png */,
-				D10783BB18BF97100066EAB7 /* ic_nav_search_normal.png */,
-				D10783BD18BF97CE0066EAB7 /* ic_nav_search_normal@2x.png */,
-				D1B5B33418BFB6AF00C8277C /* ic_nav_add_normal.png */,
-				D1B5B33618BFB6C000C8277C /* ic_nav_add_normal@2x.png */,
-				D12B38B918BE18F9005B9E9C /* facebook_login.png */,
-				D12C8C7B18BF47C1000BD6F6 /* btn_orange_normal.png */,
-				D10783B718BF96820066EAB7 /* btn_orange_normal@2x.png */,
-				D12C8C7F18BF743F000BD6F6 /* ic_decline_normal.png */,
-				D12C8C8118BF7450000BD6F6 /* ic_decline_normal@2x.png */,
-				D12C8C8318BF745B000BD6F6 /* ic_accept_normal.png */,
-				D12C8C8518BF7464000BD6F6 /* ic_accept_normal@2x.png */,
-				D10783BF18BF99220066EAB7 /* SocialRank-login-screen-normal_480@2x.png */,
-				D10783C118BF993E0066EAB7 /* SocialRank-login-screen-normal@2x.png */,
-				D10783C318BF99450066EAB7 /* SocialRank-splash-screen-normal_480@2x.png */,
-				D10783C518BF994B0066EAB7 /* SocialRank-splash-screen-normal@2x.png */,
-				D1B5B33818BFC4FD00C8277C /* btn_fb_login.png */,
-				D1B5B33A18BFC50400C8277C /* btn_fb_login@2x.png */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -354,6 +332,7 @@
 		3A9A37F618A9267800F604F0 /* Points */ = {
 			isa = PBXGroup;
 			children = (
+				D1F791E318C61B1D00587F3B /* Images */,
 				D1B5B32818BFAA7600C8277C /* Fonts */,
 				3A15A97F18B7C23400CF1169 /* Facebook */,
 				3A99E1B718B5127500C9BB55 /* AddPoint */,
@@ -425,6 +404,35 @@
 				D1B5B33218BFAA8600C8277C /* Kulturista Thin.otf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		D1F791E318C61B1D00587F3B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D12C8C7718BEC0D7000BD6F6 /* ic_tabbar_newsfeed_normal@2x.png */,
+				D12C8C7518BEC0CE000BD6F6 /* ic_tabbar_groups_normal@2x.png */,
+				D12C8C7318BEBDEE000BD6F6 /* ic_tabbar_profile_normal@2x.png */,
+				D12C8C7918BEC722000BD6F6 /* ic_nav_notification_normal.png */,
+				D10783B918BF96E70066EAB7 /* ic_nav_notification_normal@2x.png */,
+				D10783BB18BF97100066EAB7 /* ic_nav_search_normal.png */,
+				D10783BD18BF97CE0066EAB7 /* ic_nav_search_normal@2x.png */,
+				D1B5B33418BFB6AF00C8277C /* ic_nav_add_normal.png */,
+				D1B5B33618BFB6C000C8277C /* ic_nav_add_normal@2x.png */,
+				D12B38B918BE18F9005B9E9C /* facebook_login.png */,
+				D12C8C7B18BF47C1000BD6F6 /* btn_orange_normal.png */,
+				D10783B718BF96820066EAB7 /* btn_orange_normal@2x.png */,
+				D12C8C7F18BF743F000BD6F6 /* ic_decline_normal.png */,
+				D12C8C8118BF7450000BD6F6 /* ic_decline_normal@2x.png */,
+				D12C8C8318BF745B000BD6F6 /* ic_accept_normal.png */,
+				D12C8C8518BF7464000BD6F6 /* ic_accept_normal@2x.png */,
+				D10783BF18BF99220066EAB7 /* SocialRank-login-screen-normal_480@2x.png */,
+				D10783C118BF993E0066EAB7 /* SocialRank-login-screen-normal@2x.png */,
+				D10783C318BF99450066EAB7 /* SocialRank-splash-screen-normal_480@2x.png */,
+				D10783C518BF994B0066EAB7 /* SocialRank-splash-screen-normal@2x.png */,
+				D1B5B33818BFC4FD00C8277C /* btn_fb_login.png */,
+				D1B5B33A18BFC50400C8277C /* btn_fb_login@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		E0984CEA18B27EDE00AAE67A /* detailpoints */ = {

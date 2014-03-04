@@ -67,6 +67,8 @@
     [query whereKey:@"toUser" equalTo:currentUser];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
+        self.navigationItem.backBarButtonItem.enabled = NO;
+
         if (error){
             NSLog (@"%@ %@", error, [error userInfo]);
 
@@ -76,6 +78,7 @@
             if (objects.count == 0){
 
                 alertIfNoNotificationsPresentInitially = [[UIAlertView alloc] initWithTitle:@"No notifications present" message:nil delegate:self cancelButtonTitle:@"Go to the newsfeed page" otherButtonTitles:nil, nil];
+                self.navigationItem.backBarButtonItem.enabled = YES;
 
                [alertIfNoNotificationsPresentInitially show];
 
@@ -100,8 +103,6 @@
 
 }
 
-
-
 #pragma mark - Custom Delegate for notification tableViewCell
 
 - (void) didWantToDeleteCell: (NotificationTableViewCell*) NewTableViewCell atIndexPath:(NSIndexPath *)indexPath forGroup:(NSString *) groupId{
@@ -125,8 +126,6 @@
     NotificationTableViewCell *cell = [NotificationTableViewCell new];
 
     NSMutableDictionary *dict = arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser[indexPath.row];
-
-    
 
     cell.group = dict[@"group"];
     cell.invite = dict[@"invite"];
