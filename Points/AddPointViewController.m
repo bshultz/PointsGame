@@ -65,7 +65,9 @@
 }
 
 - (IBAction)onSubmitButtonPressed:(id)sender
+
 {
+    submitButton.enabled = NO;
     // Check to see if the user has any points to give
     if (pointsAvailable.intValue > 0)
     {
@@ -102,6 +104,7 @@
             // Tell the user the save was successful
             UIAlertView *saveAlert = [[UIAlertView alloc] initWithTitle:@"Point Saved!" message:@"You're Awesome!" delegate:self cancelButtonTitle:@"Sweet" otherButtonTitles:nil];
             [saveAlert show];
+            submitButton.enabled = YES;
         }
     }];
     [commentTextView resignFirstResponder];

@@ -56,6 +56,11 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
+    UINavigationItem *bar = self.navigationItem;
+    bar.backBarButtonItem.enabled = NO;
+ //   self.navigationItem.backBarButtonItem.enabled = NO;
+
+
     numberThatNeedsToBeSubtracted = 0;
     [tableViewWithNotifications setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     PFQuery *query = [PFQuery queryWithClassName:@"invite"];
@@ -67,7 +72,6 @@
     [query whereKey:@"toUser" equalTo:currentUser];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 
-        self.navigationItem.backBarButtonItem.enabled = NO;
 
         if (error){
             NSLog (@"%@ %@", error, [error userInfo]);
@@ -75,10 +79,11 @@
         } else {
             numberOFfObjectsInArray = objects.count;
 
+
             if (objects.count == 0){
 
                 alertIfNoNotificationsPresentInitially = [[UIAlertView alloc] initWithTitle:@"No notifications present" message:nil delegate:self cancelButtonTitle:@"Go to the newsfeed page" otherButtonTitles:nil, nil];
-                self.navigationItem.backBarButtonItem.enabled = YES;
+
 
                [alertIfNoNotificationsPresentInitially show];
 
@@ -95,7 +100,8 @@
 
                 [arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser addObject:dict];
                 [tableViewWithNotifications reloadData];
-            };
+            }
+            self.navigationItem.backBarButtonItem.enabled = YES;
         }
 
     }];
