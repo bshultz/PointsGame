@@ -252,10 +252,10 @@
 
     return YES;
 }
-//- (IBAction)onDoneButtonPressed:(id)sender {
-// //   [self performSegueWithIdentifier:@"MyGroups" sender:self];
-////    [self dismissViewControllerAnimated:YES completion:nil];
-//}
+- (IBAction)onDoneButtonPressed:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 //if the person presses the cancel button, the group that was created needs to be deleted

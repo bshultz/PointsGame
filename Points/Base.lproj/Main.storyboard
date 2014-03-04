@@ -367,7 +367,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="IeW-Ig-7Tl">
                             <connections>
-                                <action selector="onDoneButtonPressed:" destination="tbc-8r-WCK" id="wXF-2m-EdY"/>
                                 <segue destination="epR-b1-9WS" kind="unwind" unwindAction="unwindFromAddFriendsController:" id="ELC-OA-H62"/>
                             </connections>
                         </barButtonItem>

@@ -176,7 +176,7 @@
                 NSLog(@"Group Saved");
                 PFRelation *relation1 = [currentUser relationForKey:@"myGroups"];
                 [relation1 addObject:group];
-                [currentUser saveInBackground];
+                [self performSegueWithIdentifier:@"FacebookFriends" sender:self];
             }
             else
             {
@@ -185,9 +185,6 @@
         }];
         [groupTextField resignFirstResponder];
     }
-
-   // [self gettingFacebookFriends:sender];
-    [self performSegueWithIdentifier:@"FacebookFriends" sender:self];
 
 }
 
@@ -198,9 +195,6 @@
     vc.group = group;
     vc.isANewGroupBeingAdded = YES;
 }
-
-
-
 
 
 - (void) gettingFacebookFriends : (id) sender {
@@ -220,7 +214,6 @@
 
         } else {
 
-    // if the query is succesful, create array of dictinaries and also create two seperate arrays for friends who have an account and for those who do not
 
                 // populate the two different arrays
                 // the query returns PFObjects, but i need to crete an array containig the facebookId's of the PFObjects
