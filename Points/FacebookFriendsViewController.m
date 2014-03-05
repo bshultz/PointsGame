@@ -103,6 +103,7 @@
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error){
+              NSLog (@"%@ %@", error, [error userInfo]);
 
         } else {
 
