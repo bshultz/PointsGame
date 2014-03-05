@@ -56,7 +56,8 @@
                 [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
             } else {
                 NSLog(@"User with facebook logged in!");
-                [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
+                 [self dismissModalViewControllerAnimated:YES];
+//                [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
 
 
             }
@@ -67,21 +68,17 @@
 
 }
 
-//- (IBAction)loginButtonTouchHandler : (id) sender {
-//
-//}
-
 -(void)viewDidAppear:(BOOL)animated
 
 {
     [super viewDidAppear:animated];
 
-    if ([PFUser currentUser])
-    {
-        id vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-        [self presentViewController:vc animated:NO completion:nil];
-//        NSLog(@"The user is currently logged in");
-    }
+//    if ([PFUser currentUser])
+//    {
+//        id vc = [self.storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+//        [self presentViewController:vc animated:NO completion:nil];
+////        NSLog(@"The user is currently logged in");
+//    }
 }
 
 - (void) savePropertiesOfTheCurrentFacebookUserToTheDatabase {

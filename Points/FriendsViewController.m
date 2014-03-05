@@ -177,16 +177,16 @@
     }
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"Friend Selected - transition to friend detail page");
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    DetailPointsPageViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DetailPointsPageViewController"];
-    dvc.groupName = self.groupID;
-    dvc.userName = toUserObjectID[0];
-    
-    [self.navigationController pushViewController:dvc animated:YES];
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSLog(@"Friend Selected - transition to friend detail page");
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    DetailPointsPageViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DetailPointsPageViewController"];
+//    dvc.groupName = self.groupID;
+//    dvc.userName = toUserObjectID[0];
+//    
+//    [self.navigationController pushViewController:dvc animated:YES];
+//}
 
 
 

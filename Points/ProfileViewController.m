@@ -79,11 +79,12 @@
 - (IBAction)onLogoutButtonPressed:(id)sender
 {
     [PFUser logOut];
+    [self performSegueWithIdentifier:@"LogoutIdentifier" sender:self];
     NSLog(@"Logged out of facebook");
-       UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    FacebookViewController *fbvc = [storyboard instantiateViewControllerWithIdentifier:@"FacebookViewController"];
-    [self.navigationController presentViewController:fbvc animated:YES completion:nil];
-    NSLog(@"Current user logged in is %@", [PFUser currentUser]);
+//       UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    FacebookViewController *fbvc = [storyboard instantiateViewControllerWithIdentifier:@"FacebookViewController"];
+//    [self.navigationController presentViewController:fbvc animated:YES completion:nil];
+//    NSLog(@"Current user logged in is %@", [PFUser currentUser]);
 
 }
 

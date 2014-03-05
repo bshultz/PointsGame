@@ -13,6 +13,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "NewsfeedCell.h"
 #import "NewsfeedDetailViewController.h"
+#import "FacebookViewController.h"
 //#import "CSAnimationView.h"
 
 @interface NewsfeedViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -66,9 +67,21 @@
 -(void)viewDidAppear:(BOOL)animated
 
 {
+     [super viewDidAppear:YES];
+
+    if (![PFUser currentUser]){
+
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        FacebookViewController *loginController = (FacebookViewController *)[storyboard instantiateViewControllerWithIdentifier:@"FacebookViewController"];
+
+        [self presentViewController:loginController animated:YES completion:nil];
+
+
+    } 
     
-    [super viewDidAppear:YES];
-    permissions = [NSArray arrayWithObjects:@"read_friendlists", @"basic_info" , nil];
+
+    
+//    permissions = [NSArray arrayWithObjects:@"read_friendlists", @"basic_info" , nil];
 
     // get the transactions associated with the current user
 

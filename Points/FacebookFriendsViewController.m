@@ -147,9 +147,7 @@
 
             finalArrayToDisplayInTheCells = [arrayWithFriendsWhoHaveAnAccount arrayByAddingObjectsFromArray:arrayWithFriendsWhoDontHaveAnAccount];
             [tableViewContainingFriends reloadData];
-//            [finalArrayToDisplayInTheCells addObject: arrayWithFriendsWhoHaveAnAccount];
-//            [finalArrayToDisplayInTheCells addObject: arrayWithFriendsWhoDontHaveAnAccount];
-//            [tableViewContainingFriends reloadData];
+
             
         }
     }];
@@ -260,23 +258,23 @@
 
 //if the person presses the cancel button, the group that was created needs to be deleted
 
-- (IBAction)onCancelButtonPressed:(id)sender {
-
-    if(self.isANewGroupBeingAdded) {
-
-    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
-    [query whereKey:@"objectId" equalTo:group.objectId];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if(error) {
-
-        } else {
-            [object deleteInBackground];
-        }
-    }];
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-}
+//- (IBAction)onCancelButtonPressed:(id)sender {
+//
+//    if(self.isANewGroupBeingAdded) {
+//
+//    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
+//    [query whereKey:@"objectId" equalTo:group.objectId];
+//    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+//        if(error) {
+//
+//        } else {
+//            [object deleteInBackground];
+//        }
+//    }];
+//    }
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//
+//}
 
 
 @end
