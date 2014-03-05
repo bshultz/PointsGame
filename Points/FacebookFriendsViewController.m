@@ -43,7 +43,7 @@
 
 @implementation FacebookFriendsViewController
 
-@synthesize group, isANewGroupBeingAdded;
+@synthesize group, isANewGroupBeingAdded, arrayWithTheNamesOfTheCurrentMemebersOfTheGroup;
 
 
 - (void)viewDidLoad
@@ -127,23 +127,33 @@
             }
             for (int i = 0; i < arrayWithFacebookIDs.count; i++){
 
-                if ([arrayWithMyFacebookId containsObject:arrayWithFacebookIDs[i]]){
-                    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-                    [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
-                    [dict setObject:arrayWithFacebookNames[i] forKey:@"name"];
-                    [dict setObject:@"yes" forKey:@"InTheGroup"];
-                    [arrayWithFriendsWhoHaveAnAccount addObject:dict];
+                 // only enter if person is not already a member of the group
 
-                } else {
-                    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-                    [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
-                    [dict setObject:arrayWithFacebookNames[i] forKey:@"name"];
-                    [dict setObject:@"no" forKey:@"InTheGroup"];
-                    [arrayWithFriendsWhoDontHaveAnAccount addObject:dict];
+                if (![arrayWithTheNamesOfTheCurrentMemebersOfTheGroup containsObject: arrayWithFacebookNames[i]] || arrayWithTheNamesOfTheCurrentMemebersOfTheGroup == nil) {
 
-                }
+                     if ([arrayWithMyFacebookId containsObject:arrayWithFacebookIDs[i]]){
 
-            }
+
+
+                       NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+                       [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
+                       [dict setObject:arrayWithFacebookNames[i] forKey:@"name"];
+                       [dict setObject:@"yes" forKey:@"InTheGroup"];
+                       [arrayWithFriendsWhoHaveAnAccount addObject:dict];
+
+
+                   }  else {
+
+                       NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+                       [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
+                       [dict setObject:arrayWithFacebookNames[i] forKey:@"name"];
+                       [dict setObject:@"no" forKey:@"InTheGroup"];
+                       [arrayWithFriendsWhoDontHaveAnAccount addObject:dict];
+
+                   }
+             }
+
+        }
 
             finalArrayToDisplayInTheCells = [arrayWithFriendsWhoHaveAnAccount arrayByAddingObjectsFromArray:arrayWithFriendsWhoDontHaveAnAccount];
             [tableViewContainingFriends reloadData];
