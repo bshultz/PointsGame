@@ -114,6 +114,7 @@
     FacebookFriendsViewController *vc = navController.viewControllers.firstObject;
     vc.group = group;
     vc.isANewGroupBeingAdded = NO;
+    vc.arrayWithTheNamesOfTheCurrentMemebersOfTheGroup = friends;
     
 }
 
@@ -159,7 +160,7 @@
     NSIndexPath *indexPath = [friendsTableView indexPathForCell:cell];
     pointVC.toUserObjectID = [toUserObjectID objectAtIndex:indexPath.row];
     pointVC.fromUserObjectID = [PFUser currentUser].objectId;
-    // if a user clicks on his own name int he group
+    // if a user clicks on his own name in the group
     if ([pointVC.fromUserObjectID isEqualToString:pointVC.toUserObjectID]) {
 
 

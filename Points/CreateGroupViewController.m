@@ -176,6 +176,7 @@
                 NSLog(@"Group Saved");
                 PFRelation *relation1 = [currentUser relationForKey:@"myGroups"];
                 [relation1 addObject:group];
+                [currentUser saveInBackground];
                 [self performSegueWithIdentifier:@"FacebookFriends" sender:self];
             }
             else

@@ -17,4 +17,5 @@ static const int BLUE = 157;
 
 @property (nonatomic, strong) PFObject *group;
 @property (nonatomic) BOOL isANewGroupBeingAdded;
+@property (nonatomic, strong) NSArray *arrayWithTheNamesOfTheCurrentMemebersOfTheGroup;
 @end
