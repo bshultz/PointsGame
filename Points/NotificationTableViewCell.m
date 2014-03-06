@@ -10,7 +10,7 @@
 
 @implementation NotificationTableViewCell
 
-@synthesize labelContainingGroupInformation, buttonToAcceptTheInvite, buttonToDeclineTheInvite, delegate, indexPath, number;
+@synthesize labelContainingGroupInformation, buttonToAcceptTheInvite, buttonToDeclineTheInvite, delegate, indexPath;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

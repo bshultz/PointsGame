@@ -16,12 +16,12 @@
     PFUser *currentUser;
     IBOutlet UITableView *tableViewWithNotifications;
     NSMutableArray *arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser;
-    int indexOfTheArrayThatNeedsToBeDelted;
-    int numberThatNeedsToBeSubtracted;
     UIAlertView *alertIfNoNotificationsPresent;
     UIAlertView *alertIfNoNotificationsPresentInitially;
 
     BOOL theUserHasNoMoreNotifications;
+
+    // the following int is used to keep track of when all the notifications on the page are deleted
     int numberOFfObjectsInArray;
 }
 
@@ -34,14 +34,8 @@
 {
     [super viewDidLoad];
 
-
-//    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    //    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:RED/255.0f green:GREEN/255.0f blue:BLUE/255.0f alpha:1.0f];
-
-
 
     tableViewWithNotifications.backgroundColor = [UIColor clearColor];
     tableViewWithNotifications.separatorColor = [UIColor colorWithRed:0.05f green:0.345f blue:0.65f alpha:0.5f];
@@ -50,7 +44,6 @@
     
     currentUser = [PFUser currentUser];
     arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser = [[NSMutableArray alloc]init];
-    indexOfTheArrayThatNeedsToBeDelted = 0;
 
 }
 
@@ -60,8 +53,6 @@
     bar.backBarButtonItem.enabled = NO;
  //   self.navigationItem.backBarButtonItem.enabled = NO;
 
-
-    numberThatNeedsToBeSubtracted = 0;
     [tableViewWithNotifications setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     PFQuery *query = [PFQuery queryWithClassName:@"invite"];
 
@@ -137,11 +128,8 @@
     cell.invite = dict[@"invite"];
     cell.indexPath = indexPath;
     cell.delegate = self;
-    cell.number = indexOfTheArrayThatNeedsToBeDelted;
     cell.groupID = dict[@"stringContainingId"];
-    indexOfTheArrayThatNeedsToBeDelted++;
 
-//    PFUser *user = dict[@"fromUser"];
     PFObject *group = dict[@"group"];
     PFUser *fromUser = dict[@"fromUser"];
     NSString *name = fromUser[@"fullName"];
@@ -157,6 +145,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
     if (numberOFfObjectsInArray == 0 && theUserHasNoMoreNotifications){
         alertIfNoNotificationsPresent = [[UIAlertView alloc] initWithTitle:@"No more notifications" message:nil delegate:self cancelButtonTitle:@"Go to the newsfeed page" otherButtonTitles:nil, nil];
          [alertIfNoNotificationsPresent show];

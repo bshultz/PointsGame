@@ -62,7 +62,6 @@
         {
             for (PFObject *object in objects)
             {
-//                NSLog(@"group test run number");
                 [points addObject:object];
                 
             }

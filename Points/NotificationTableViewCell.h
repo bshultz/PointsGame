@@ -20,5 +20,5 @@
 @property (nonatomic, strong) PFObject *invite;
 @property id<NotificationTableViewCellDelegate> delegate;
 @property (nonatomic, strong) NSIndexPath *indexPath;
-@property (nonatomic) int number;
+
 @end

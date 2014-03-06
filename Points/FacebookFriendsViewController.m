@@ -13,9 +13,6 @@
 #import "NewTableViewCellDelegate.h"
 #import "GroupsViewController.h"
 
-
-
-
 @interface FacebookFriendsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, NewTableViewCellDelegate, MFMailComposeViewControllerDelegate>
 {
 
@@ -31,9 +28,6 @@
     UISearchBar *searchBar;
     UISearchDisplayController *searchDisplayController;
 
-
-
-    
      PFUser *currentUser;
 
 }
@@ -103,16 +97,6 @@
 
         } else {
 
-            // if the query is succesful, create array of dictinaries and also create two seperate arrays for friends who have an account and for those who do not
-            //            for (int i = 0; i < arrayWithFacebookIDs.count; i++){
-
-            //                // create the dictinaries
-            //                NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-            //
-            //                [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
-            //                [dict setObject:arrayWithFacebookNames[i] forKey:@"names"];
-            //                [array addObject:dict];
-
             // populate the two different arrays
             // the query returns PFObjects, but i need to crete an array containig the facebookId's of the PFObjects
             NSMutableArray *arrayWithMyFacebookId = [NSMutableArray new];
@@ -152,6 +136,8 @@
 
         }
 
+            // need to concatenate the two different arrays in the end because i want the array with users who have an account to show up first
+
             finalArrayToDisplayInTheCells = [arrayWithFriendsWhoHaveAnAccount arrayByAddingObjectsFromArray:arrayWithFriendsWhoDontHaveAnAccount];
             [tableViewContainingFriends reloadData];
 
@@ -189,12 +175,16 @@
     cell.stringContainingUserID = object[@"ids"];
     cell.currentUser = currentUser;
     cell.labelWithPersonsName.text = object[@"name"];
+
     if ([object[@"InTheGroup"]isEqualToString:@"yes"]){
+
         // this person already has an account
         [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
         cell.buttonWithTextToAddOrInvite.exclusiveTouch = YES;
         [cell.buttonWithTextToAddOrInvite setTitle:@"Add" forState:UIControlStateNormal];
+
     } else if ([object[@"InTheGroup"]isEqualToString:@"no"]) {
+
         // this person does not have an account
         cell.buttonWithTextToAddOrInvite.exclusiveTouch = YES;
         [cell.buttonWithTextToAddOrInvite setTitle:@"Invite" forState:UIControlStateNormal];
