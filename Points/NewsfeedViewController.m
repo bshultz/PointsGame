@@ -72,7 +72,7 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FacebookViewController *loginController = (FacebookViewController *)[storyboard instantiateViewControllerWithIdentifier:@"FacebookViewController"];
 
-        [self presentViewController:loginController animated:YES completion:nil];
+        [self presentViewController:loginController animated:NO completion:nil];
     }
 
     // get the transactions associated with the current user

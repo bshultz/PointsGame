@@ -187,7 +187,7 @@
                         <outlet property="totalPointsReceivedLabel" destination="k4L-nl-X7l" id="vea-Zc-gnl"/>
                         <outlet property="totalPointsReceivedStatic" destination="fpe-Sj-LIE" id="62L-tN-AID"/>
                         <outlet property="usernameLabel" destination="iGz-J2-plj" id="T0s-rm-d9z"/>
-                        <segue destination="O7B-kK-8jL" kind="modal" identifier="LogoutIdentifier" id="trE-fh-TKk"/>
+                        <segue destination="O7B-kK-8jL" kind="modal" identifier="LogoutIdentifier" animates="NO" id="trE-fh-TKk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JIo-D4-ctv" userLabel="First Responder" sceneMemberID="firstResponder"/>
