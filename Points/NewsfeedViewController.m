@@ -41,11 +41,9 @@
     [super viewDidLoad];
 
 
-    //self.navigationController.title = @"PointBank";
+
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
-//    self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
 
     //set color of bar button item
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
@@ -75,13 +73,7 @@
         FacebookViewController *loginController = (FacebookViewController *)[storyboard instantiateViewControllerWithIdentifier:@"FacebookViewController"];
 
         [self presentViewController:loginController animated:YES completion:nil];
-
-
-    } 
-    
-
-    
-//    permissions = [NSArray arrayWithObjects:@"read_friendlists", @"basic_info" , nil];
+    }
 
     // get the transactions associated with the current user
 
@@ -148,8 +140,7 @@
     
     cell.text.font = [UIFont systemFontOfSize:12.0];
     cell.text.text = [NSString stringWithFormat:@"%@ gave %@ a point!", [fromUser objectForKey:@"fullName"], [toUser objectForKey:@"fullName"]];
-    //cell.text.textColor = [UIColor colorWithRed:0.05f green:0.345 blue:0.65f alpha:1.0f];
-    
+
     return cell;
 }
 
@@ -170,7 +161,7 @@
     {
         NewsfeedDetailViewController *ndvc = segue.destinationViewController;
         NSIndexPath *indexPath = [newsfeedTableView indexPathForSelectedRow];
-        NewsfeedCell *cell = [newsfeedTableView cellForRowAtIndexPath:indexPath];
+ //       NewsfeedCell *cell = [newsfeedTableView cellForRowAtIndexPath:indexPath];
         ndvc.pointId = [pointId objectAtIndex:indexPath.row];
     }
 }

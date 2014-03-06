@@ -93,10 +93,6 @@
     NSMutableArray *arrayWithFacebookNames = currentUser[@"facebookFriendNames"];
 
 
-    // array of dictionaries
-    NSMutableArray *array = [NSMutableArray new];
-
-
     PFQuery *query = [PFUser query];
     __block NSArray *arrayOFPFUsers;
 

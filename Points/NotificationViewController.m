@@ -141,7 +141,7 @@
     cell.groupID = dict[@"stringContainingId"];
     indexOfTheArrayThatNeedsToBeDelted++;
 
-    PFUser *user = dict[@"fromUser"];
+//    PFUser *user = dict[@"fromUser"];
     PFObject *group = dict[@"group"];
     PFUser *fromUser = dict[@"fromUser"];
     NSString *name = fromUser[@"fullName"];

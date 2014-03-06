@@ -56,8 +56,7 @@
                 [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
             } else {
                 NSLog(@"User with facebook logged in!");
-                 [self dismissModalViewControllerAnimated:YES];
-//                [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
+                 [self dismissViewControllerAnimated:YES completion:nil];
 
 
             }
