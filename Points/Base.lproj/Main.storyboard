@@ -53,6 +53,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="newsfeedTableView" destination="CRF-QM-IiC" id="Xu2-cH-N7M"/>
                         <outlet property="notificationsButton" destination="C6L-XF-Jhb" id="oto-rh-a5G"/>
@@ -98,6 +99,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="G7q-QA-Tl8"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="tableViewWithNotifications" destination="01G-z6-F7A" id="TfM-4B-D1x"/>
                     </connections>
@@ -179,6 +181,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="emailLabel" destination="7LZ-0Q-rnQ" id="Y7H-an-HYf"/>
                         <outlet property="pointsAvailableLabel" destination="Q46-iR-4Qb" id="6If-B1-w30"/>
@@ -242,6 +245,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="myTableView" destination="ndp-br-rNQ" id="YgH-Ka-WtQ"/>
                         <segue destination="8yP-cs-7rk" kind="push" identifier="FriendsDetail" id="83n-Nn-ZOJ"/>
@@ -291,6 +295,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="fSC-Rj-8me"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="commentTextView" destination="bZ0-4n-viP" id="174-Ev-QwR"/>
                         <outlet property="date" destination="57M-LW-Gbn" id="h4C-vO-drP"/>
@@ -316,6 +321,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create Group" id="0EB-sa-IGh"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <segue destination="9G5-8M-faL" kind="modal" identifier="FacebookFriends" id="DWR-z7-CiK"/>
                     </connections>
@@ -366,6 +372,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="tableViewContainingFriends" destination="Df2-4z-Ely" id="PSL-yV-1Mb"/>
                     </connections>
@@ -425,6 +432,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="friendsTableView" destination="Cue-r1-y8K" id="GMB-YW-eHH"/>
                         <segue destination="XiH-mz-4VI" kind="modal" identifier="FacebookFriends" id="S0z-u3-b8Q"/>
@@ -495,6 +503,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="DeK-4O-m9R"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="cancelButton" destination="yCo-NR-AmL" id="ePU-Zj-G6B"/>
                         <outlet property="commentTextView" destination="t2g-Lc-jor" id="ed8-14-OAF"/>
@@ -549,6 +558,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="tableViewContainingFriends" destination="jLi-LS-eio" id="pVr-bx-aUH"/>
                     </connections>
@@ -593,6 +603,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rvg-OO-cu7"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="imageView" destination="uq9-w9-znR" id="SCZ-jM-GFB"/>
                     </connections>
@@ -607,6 +618,7 @@
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="O7B-kK-8jL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="yzc-IP-FHd"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="Nen-3W-mXS">
                         <autoresizingMask key="autoresizingMask"/>
@@ -630,6 +642,7 @@
                     <tabBarItem key="tabBarItem" title="Groups" image="ic_tabbar_groups_normal.png" id="DDz-FK-vvV"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Tr3-3k-IrF"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GFn-A1-4mM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -649,6 +662,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E30-bS-lR0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="ic_tabbar_profile_normal.png" id="5zr-f6-jJ4"/>
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qsj-13-X8d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -668,6 +682,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yPn-TF-cri" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="ic_tabbar_newsfeed_normal.png" id="wyp-JL-pNw"/>
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4us-A3-UAR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -686,6 +701,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="9G5-8M-faL" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="azD-Im-AjC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -704,6 +720,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XiH-mz-4VI" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4qt-R8-Ex0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

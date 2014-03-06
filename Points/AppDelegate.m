@@ -19,6 +19,9 @@
     [Parse setApplicationId:@"OOr21JpCPWiIB69kZmcyOMzD7XW6m7PRHHXQheCg" clientKey:@"4gQPowsEoSmHDnPl7aAOWz4wPLG4kvxXOECZNtaU"];
     
     [PFFacebookUtils initializeFacebook];
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+
     
     [FBLoginView class];
     return YES;
