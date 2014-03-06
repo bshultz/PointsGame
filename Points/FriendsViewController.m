@@ -22,6 +22,7 @@
     __weak IBOutlet UITableView *friendsTableView;
     PFQuery *pointQuery;
     NSMutableArray *points;
+    PFUser *currentUser;
     
 }
 
@@ -38,6 +39,8 @@
     friendImages = [NSMutableArray new];
     toUserObjectID = [NSMutableArray new];
     usernames = [NSMutableArray new];
+
+    currentUser = [PFUser currentUser];
 
     friendsTableView.separatorColor = [UIColor colorWithRed:0.05f green:0.345f blue:0.65f alpha:0.5f];
     friendsTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -139,9 +142,12 @@
     }
     
     cell.points.text = [NSString stringWithFormat:@"%ld",(long)pointValue];
+    if ([cell.name.text isEqualToString:currentUser[@"fullName"]]) {
+        [cell.addButton setBackgroundColor:[UIColor whiteColor]];
+    } else {
     [cell.addButton setBackgroundImage:[UIImage imageNamed:@"btn_orange_normal.png"] forState:UIControlStateNormal];
     [cell.addButton addTarget:self action:@selector(addPoint:) forControlEvents:UIControlEventTouchUpInside];
-    
+    }
     return cell;
 }
 
@@ -159,22 +165,13 @@
     NSIndexPath *indexPath = [friendsTableView indexPathForCell:cell];
     pointVC.toUserObjectID = [toUserObjectID objectAtIndex:indexPath.row];
     pointVC.fromUserObjectID = [PFUser currentUser].objectId;
-    // if a user clicks on his own name in the group
-    if ([pointVC.fromUserObjectID isEqualToString:pointVC.toUserObjectID]) {
-
-
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"You cannot give yourself a point!" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
-        [alert show];
-
-
-    } else {
-    pointVC.friendName = [friends objectAtIndex:indexPath.row];
+        pointVC.friendName = [friends objectAtIndex:indexPath.row];
     pointVC.groupID = self.groupID;
     pointVC.profileImage = cell.profileImage;
     pointVC.group = group;
     
     [self.navigationController presentViewController:pointVC animated:YES completion:nil];
-    }
+    
 }
 
 //-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
