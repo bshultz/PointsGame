@@ -142,6 +142,8 @@
     }
     
     cell.points.text = [NSString stringWithFormat:@"%ld",(long)pointValue];
+
+    // if the user is the current User, dont show the add point button
     if ([cell.name.text isEqualToString:currentUser[@"fullName"]]) {
         [cell.addButton setBackgroundColor:[UIColor whiteColor]];
     } else {
@@ -171,7 +173,7 @@
     pointVC.group = group;
     
     [self.navigationController presentViewController:pointVC animated:YES completion:nil];
-    
+
 }
 
 //-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
