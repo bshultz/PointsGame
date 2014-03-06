@@ -387,7 +387,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cue-r1-y8K">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cue-r1-y8K">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -411,6 +411,11 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Cue-r1-y8K" secondAttribute="bottom" id="S7q-MF-ZTf"/>
+                            <constraint firstItem="Cue-r1-y8K" firstAttribute="leading" secondItem="wue-xK-DZX" secondAttribute="leading" id="lhE-cr-srj"/>
+                            <constraint firstItem="Cue-r1-y8K" firstAttribute="top" secondItem="wue-xK-DZX" secondAttribute="top" id="yDF-wj-prl"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="peZ-k9-N4K">
                         <barButtonItem key="rightBarButtonItem" title="Invite" id="y3A-uT-aeW">
