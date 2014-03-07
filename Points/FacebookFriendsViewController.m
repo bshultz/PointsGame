@@ -29,6 +29,7 @@
     UISearchDisplayController *searchDisplayController;
 
      PFUser *currentUser;
+     UIActivityIndicatorView *activityView;
 
 }
 
@@ -43,6 +44,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    activityView = [[UIActivityIndicatorView alloc] init];
+    activityView.color = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
+    activityView.frame = CGRectMake(self.view.center.x - 25, self.view.center.y, 50, 50);
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
 
      currentUser = [PFUser currentUser];
 
@@ -96,6 +103,8 @@
               NSLog (@"%@ %@", error, [error userInfo]);
 
         } else {
+
+            [activityView stopAnimating];
 
             // populate the two different arrays
             // the query returns PFObjects, but i need to crete an array containig the facebookId's of the PFObjects

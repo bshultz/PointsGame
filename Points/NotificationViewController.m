@@ -17,9 +17,6 @@
     PFUser *currentUser;
     IBOutlet UITableView *tableViewWithNotifications;
     NSMutableArray *arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser;
-    UIAlertView *alertIfNoNotificationsPresent;
-    UIAlertView *alertIfNoNotificationsPresentInitially;
-
 
     BOOL theUserHasNoNotifications;
     BOOL theUserHasNoMoreNotifications;
@@ -194,9 +191,6 @@
     addLabel.textColor = [UIColor whiteColor];
     [buttonToGoBack addSubview:addLabel];
 
-
-
-
     [buttonToGoBack setBackgroundImage:[UIImage imageNamed:@"btn_orange_normal.png"] forState:UIControlStateNormal];
     [buttonToGoBack  addTarget:self action:@selector(goBackToThePreviousPage) forControlEvents:UIControlEventTouchUpInside];
     [newView addSubview:buttonToGoBack];
@@ -215,9 +209,6 @@
 
     return arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
 }
-
-
-
 
 
 
