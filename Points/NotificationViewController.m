@@ -9,6 +9,7 @@
 #import "NotificationViewController.h"
 #import "Parse/Parse.h"
 #import "NotificationTableViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface NotificationViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, NotificationTableViewCellDelegate>
 
@@ -19,6 +20,8 @@
     UIAlertView *alertIfNoNotificationsPresent;
     UIAlertView *alertIfNoNotificationsPresentInitially;
 
+
+    BOOL theUserHasNoNotifications;
     BOOL theUserHasNoMoreNotifications;
 
     // the following int is used to keep track of when all the notifications on the page are deleted
@@ -73,10 +76,8 @@
 
             if (objects.count == 0){
 
-                alertIfNoNotificationsPresentInitially = [[UIAlertView alloc] initWithTitle:@"No notifications present" message:nil delegate:self cancelButtonTitle:@"Go to the newsfeed page" otherButtonTitles:nil, nil];
-
-
-               [alertIfNoNotificationsPresentInitially show];
+                theUserHasNoNotifications = YES;
+                [self presentingASeperateViewForNoNotifications];
 
             }
 
@@ -116,9 +117,12 @@
     
 }
 
+
 #pragma mark - TableView Delegate methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+
 
     NotificationTableViewCell *cell = [NotificationTableViewCell new];
 
@@ -136,13 +140,55 @@
     NSString *groupName = group[@"name"];
 
     cell.labelContainingGroupInformation.text = [NSString stringWithFormat:@"%@ has invited you to the group '%@'", name, groupName ];
- //   [cell.buttonToDeclineTheInvite setTitle:@"Decline" forState:UIControlStateNormal];
- //   [cell.buttonToAcceptTheInvite setTitle:@"Accept" forState:UIControlStateNormal];
-
-
 
     return cell;
+
+
+
+
 }
+
+- (void) goBackToThePreviousPage {
+    [self.navigationController popViewControllerAnimated:YES];
+
+}
+
+- (void) presentingASeperateViewForNoNotifications {
+    UIView *newView = [[UIView alloc]initWithFrame:CGRectMake(30, 100, 260, 100)];
+
+    newView.layer.borderWidth = 10.0f;
+
+    newView.layer.borderColor = (__bridge CGColorRef)([UIColor greenColor]);
+
+    UILabel *labelWithText =[[UILabel alloc]initWithFrame:CGRectMake(20.0f, -30.0f, 300.0f, 120.0f)];
+    labelWithText.text =  @"No more notifications present";
+//    labelWithText.textColor
+
+    [newView addSubview:labelWithText];
+
+
+
+    UIButton *buttonToGoBack =  [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    buttonToGoBack.frame = CGRectMake(10.0f, 60.0f, 240, 40);
+
+    UILabel *addLabel = [[UILabel alloc] initWithFrame:(CGRectMake(20.0f, 10.0f, 200.0f, 20.0f))];
+    addLabel.text = @"Go to the newsfeed page";
+    addLabel.textColor = [UIColor whiteColor];
+    [buttonToGoBack addSubview:addLabel];
+
+
+    [buttonToGoBack setBackgroundImage:[UIImage imageNamed:@"btn_orange_normal.png"] forState:UIControlStateNormal];
+    [newView addSubview:buttonToGoBack];
+    [self.view addSubview:newView];
+
+
+
+
+
+
+}
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
