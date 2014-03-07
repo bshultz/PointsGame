@@ -23,6 +23,7 @@
     PFQuery *pointQuery;
     NSMutableArray *points;
     PFUser *currentUser;
+     UIActivityIndicatorView *activityView;
     
 }
 
@@ -41,6 +42,12 @@
     usernames = [NSMutableArray new];
 
     currentUser = [PFUser currentUser];
+
+    activityView = [[UIActivityIndicatorView alloc] init];
+    activityView.color = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
+    activityView.frame = CGRectMake(self.view.center.x - 25, self.view.center.y, 50, 50);
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
 
     friendsTableView.separatorColor = [UIColor colorWithRed:0.05f green:0.345f blue:0.65f alpha:0.5f];
     friendsTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -84,10 +91,12 @@
         PFRelation *relation = [group relationForKey:@"members"];
         [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
         {
+            [activityView stopAnimating];
             [friends removeAllObjects];
             if (!error)
             {
                 for (PFObject *object in objects)
+
                 {
                     [friends addObject:[object objectForKey:@"fullName"]];
                     [friendImages addObject:[object objectForKey:@"userImage"]];

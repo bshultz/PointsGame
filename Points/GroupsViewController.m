@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UISearchDisplayController *searchDisplayController;
+@property (nonatomic, strong)  UIActivityIndicatorView *activityView;
 
 @end
 
@@ -30,6 +31,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.activityView = [[UIActivityIndicatorView alloc] init];
+    self.activityView.color = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
+    self.activityView.frame = CGRectMake(self.view.center.x - 25, self.view.center.y, 50, 50);
+    [self.activityView startAnimating];
+    [self.view addSubview:self.activityView];
+
     UIFont* font = [UIFont fontWithName:@"Kulturista" size:12.0f];
     UILabel* label  = [[UILabel alloc] initWithFrame:self.navigationItem.titleView.frame];
 
@@ -48,7 +56,6 @@
     [self.navigationItem.titleView addSubview:label];
 
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
         self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
     self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
 
@@ -85,6 +92,9 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
+
+//    if (self.myTableView.visibleCells.count == 0)
+
     [self getGroups];
 }
 
@@ -97,6 +107,7 @@
     PFQuery *query = [relation query];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        [self.activityView stopAnimating];
         if (error){
             NSLog (@"%@ %@", error, [error userInfo]);
         } else {

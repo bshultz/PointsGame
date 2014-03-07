@@ -41,6 +41,13 @@
 {
     [super viewDidLoad];
 
+    activityView = [[UIActivityIndicatorView alloc] init];
+    activityView.color = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
+    activityView.frame = CGRectMake(self.view.center.x - 25, self.view.center.y, 50, 50);
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+
+
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
 
@@ -67,17 +74,9 @@
 
      [super viewDidAppear:YES];
 // only show the spinner if a current user is logged in
-    if ([PFUser currentUser]){
 
-      if (newsfeedTableView.visibleCells.count == 0){
-        activityView = [[UIActivityIndicatorView alloc] init];
-        activityView.color = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
-        activityView.frame = CGRectMake(self.view.center.x - 25, self.view.center.y, 50, 50);
-        [activityView startAnimating];
-        [self.view addSubview:activityView];
-      }
+//    if ([PFUser currentUser])
 
-    }
 
     if (![PFUser currentUser]){
 
