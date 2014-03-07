@@ -54,6 +54,7 @@
 		D12D5EBF18AD445200940381 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12D5EBE18AD445200940381 /* AddressBookUI.framework */; };
 		D1378F3B18B2CBEA00CD5109 /* NewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */; };
 		D13B940618B7E1ED005441D9 /* FacebookFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D13B940518B7E1ED005441D9 /* FacebookFriendsViewController.m */; };
+		D16D677A18C9762600AD82F6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16D677918C9762600AD82F6 /* QuartzCore.framework */; };
 		D1AA2CF618B42C820053E8CB /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA2CF518B42C820053E8CB /* NotificationViewController.m */; };
 		D1AA2CF918B454300053E8CB /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA2CF818B454300053E8CB /* NotificationTableViewCell.m */; };
 		D1B5B33318BFAEF800C8277C /* Kulturista Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B5B32E18BFAA8600C8277C /* Kulturista Medium.otf */; };
@@ -144,6 +145,7 @@
 		D1378F3A18B2CBEA00CD5109 /* NewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTableViewCell.m; sourceTree = "<group>"; };
 		D13B940418B7E1ED005441D9 /* FacebookFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookFriendsViewController.h; sourceTree = "<group>"; };
 		D13B940518B7E1ED005441D9 /* FacebookFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookFriendsViewController.m; sourceTree = "<group>"; };
+		D16D677918C9762600AD82F6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D1AA2CF418B42C820053E8CB /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		D1AA2CF518B42C820053E8CB /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		D1AA2CF718B454300053E8CB /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D16D677A18C9762600AD82F6 /* QuartzCore.framework in Frameworks */,
 				D12D5EBF18AD445200940381 /* AddressBookUI.framework in Frameworks */,
 				D12D5EBD18AD444B00940381 /* AddressBook.framework in Frameworks */,
 				3A9A37F318A9267800F604F0 /* CoreGraphics.framework in Frameworks */,
@@ -312,6 +315,7 @@
 		3A9A37EF18A9267800F604F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D16D677918C9762600AD82F6 /* QuartzCore.framework */,
 				D1B235B618AF2050009D5BDD /* Security.framework */,
 				D1B235B718AF2050009D5BDD /* Social.framework */,
 				D1B235B418AF203F009D5BDD /* libsqlite3.dylib */,

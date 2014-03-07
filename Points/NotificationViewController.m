@@ -154,31 +154,43 @@
 }
 
 - (void) presentingASeperateViewForNoNotifications {
-    UIView *newView = [[UIView alloc]initWithFrame:CGRectMake(30, 100, 260, 100)];
+    UIView *newView = [[UIView alloc]initWithFrame:CGRectMake(30, 100, 260, 120)];
 
-    newView.layer.borderWidth = 10.0f;
+    newView.layer.borderWidth = 3.0f;
 
-    newView.layer.borderColor = (__bridge CGColorRef)([UIColor greenColor]);
+
+    newView.layer.borderColor = [UIColor colorWithRed:RED/255.0f green:GREEN/255.0f blue:BLUE/255.0f alpha:1.0f].CGColor;
 
     UILabel *labelWithText =[[UILabel alloc]initWithFrame:CGRectMake(20.0f, -30.0f, 300.0f, 120.0f)];
-    labelWithText.text =  @"No more notifications present";
-//    labelWithText.textColor
+
+    if (theUserHasNoMoreNotifications){
+        labelWithText.text =  @"No more notifications present";
+
+
+    } else {
+        labelWithText.text =  @"No notifications present";
+
+        
+    }
 
     [newView addSubview:labelWithText];
-
-
 
     UIButton *buttonToGoBack =  [UIButton buttonWithType:UIButtonTypeRoundedRect];
     buttonToGoBack.frame = CGRectMake(10.0f, 60.0f, 240, 40);
 
     UILabel *addLabel = [[UILabel alloc] initWithFrame:(CGRectMake(20.0f, 10.0f, 200.0f, 20.0f))];
-    addLabel.text = @"Go to the newsfeed page";
+     addLabel.text = @"Go to the newsfeed page";
+
     addLabel.textColor = [UIColor whiteColor];
     [buttonToGoBack addSubview:addLabel];
 
 
+
+
     [buttonToGoBack setBackgroundImage:[UIImage imageNamed:@"btn_orange_normal.png"] forState:UIControlStateNormal];
+    [buttonToGoBack  addTarget:self action:@selector(goBackToThePreviousPage) forControlEvents:UIControlEventTouchUpInside];
     [newView addSubview:buttonToGoBack];
+
     [self.view addSubview:newView];
 
 
@@ -193,22 +205,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     if (numberOFfObjectsInArray == 0 && theUserHasNoMoreNotifications){
-        alertIfNoNotificationsPresent = [[UIAlertView alloc] initWithTitle:@"No more notifications" message:nil delegate:self cancelButtonTitle:@"Go to the newsfeed page" otherButtonTitles:nil, nil];
-         [alertIfNoNotificationsPresent show];
-
-
+        [self presentingASeperateViewForNoNotifications];
     }
 
     return arraysContainingDictionariesOfInvitesAndGroupsOfTheCurrentUser.count;
 }
 
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 
-    if (buttonIndex == 0){
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
 
 
 
