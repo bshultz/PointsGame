@@ -24,6 +24,8 @@
     BOOL theUserHasNoNotifications;
     BOOL theUserHasNoMoreNotifications;
 
+    UIActivityIndicatorView *activityView;
+
     // the following int is used to keep track of when all the notifications on the page are deleted
     int numberOFfObjectsInArray;
 }
@@ -36,6 +38,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    activityView = [[UIActivityIndicatorView alloc] init];
+    activityView.color = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
+    activityView.frame = CGRectMake(self.view.center.x - 25, self.view.center.y, 50, 50);
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+
 
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:RED/255.0f green:GREEN/255.0f blue:BLUE/255.0f alpha:1.0f];
@@ -71,6 +80,7 @@
             NSLog (@"%@ %@", error, [error userInfo]);
 
         } else {
+            [activityView stopAnimating];
             numberOFfObjectsInArray = objects.count;
 
 
