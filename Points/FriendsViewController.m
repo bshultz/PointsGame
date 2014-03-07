@@ -145,7 +145,7 @@
 
     // if the user is the current User, dont show the add point button
     if ([cell.name.text isEqualToString:currentUser[@"fullName"]]) {
-        [cell.addButton setBackgroundColor:[UIColor whiteColor]];
+        cell.addButton.alpha = 0;
     } else {
     [cell.addButton setBackgroundImage:[UIImage imageNamed:@"btn_orange_normal.png"] forState:UIControlStateNormal];
     [cell.addButton addTarget:self action:@selector(addPoint:) forControlEvents:UIControlEventTouchUpInside];

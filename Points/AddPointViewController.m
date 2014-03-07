@@ -101,23 +101,48 @@
             // If the save is successful, then update the Transaction class with from user, to user, and action
             NSLog(@"Save Succeeded");
             [self updateTransaction];
+            [commentTextView resignFirstResponder];
+            commentTextView.alpha = 0;
 
-            // Tell the user the save was successful
-            UIAlertView *saveAlert = [[UIAlertView alloc] initWithTitle:@"Point Saved!" message:@"You're Awesome!" delegate:self cancelButtonTitle:@"Sweet" otherButtonTitles:nil];
-            [saveAlert show];
-            submitButton.enabled = YES;
+            [self presentingASeperateViewOnceUserSubmitsAPoint];
+
         }
     }];
-    [commentTextView resignFirstResponder];
+
     }
 
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Out of Points!" message:@"You don't have any points to give!" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:@"Get More Points", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Out of Points!" message:@"You don't have any points to give!" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
         [alert show];
     }
     
 }
+
+- (void) presentingASeperateViewOnceUserSubmitsAPoint {
+    UIView *newView = [[UIView alloc]initWithFrame:CGRectMake(23, 271, 275 , 118)];
+
+    newView.layer.borderWidth = 3.0f;
+    newView.backgroundColor = [UIColor colorWithRed:0.901961 green:0.901961 blue:0.901961 alpha:1.0f];
+
+    newView.layer.borderColor = [UIColor colorWithRed:77.0/255.0f green:169.0/255.0f blue:157.0/255.0f alpha:1.0f].CGColor;
+
+    UILabel *labelWithText =[[UILabel alloc]initWithFrame:CGRectMake(23.0f, -30.0f, 300.0f, 120.0f)];
+
+    labelWithText.text = @"Point saved";
+
+    [newView addSubview:labelWithText];
+
+    [self.view addSubview:newView];
+    [self performSelector:@selector(goBackToPreviousScreen) withObject:self afterDelay:2.0f];
+    
+}
+
+- (void) goBackToPreviousScreen {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

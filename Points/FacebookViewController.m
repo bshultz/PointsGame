@@ -49,11 +49,11 @@
             } else if (user.isNew) {
                 NSLog(@"User with facebook signed up and logged in!");
                 PFUser *currentUser = user;
-                [currentUser setObject:@10 forKey:@"pointsAvailable"];
+                [currentUser setObject:@20 forKey:@"pointsAvailable"];
                 [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
 
-
-                [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
+                [self dismissViewControllerAnimated:YES completion:nil];
+//                [self performSegueWithIdentifier:@"FacebookLogin" sender:self];
             } else {
                 NSLog(@"User with facebook logged in!");
                  [self dismissViewControllerAnimated:YES completion:nil];
