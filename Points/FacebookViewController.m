@@ -49,7 +49,7 @@
             } else if (user.isNew) {
                 NSLog(@"User with facebook signed up and logged in!");
                 PFUser *currentUser = user;
-                [currentUser setObject:@20 forKey:@"pointsAvailable"];
+                [currentUser setObject:@100 forKey:@"pointsAvailable"];
                 [self savePropertiesOfTheCurrentFacebookUserToTheDatabase];
 
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -102,7 +102,7 @@
             PFFile *file = [PFFile fileWithData:[NSData dataWithContentsOfURL:pictureURL]];
             [currentUser setObject:file forKey:@"userImage"];
             [currentUser setObject:userData[@"name"] forKey:@"fullName"];
-            [currentUser setObject:userData[@"username"] forKey:@"uniqueFacebookIdentifier"];
+ //           [currentUser setObject:userData[@"username"] forKey:@"uniqueFacebookIdentifier"];
             [currentUser setObject:userData[@"id"] forKey:@"uniqueFacebookID"];
 
             [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
