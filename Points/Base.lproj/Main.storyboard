@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Yq-LG-nol" customClass="CSAnimationView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yq-LG-nol" customClass="CSAnimationView">
                                 <rect key="frame" x="0.0" y="0.0" width="360" height="559"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CRF-QM-IiC">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CRF-QM-IiC">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,9 +41,21 @@
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="CRF-QM-IiC" firstAttribute="leading" secondItem="0Yq-LG-nol" secondAttribute="leading" id="1JD-7c-TC6"/>
+                                    <constraint firstAttribute="trailing" secondItem="CRF-QM-IiC" secondAttribute="trailing" constant="40" id="2C2-cy-7ET"/>
+                                    <constraint firstItem="CRF-QM-IiC" firstAttribute="top" secondItem="0Yq-LG-nol" secondAttribute="top" id="a0B-IP-zfs"/>
+                                    <constraint firstAttribute="bottom" secondItem="CRF-QM-IiC" secondAttribute="bottom" constant="40" id="fOj-fX-Tpb"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0Yq-LG-nol" secondAttribute="trailing" constant="-40" id="Gvf-aM-ghe"/>
+                            <constraint firstAttribute="bottom" secondItem="0Yq-LG-nol" secondAttribute="bottom" constant="-40" id="MbT-aM-RXX"/>
+                            <constraint firstItem="0Yq-LG-nol" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="WRu-SS-iqp"/>
+                            <constraint firstItem="0Yq-LG-nol" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="ukS-9m-e0x"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Newsfeed" id="Aks-ng-PVr">
                         <barButtonItem key="rightBarButtonItem" image="ic_nav_notification_normal.png" id="C6L-XF-Jhb">
@@ -217,7 +229,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ndp-br-rNQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ndp-br-rNQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -238,6 +250,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ndp-br-rNQ" secondAttribute="bottom" id="9hb-f0-1ys"/>
+                            <constraint firstItem="ndp-br-rNQ" firstAttribute="leading" secondItem="1b4-WY-sJB" secondAttribute="leading" id="IEC-78-a0e"/>
+                            <constraint firstItem="ndp-br-rNQ" firstAttribute="top" secondItem="1b4-WY-sJB" secondAttribute="top" id="elK-JH-JN2"/>
+                            <constraint firstAttribute="trailing" secondItem="ndp-br-rNQ" secondAttribute="trailing" id="hDi-TT-01w"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Groups" id="Vg5-LN-zhe">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="has-Lb-hEW">
@@ -406,9 +424,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="zur-Zc-mKw"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendDetailCell" id="OrF-5N-UWh">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
@@ -427,9 +442,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Cue-r1-y8K" secondAttribute="bottom" id="S7q-MF-ZTf"/>
-                            <constraint firstItem="Cue-r1-y8K" firstAttribute="leading" secondItem="wue-xK-DZX" secondAttribute="leading" id="lhE-cr-srj"/>
-                            <constraint firstItem="Cue-r1-y8K" firstAttribute="top" secondItem="wue-xK-DZX" secondAttribute="top" id="yDF-wj-prl"/>
+                            <constraint firstItem="Cue-r1-y8K" firstAttribute="leading" secondItem="wue-xK-DZX" secondAttribute="leading" id="PvD-nC-r6p"/>
+                            <constraint firstAttribute="bottom" secondItem="Cue-r1-y8K" secondAttribute="bottom" id="fzM-fA-tfg"/>
+                            <constraint firstAttribute="trailing" secondItem="Cue-r1-y8K" secondAttribute="trailing" id="gET-EI-qq8"/>
+                            <constraint firstItem="Cue-r1-y8K" firstAttribute="top" secondItem="wue-xK-DZX" secondAttribute="top" id="oqV-WB-Juh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="peZ-k9-N4K">
