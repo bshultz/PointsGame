@@ -64,6 +64,9 @@
     pointsAvailable = (NSNumber *)[currentUser objectForKey:@"pointsAvailable"];
 }
 
+- (void)updateViewConstraints {
+    
+}
 - (IBAction)onSubmitButtonPressed:(id)sender
 
 {

@@ -12,6 +12,7 @@
 #import "DetailPointsPageViewController.h"
 #import "FacebookFriendsViewController.h"
 
+
 @interface FriendsViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     PFObject *group;
@@ -118,6 +119,8 @@
 - (IBAction)onInviteButtonPressed:(id)sender {
     [self performSegueWithIdentifier:@"FacebookFriends" sender:self];
 }
+
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
