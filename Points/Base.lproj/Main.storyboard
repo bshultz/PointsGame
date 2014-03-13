@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yq-LG-nol" customClass="CSAnimationView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Yq-LG-nol" customClass="CSAnimationView">
                                 <rect key="frame" x="0.0" y="0.0" width="360" height="559"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CRF-QM-IiC">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CRF-QM-IiC">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,21 +41,9 @@
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="CRF-QM-IiC" firstAttribute="leading" secondItem="0Yq-LG-nol" secondAttribute="leading" id="1JD-7c-TC6"/>
-                                    <constraint firstAttribute="trailing" secondItem="CRF-QM-IiC" secondAttribute="trailing" constant="40" id="2C2-cy-7ET"/>
-                                    <constraint firstItem="CRF-QM-IiC" firstAttribute="top" secondItem="0Yq-LG-nol" secondAttribute="top" id="a0B-IP-zfs"/>
-                                    <constraint firstAttribute="bottom" secondItem="CRF-QM-IiC" secondAttribute="bottom" constant="40" id="fOj-fX-Tpb"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="0Yq-LG-nol" secondAttribute="trailing" constant="-40" id="Gvf-aM-ghe"/>
-                            <constraint firstAttribute="bottom" secondItem="0Yq-LG-nol" secondAttribute="bottom" constant="-40" id="MbT-aM-RXX"/>
-                            <constraint firstItem="0Yq-LG-nol" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="WRu-SS-iqp"/>
-                            <constraint firstItem="0Yq-LG-nol" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="ukS-9m-e0x"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Newsfeed" id="Aks-ng-PVr">
                         <barButtonItem key="rightBarButtonItem" image="ic_nav_notification_normal.png" id="C6L-XF-Jhb">
@@ -88,7 +76,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="01G-z6-F7A">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="01G-z6-F7A">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -117,12 +105,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="01G-z6-F7A" firstAttribute="top" secondItem="SGv-bG-V5u" secondAttribute="top" id="8pg-Kj-B1w"/>
-                            <constraint firstItem="01G-z6-F7A" firstAttribute="leading" secondItem="SGv-bG-V5u" secondAttribute="leading" id="P8h-tT-FMA"/>
-                            <constraint firstAttribute="bottom" secondItem="01G-z6-F7A" secondAttribute="bottom" id="THi-lC-gyA"/>
-                            <constraint firstAttribute="trailing" secondItem="01G-z6-F7A" secondAttribute="trailing" id="kZC-e9-5kR"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="G7q-QA-Tl8"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -235,7 +217,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ndp-br-rNQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ndp-br-rNQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -256,12 +238,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="ndp-br-rNQ" secondAttribute="bottom" id="9hb-f0-1ys"/>
-                            <constraint firstItem="ndp-br-rNQ" firstAttribute="leading" secondItem="1b4-WY-sJB" secondAttribute="leading" id="IEC-78-a0e"/>
-                            <constraint firstItem="ndp-br-rNQ" firstAttribute="top" secondItem="1b4-WY-sJB" secondAttribute="top" id="elK-JH-JN2"/>
-                            <constraint firstAttribute="trailing" secondItem="ndp-br-rNQ" secondAttribute="trailing" id="hDi-TT-01w"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Groups" id="Vg5-LN-zhe">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="has-Lb-hEW">
@@ -374,7 +350,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Df2-4z-Ely">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Df2-4z-Ely">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="619"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -395,12 +371,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Df2-4z-Ely" secondAttribute="bottom" constant="-51" id="48u-KM-an7"/>
-                            <constraint firstAttribute="trailing" secondItem="Df2-4z-Ely" secondAttribute="trailing" id="7XW-qg-gr8"/>
-                            <constraint firstItem="Df2-4z-Ely" firstAttribute="top" secondItem="g3q-eq-bwp" secondAttribute="top" id="XRU-EA-xLl"/>
-                            <constraint firstItem="Df2-4z-Ely" firstAttribute="leading" secondItem="g3q-eq-bwp" secondAttribute="leading" id="yHg-2c-FXX"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Facebook Friends" id="WAW-Rj-cSl">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="IeW-Ig-7Tl">
@@ -432,7 +402,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cue-r1-y8K">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Cue-r1-y8K">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -453,12 +423,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Cue-r1-y8K" firstAttribute="leading" secondItem="wue-xK-DZX" secondAttribute="leading" id="PvD-nC-r6p"/>
-                            <constraint firstAttribute="bottom" secondItem="Cue-r1-y8K" secondAttribute="bottom" id="fzM-fA-tfg"/>
-                            <constraint firstAttribute="trailing" secondItem="Cue-r1-y8K" secondAttribute="trailing" id="gET-EI-qq8"/>
-                            <constraint firstItem="Cue-r1-y8K" firstAttribute="top" secondItem="wue-xK-DZX" secondAttribute="top" id="oqV-WB-Juh"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="peZ-k9-N4K">
                         <barButtonItem key="rightBarButtonItem" title="Invite" id="y3A-uT-aeW">
@@ -564,7 +528,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jLi-LS-eio">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jLi-LS-eio">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="617"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -585,12 +549,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="jLi-LS-eio" firstAttribute="leading" secondItem="6rR-PW-y7O" secondAttribute="leading" id="4q0-Mj-avJ"/>
-                            <constraint firstAttribute="trailing" secondItem="jLi-LS-eio" secondAttribute="trailing" id="Eub-Fg-eoF"/>
-                            <constraint firstItem="jLi-LS-eio" firstAttribute="top" secondItem="6rR-PW-y7O" secondAttribute="top" id="b0f-ZW-2QH"/>
-                            <constraint firstAttribute="bottom" secondItem="jLi-LS-eio" secondAttribute="bottom" constant="-49" id="o3R-hi-zFf"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Facebook Friends" id="aBh-xU-qRx">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="wab-r1-98e">
