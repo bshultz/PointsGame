@@ -32,8 +32,6 @@
         [self.buttonToAcceptTheInvite setBackgroundImage:[UIImage imageNamed:@"ic_accept_normal.png"] forState:UIControlStateNormal];
         [self.buttonToAcceptTheInvite addTarget:self action:@selector(addPersonToGroup) forControlEvents:UIControlEventTouchUpInside];
 
-        
-
         self.buttonToDeclineTheInvite = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         self.buttonToDeclineTheInvite.frame = CGRectMake(200.0f, 60.0f, 60, 20);
         self.buttonToDeclineTheInvite.tintColor = [UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f];

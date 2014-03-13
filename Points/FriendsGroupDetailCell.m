@@ -33,8 +33,6 @@
         points = [[UILabel alloc] initWithFrame:CGRectMake(300.0f, 0.0f, size.width - 20.0f, size.height - 4.0f)];
         [self.contentView addSubview:points];
 
-        [points setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
         addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         addButton.frame = CGRectMake(210.0f, 5.0f, 40.0f, 80.0f);
         
@@ -48,25 +46,23 @@
         addLabel.text = @"+ Point";
         addLabel.textColor = [UIColor whiteColor];
         [addButton addSubview:addLabel];
-        [addButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        
 
-        [self addConstraints];
+
         
     }
     return self;
 }
 
-- (void) addConstraints {
-
-    [addButton constrainToWidth:80.0f];
-    [addButton constrainToHeight:35.0f];
-    
-    [points pinToSuperviewEdges:JRTViewPinRightEdge inset:5.0f];
-    [addButton pinToSuperviewEdges:JRTViewPinRightEdge inset:30.0];
-
-
-}
+//- (void) addConstraints {
+//
+//    [addButton constrainToWidth:80.0f];
+//    [addButton constrainToHeight:35.0f];
+//    
+//    [points pinToSuperviewEdges:JRTViewPinRightEdge inset:5.0f];
+//    [addButton pinToSuperviewEdges:JRTViewPinRightEdge inset:30.0];
+//
+//
+//}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
