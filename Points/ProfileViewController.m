@@ -38,11 +38,9 @@
     [self getPointsAvailable];
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
-//    self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
 
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:RED/255.0f green:GREEN/255.0f blue:BLUE/255.0f alpha:1.0f];
-//    self.view.backgroundColor = [UIColor colorWithRed:51 green:204 blue:204 alpha:1];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:RED/255.0f green:GREEN/255.0f blue:BLUE/255.0f alpha:1.0f];
+
     
 }
 
@@ -81,24 +79,13 @@
 - (IBAction)onLogoutButtonPressed:(id)sender
 {
     [PFUser logOut];
+    [self performSegueWithIdentifier:@"LogoutIdentifier" sender:self];
     NSLog(@"Logged out of facebook");
-    //
-    //    FBSession* session = [FBSession activeSession];
-    //    [session closeAndClearTokenInformation];
-    //    [session close];
-    //    [FBSession setActiveSession:nil];
-    //
-    //    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    //    NSArray* facebookCookies = [cookies cookiesForURL:[NSURL URLWithString:@"https://facebook.com/"]];
-    //
-    //    for (NSHTTPCookie* cookie in facebookCookies) {
-    //        [cookies deleteCookie:cookie];
-    //    }
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    FacebookViewController *fbvc = [storyboard instantiateViewControllerWithIdentifier:@"FacebookViewController"];
-    [self.navigationController presentViewController:fbvc animated:YES completion:nil];
-    NSLog(@"Current user logged in is %@", [PFUser currentUser]);
-    //    [self performSegueWithIdentifier:@"UserLogOut" sender:self];}
+//       UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    FacebookViewController *fbvc = [storyboard instantiateViewControllerWithIdentifier:@"FacebookViewController"];
+//    [self.navigationController presentViewController:fbvc animated:YES completion:nil];
+//    NSLog(@"Current user logged in is %@", [PFUser currentUser]);
+
 }
 
 // Sent to the delegate when a PFUser is logged in.

@@ -10,6 +10,8 @@
 
 @protocol NewTableViewCellDelegate <NSObject>
 
+// need to show the mail app when the user clicks on the invite button
+
 - (void) showMailApp;
 
 @end

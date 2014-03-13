@@ -22,7 +22,6 @@
         self.labelWithPersonsName = [[UILabel alloc]initWithFrame:CGRectMake(20.0f, 5.0f, 180.0f, 40.0f)];
         [self.contentView addSubview:self.labelWithPersonsName];
 
-
         self.buttonWithTextToAddOrInvite = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         self.buttonWithTextToAddOrInvite.frame = CGRectMake(200.0f, 5.0f, 120, 40.0f);
         self.buttonWithTextToAddOrInvite.tintColor = [UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f];
@@ -36,8 +35,7 @@
 - (void)OnAddButtonPressed:(UIButton *)sender{
     
     if([sender.titleLabel.text isEqualToString:@"Add"]){
-        PFRelation *relation = [group relationForKey:@"members"];
-        
+
         PFQuery *query = [PFUser query];
         [query whereKey:@"uniqueFacebookID" equalTo:stringContainingUserID];
         
@@ -60,8 +58,6 @@
                     
                     [buttonWithTextToAddOrInvite setTitle:@"Request Sent" forState:UIControlStateNormal];
                     [buttonWithTextToAddOrInvite setEnabled:NO];
-                    
-                
 
                 }
             }];
@@ -76,10 +72,6 @@
 
     }
     
-    
 }
-    
-    
-
 
 @end

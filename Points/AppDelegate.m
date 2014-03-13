@@ -14,9 +14,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"Kulturista" size:16.0f], NSFontAttributeName, nil]];
+
     [Parse setApplicationId:@"OOr21JpCPWiIB69kZmcyOMzD7XW6m7PRHHXQheCg" clientKey:@"4gQPowsEoSmHDnPl7aAOWz4wPLG4kvxXOECZNtaU"];
     
     [PFFacebookUtils initializeFacebook];
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+
     
     [FBLoginView class];
     return YES;
@@ -55,9 +60,9 @@
                         withSession:[PFFacebookUtils session]];
 }
 
-//- (void)applicationDidBecomeActive:(UIApplication *)application {
-//    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
-//}
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
+}
 
 
 

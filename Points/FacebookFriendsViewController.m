@@ -13,9 +13,6 @@
 #import "NewTableViewCellDelegate.h"
 #import "GroupsViewController.h"
 
-
-
-
 @interface FacebookFriendsViewController () <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, NewTableViewCellDelegate, MFMailComposeViewControllerDelegate>
 {
 
@@ -31,10 +28,8 @@
     UISearchBar *searchBar;
     UISearchDisplayController *searchDisplayController;
 
-
-
-    
      PFUser *currentUser;
+     UIActivityIndicatorView *activityView;
 
 }
 
@@ -43,17 +38,28 @@
 
 @implementation FacebookFriendsViewController
 
-@synthesize group, isANewGroupBeingAdded;
+@synthesize group, isANewGroupBeingAdded, arrayWithTheNamesOfTheCurrentMemebersOfTheGroup;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    activityView = [[UIActivityIndicatorView alloc] init];
+    activityView.color = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
+    activityView.frame = CGRectMake(self.view.center.x - 25, self.view.center.y, 50, 50);
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+
      currentUser = [PFUser currentUser];
 
      searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];
     tableViewContainingFriends.tableHeaderView = searchBar;
+
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:RED/255.0f green:GREEN/255.0f blue:BLUE/255.0f alpha:1.0f];
+
 
     searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:searchBar contentsController:self];
     searchDisplayController.delegate = self;
@@ -88,28 +94,17 @@
     NSMutableArray *arrayWithFacebookNames = currentUser[@"facebookFriendNames"];
 
 
-    // array of dictionaries
-    NSMutableArray *array = [NSMutableArray new];
-
-
     PFQuery *query = [PFUser query];
     __block NSArray *arrayOFPFUsers;
 
 
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error){
+              NSLog (@"%@ %@", error, [error userInfo]);
 
         } else {
 
-            // if the query is succesful, create array of dictinaries and also create two seperate arrays for friends who have an account and for those who do not
-            //            for (int i = 0; i < arrayWithFacebookIDs.count; i++){
-
-            //                // create the dictinaries
-            //                NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-            //
-            //                [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
-            //                [dict setObject:arrayWithFacebookNames[i] forKey:@"names"];
-            //                [array addObject:dict];
+            [activityView stopAnimating];
 
             // populate the two different arrays
             // the query returns PFObjects, but i need to crete an array containig the facebookId's of the PFObjects
@@ -122,29 +117,39 @@
             }
             for (int i = 0; i < arrayWithFacebookIDs.count; i++){
 
-                if ([arrayWithMyFacebookId containsObject:arrayWithFacebookIDs[i]]){
-                    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-                    [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
-                    [dict setObject:arrayWithFacebookNames[i] forKey:@"name"];
-                    [dict setObject:@"yes" forKey:@"InTheGroup"];
-                    [arrayWithFriendsWhoHaveAnAccount addObject:dict];
+                 // only enter if person is not already a member of the group
 
-                } else {
-                    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-                    [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
-                    [dict setObject:arrayWithFacebookNames[i] forKey:@"name"];
-                    [dict setObject:@"no" forKey:@"InTheGroup"];
-                    [arrayWithFriendsWhoDontHaveAnAccount addObject:dict];
+                if (![arrayWithTheNamesOfTheCurrentMemebersOfTheGroup containsObject: arrayWithFacebookNames[i]] || arrayWithTheNamesOfTheCurrentMemebersOfTheGroup == nil) {
 
-                }
+                     if ([arrayWithMyFacebookId containsObject:arrayWithFacebookIDs[i]]){
 
-            }
+
+
+                       NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+                       [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
+                       [dict setObject:arrayWithFacebookNames[i] forKey:@"name"];
+                       [dict setObject:@"yes" forKey:@"InTheGroup"];
+                       [arrayWithFriendsWhoHaveAnAccount addObject:dict];
+
+
+                   }  else {
+
+                       NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+                       [dict setObject:arrayWithFacebookIDs[i] forKey:@"ids"];
+                       [dict setObject:arrayWithFacebookNames[i] forKey:@"name"];
+                       [dict setObject:@"no" forKey:@"InTheGroup"];
+                       [arrayWithFriendsWhoDontHaveAnAccount addObject:dict];
+
+                   }
+             }
+
+        }
+
+            // need to concatenate the two different arrays in the end because i want the array with users who have an account to show up first
 
             finalArrayToDisplayInTheCells = [arrayWithFriendsWhoHaveAnAccount arrayByAddingObjectsFromArray:arrayWithFriendsWhoDontHaveAnAccount];
             [tableViewContainingFriends reloadData];
-//            [finalArrayToDisplayInTheCells addObject: arrayWithFriendsWhoHaveAnAccount];
-//            [finalArrayToDisplayInTheCells addObject: arrayWithFriendsWhoDontHaveAnAccount];
-//            [tableViewContainingFriends reloadData];
+
             
         }
     }];
@@ -179,12 +184,18 @@
     cell.stringContainingUserID = object[@"ids"];
     cell.currentUser = currentUser;
     cell.labelWithPersonsName.text = object[@"name"];
+
     if ([object[@"InTheGroup"]isEqualToString:@"yes"]){
+
         // this person already has an account
         [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
+        cell.buttonWithTextToAddOrInvite.exclusiveTouch = YES;
         [cell.buttonWithTextToAddOrInvite setTitle:@"Add" forState:UIControlStateNormal];
+
     } else if ([object[@"InTheGroup"]isEqualToString:@"no"]) {
+
         // this person does not have an account
+        cell.buttonWithTextToAddOrInvite.exclusiveTouch = YES;
         [cell.buttonWithTextToAddOrInvite setTitle:@"Invite" forState:UIControlStateNormal];
         [cell.buttonWithTextToAddOrInvite setTitleColor:[UIColor colorWithRed:1.0f green:0.6f blue:0.0f alpha:1.0f] forState:UIControlStateNormal];
 
@@ -245,31 +256,31 @@
 
     return YES;
 }
-//- (IBAction)onDoneButtonPressed:(id)sender {
-// //   [self performSegueWithIdentifier:@"MyGroups" sender:self];
-////    [self dismissViewControllerAnimated:YES completion:nil];
-//}
+- (IBAction)onDoneButtonPressed:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 //if the person presses the cancel button, the group that was created needs to be deleted
 
-- (IBAction)onCancelButtonPressed:(id)sender {
-
-    if(self.isANewGroupBeingAdded) {
-
-    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
-    [query whereKey:@"objectId" equalTo:group.objectId];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if(error) {
-
-        } else {
-            [object deleteInBackground];
-        }
-    }];
-    }
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-}
+//- (IBAction)onCancelButtonPressed:(id)sender {
+//
+//    if(self.isANewGroupBeingAdded) {
+//
+//    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
+//    [query whereKey:@"objectId" equalTo:group.objectId];
+//    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+//        if(error) {
+//
+//        } else {
+//            [object deleteInBackground];
+//        }
+//    }];
+//    }
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//
+//}
 
 
 @end

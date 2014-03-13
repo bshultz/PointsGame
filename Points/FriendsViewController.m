@@ -12,6 +12,7 @@
 #import "DetailPointsPageViewController.h"
 #import "FacebookFriendsViewController.h"
 
+
 @interface FriendsViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     PFObject *group;
@@ -22,6 +23,8 @@
     __weak IBOutlet UITableView *friendsTableView;
     PFQuery *pointQuery;
     NSMutableArray *points;
+    PFUser *currentUser;
+     UIActivityIndicatorView *activityView;
     
 }
 
@@ -34,6 +37,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    friends = [NSMutableArray new];
+    friendImages = [NSMutableArray new];
+    toUserObjectID = [NSMutableArray new];
+    usernames = [NSMutableArray new];
+
+    currentUser = [PFUser currentUser];
+
+    activityView = [[UIActivityIndicatorView alloc] init];
+    activityView.color = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
+    activityView.frame = CGRectMake(self.view.center.x - 25, self.view.center.y, 50, 50);
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+
     friendsTableView.separatorColor = [UIColor colorWithRed:0.05f green:0.345f blue:0.65f alpha:0.5f];
     friendsTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [friendsTableView setSeparatorInset:UIEdgeInsetsZero];
@@ -43,10 +59,6 @@
 {
 
     [super viewWillAppear:YES];
-    friends = [NSMutableArray new];
-    friendImages = [NSMutableArray new];
-    toUserObjectID = [NSMutableArray new];
-    usernames = [NSMutableArray new];
     PFQuery *query = [PFQuery queryWithClassName:@"Group"];
     group = [PFObject objectWithClassName:@"Group"];
     
@@ -56,15 +68,14 @@
     [pointQuery whereKey:@"group" equalTo:self.groupID];
     [pointQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {
+        [points removeAllObjects];
         if (!error)
         {
             for (PFObject *object in objects)
             {
-//                NSLog(@"group test run number");
                 [points addObject:object];
                 
             }
-//            [friendsTableView reloadData];
         }
         else
         {
@@ -81,9 +92,12 @@
         PFRelation *relation = [group relationForKey:@"members"];
         [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
         {
+            [activityView stopAnimating];
+            [friends removeAllObjects];
             if (!error)
             {
                 for (PFObject *object in objects)
+
                 {
                     [friends addObject:[object objectForKey:@"fullName"]];
                     [friendImages addObject:[object objectForKey:@"userImage"]];
@@ -100,11 +114,13 @@
 
         }];
     }];
-    
+
 }
 - (IBAction)onInviteButtonPressed:(id)sender {
     [self performSegueWithIdentifier:@"FacebookFriends" sender:self];
 }
+
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
@@ -112,6 +128,7 @@
     FacebookFriendsViewController *vc = navController.viewControllers.firstObject;
     vc.group = group;
     vc.isANewGroupBeingAdded = NO;
+    vc.arrayWithTheNamesOfTheCurrentMemebersOfTheGroup = friends;
     
 }
 
@@ -137,9 +154,14 @@
     }
     
     cell.points.text = [NSString stringWithFormat:@"%ld",(long)pointValue];
-    [cell.addButton setBackgroundImage:[UIImage imageNamed:@"orangebutton.png"] forState:UIControlStateNormal];
+
+    // if the user is the current User, dont show the add point button
+    if ([cell.name.text isEqualToString:currentUser[@"fullName"]]) {
+        cell.addButton.alpha = 0;
+    } else {
+    [cell.addButton setBackgroundImage:[UIImage imageNamed:@"btn_orange_normal.png"] forState:UIControlStateNormal];
     [cell.addButton addTarget:self action:@selector(addPoint:) forControlEvents:UIControlEventTouchUpInside];
-    
+    }
     return cell;
 }
 
@@ -157,32 +179,25 @@
     NSIndexPath *indexPath = [friendsTableView indexPathForCell:cell];
     pointVC.toUserObjectID = [toUserObjectID objectAtIndex:indexPath.row];
     pointVC.fromUserObjectID = [PFUser currentUser].objectId;
-    if ([pointVC.fromUserObjectID isEqualToString:pointVC.toUserObjectID]) {
-
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"You cannot give yourself a point!" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
-        [alert show];
-
-
-    } else {
-    pointVC.friendName = [friends objectAtIndex:indexPath.row];
+        pointVC.friendName = [friends objectAtIndex:indexPath.row];
     pointVC.groupID = self.groupID;
     pointVC.profileImage = cell.profileImage;
     pointVC.group = group;
     
     [self.navigationController presentViewController:pointVC animated:YES completion:nil];
-    }
+
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"Friend Selected - transition to friend detail page");
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    DetailPointsPageViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DetailPointsPageViewController"];
-    dvc.groupName = self.groupID;
-    dvc.userName = toUserObjectID[0];
-    
-    [self.navigationController pushViewController:dvc animated:YES];
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSLog(@"Friend Selected - transition to friend detail page");
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    DetailPointsPageViewController *dvc = [storyboard instantiateViewControllerWithIdentifier:@"DetailPointsPageViewController"];
+//    dvc.groupName = self.groupID;
+//    dvc.userName = toUserObjectID[0];
+//    
+//    [self.navigationController pushViewController:dvc animated:YES];
+//}
 
 
 

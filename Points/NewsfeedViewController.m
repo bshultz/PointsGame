@@ -13,6 +13,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "NewsfeedCell.h"
 #import "NewsfeedDetailViewController.h"
+#import "FacebookViewController.h"
 //#import "CSAnimationView.h"
 
 @interface NewsfeedViewController () <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -25,6 +26,7 @@
     NSMutableArray *pointId;
     NSArray *permissions;
     PFQuery *query;
+    UIActivityIndicatorView *activityView;
     
     
     __weak IBOutlet UIBarButtonItem *notificationsButton;
@@ -39,11 +41,22 @@
 {
     [super viewDidLoad];
 
-    self.navigationController.title = @"PointBank";
+    activityView = [[UIActivityIndicatorView alloc] init];
+    activityView.color = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
+    activityView.frame = CGRectMake(self.view.center.x - 25, self.view.center.y, 50, 50);
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+
+
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-//    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:.05f green:.345f blue:.65f alpha:1.0f];
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:RED/255.0f green:GREEN/255.0f blue:BLUE/255.0f alpha:1.0f];
-//    self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:77.0f/255.0f green:169.0/255.0f blue:157.0f/255.0f alpha:1.0f];
+
+    //set color of bar button item
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+
+    //set back button color
+
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
 
         self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
     newsfeedTableView.separatorColor = [UIColor colorWithRed:0.05f green:0.345f blue:0.65f alpha:0.5f];
@@ -58,11 +71,21 @@
 -(void)viewDidAppear:(BOOL)animated
 
 {
-    
-    [super viewDidAppear:YES];
-    permissions = [NSArray arrayWithObjects:@"read_friendlists", @"basic_info" , nil];
 
-    // get the transactions associated with the current user
+     [super viewDidAppear:YES];
+// only show the spinner if a current user is logged in
+
+//    if ([PFUser currentUser])
+
+
+    if (![PFUser currentUser]){
+
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        FacebookViewController *loginController = (FacebookViewController *)[storyboard instantiateViewControllerWithIdentifier:@"FacebookViewController"];
+
+        [self presentViewController:loginController animated:NO completion:nil];
+    }
+        // get the transactions associated with the current user
 
     [self getTransactions];
 }
@@ -82,6 +105,7 @@
             NSLog (@"%@ %@", error, [error userInfo]);
 
         } else {
+            [activityView stopAnimating];
 
             transactions = [NSMutableArray new];
             from = [NSMutableArray new];
@@ -127,8 +151,7 @@
     
     cell.text.font = [UIFont systemFontOfSize:12.0];
     cell.text.text = [NSString stringWithFormat:@"%@ gave %@ a point!", [fromUser objectForKey:@"fullName"], [toUser objectForKey:@"fullName"]];
-    //cell.text.textColor = [UIColor colorWithRed:0.05f green:0.345 blue:0.65f alpha:1.0f];
-    
+
     return cell;
 }
 
@@ -149,7 +172,7 @@
     {
         NewsfeedDetailViewController *ndvc = segue.destinationViewController;
         NSIndexPath *indexPath = [newsfeedTableView indexPathForSelectedRow];
-        NewsfeedCell *cell = [newsfeedTableView cellForRowAtIndexPath:indexPath];
+ //       NewsfeedCell *cell = [newsfeedTableView cellForRowAtIndexPath:indexPath];
         ndvc.pointId = [pointId objectAtIndex:indexPath.row];
     }
 }

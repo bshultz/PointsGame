@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "Parse/Parse.h"
 
+static const int RED = 77 ;
+static const int GREEN = 169;
+static const int BLUE = 157;
+
 @interface FacebookFriendsViewController : UIViewController
 
 @property (nonatomic, strong) PFObject *group;
 @property (nonatomic) BOOL isANewGroupBeingAdded;
+@property (nonatomic, strong) NSArray *arrayWithTheNamesOfTheCurrentMemebersOfTheGroup;
 @end

@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:0.408f green:0.612f blue:0.823f alpha:1.0f];
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Point"];
     [query includeKey:@"fromUser"];
     [query includeKey:@"toUser"];
@@ -58,7 +58,7 @@
                  profileImage.image = [UIImage imageWithData:theData];
                  
                  commentTextView.layer.borderWidth = 2.0f;
-                 commentTextView.layer.borderColor = [[UIColor colorWithRed:0.05f green:0.345f blue:0.65f alpha:1.0f] CGColor];
+                 commentTextView.layer.borderColor = [UIColor colorWithRed:77.0/255.0f green:169.0/255.0f blue:157.0/255.0f alpha:1.0f].CGColor;
                  commentTextView.text = [object objectForKey:@"comment"];
                  
              }

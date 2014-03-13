@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-static const int RED = 77 ;
-static const int GREEN = 169;
-static const int BLUE = 157;
+
 
 @interface NewsfeedViewController : UIViewController
 
