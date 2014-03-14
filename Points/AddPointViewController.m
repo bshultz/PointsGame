@@ -65,6 +65,7 @@
 }
 
 - (void)updateViewConstraints {
+    [super updateViewConstraints];
     
 }
 - (IBAction)onSubmitButtonPressed:(id)sender
