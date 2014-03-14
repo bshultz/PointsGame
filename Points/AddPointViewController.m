@@ -58,9 +58,9 @@
 
     
     PFUser *currentUser = [PFUser currentUser];
-//    Artifically set the number of points the user has avaiable. Uncomment if necessay for testing.
-//    currentUser[@"pointsAvailable"] = @250;
-//    [currentUser saveInBackground];
+    //Artifically set the number of points the user has avaiable. Uncomment if necessay for testing.
+    currentUser[@"pointsAvailable"] = @250;
+    [currentUser saveInBackground];
     pointsAvailable = (NSNumber *)[currentUser objectForKey:@"pointsAvailable"];
 }
 
